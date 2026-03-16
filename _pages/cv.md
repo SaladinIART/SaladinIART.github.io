@@ -9,56 +9,51 @@ redirect_from:
 
 {% include base_path %}
 
-Education
+Professional summary
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+Systems engineer specializing in industrial automation, IIoT architecture, telemetry pipelines,
+and software-enabled digital transformation for manufacturing environments. I build practical
+bridges between industrial equipment, edge software services, and analytics platforms.
 
-Work experience
+Current positioning
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Industrial Systems Engineer
+* IIoT and telemetry platform builder
+* Robotics-adjacent infrastructure learner
+* Founder direction: Salbotics Solutions
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+Core expertise
+======
+* Industrial automation and PLC integration
+* Industrial protocols including Modbus TCP and MQTT
+* Python systems development and telemetry services
+* Edge-to-cloud architecture for machine data
+* PostgreSQL and TimescaleDB for time-series workloads
+* Grafana dashboarding and telemetry analytics
+* Docker-based deployment and service packaging
+* Documentation-first engineering and reproducible project delivery
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
+Featured project
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* **IIoT Telemetry Stack** - End-to-end industrial telemetry pipeline with machine simulation,
+  Modbus polling, MQTT transport, Python ingestion, time-series storage, and Grafana dashboards.
+  See the full project page at [{{ '/portfolio/iiot-pipeline/' | relative_url }}]({{ '/portfolio/iiot-pipeline/' | relative_url }}).
 
-Publications
+Selected project archive
 ======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
+<ul>{% for post in site.portfolio reversed %}
+  {% include archive-single-cv.html %}
+{% endfor %}</ul>
+
+Professional direction
 ======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
+* Industrial AI and smart manufacturing platforms
+* Scalable factory telemetry architectures
+* ROS2 and robotics infrastructure
+* Autonomous industrial monitoring systems
+
+Contact
 ======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+* Email: [{{ site.author.email }}](mailto:{{ site.author.email }})
+* GitHub: [{{ site.author.github }}]({{ site.author.github }})
+* LinkedIn: [{{ site.author.linkedin }}]({{ site.author.linkedin }})

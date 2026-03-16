@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Automation & Robotics Engineer"
+title                    : "Industrial Systems Engineer"
 title_separator          : "-"
-name                     : &name "Muhamad Solehuddin Bin Muhamad Yusuf"
-description              : &description "Automation & Robotics Engineer | Industrial IoT • PLC/CODESYS • Python • ROS2 • Docker • Grafana"   # Update this with a general description of your site, this is the default if not overridden by a page
+name                     : &name "Muhamad Solehuddin bin Muhamad Yusuf"
+description              : &description "Industrial Systems Engineer focused on IIoT architecture, automation integration, telemetry pipelines, and practical digital transformation for manufacturing."   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://saladiniart.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -24,11 +24,11 @@ repository               : "SaladinIART/SaladinIART.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Muhamad Solehuddin Bin Muhamad Yusuf"
+  name             : "Muhamad Solehuddin bin Muhamad Yusuf"
   pronouns         : # example: "she/her"  
-  bio              : "System Engineer (Digitization) — Industrial Automation, IIoT, and Robotics. I build reliable PLC+Python pipelines and document projects for real-world deployment."
+  bio              : "Systems engineer building reliable automation, IIoT, and telemetry platforms that connect industrial equipment to modern software systems."
   location         : "KL, Malaysia"
-  employer         : "Freelance@Salbotics Solutions"
+  employer         : "Salbotics Solutions"
   uri              : # URL
   email            : "solehuddin@salbotics.uk" 
 

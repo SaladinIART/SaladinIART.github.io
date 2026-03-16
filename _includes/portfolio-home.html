@@ -1,0 +1,197 @@
+{% assign secondary_projects = site.portfolio | where_exp: "item", "item.slug != 'iiot-monitoring-pipeline'" | sort: "date" | reverse %}
+
+<div class="portfolio-home">
+  <section class="portfolio-hero">
+    <div class="portfolio-hero__backdrop"></div>
+    <div class="portfolio-hero__content">
+      <p class="portfolio-eyebrow">Industrial automation, IIoT, and platform engineering</p>
+      <h1>Bridging factory systems with modern software infrastructure.</h1>
+      <p class="portfolio-lead">
+        I design practical industrial telemetry stacks, automation integrations, and data-driven
+        workflows that help manufacturing teams move from isolated machines to usable operational insight.
+      </p>
+      <div class="portfolio-hero__actions">
+        <a class="btn btn--primary" href="{{ '/portfolio/iiot-pipeline/' | relative_url }}">View featured project</a>
+        <a class="btn btn--inverse" href="{{ '/cv/' | relative_url }}">Open CV</a>
+        <a class="btn btn--light-outline" href="mailto:{{ site.author.email }}">Contact me</a>
+      </div>
+      <ul class="portfolio-hero__metrics">
+        <li>
+          <strong>Core focus</strong>
+          <span>IIoT architecture, telemetry, and automation integration</span>
+        </li>
+        <li>
+          <strong>Primary stack</strong>
+          <span>Modbus TCP, MQTT, Python, Docker, Grafana, PostgreSQL</span>
+        </li>
+        <li>
+          <strong>Brand direction</strong>
+          <span>Industrial systems engineering under Salbotics Solutions</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="portfolio-section portfolio-section--intro" id="about">
+    <div class="portfolio-section__header">
+      <p class="portfolio-eyebrow">Professional profile</p>
+      <h2>Industrial systems engineering with a software delivery mindset.</h2>
+    </div>
+    <div class="portfolio-grid portfolio-grid--two">
+      <div class="portfolio-card">
+        <p>
+          Muhamad Solehuddin bin Muhamad Yusuf is a systems engineer specializing in industrial
+          automation, IIoT architecture, and digital transformation for manufacturing environments.
+          His work focuses on turning machine data into resilient operational systems that are usable by
+          both engineering teams and business stakeholders.
+        </p>
+        <p>
+          He combines industrial control integration, Python-based services, message-driven
+          telemetry, and data visualization into end-to-end solutions that connect OT workflows
+          with modern software platforms.
+        </p>
+      </div>
+      <div class="portfolio-card portfolio-card--accent">
+        <h3>What I build</h3>
+        <ul class="portfolio-list">
+          <li>Industrial telemetry pipelines from machine interface to dashboard</li>
+          <li>Edge-to-cloud architectures using open protocols and containerized services</li>
+          <li>Automation-focused software systems designed for reliability and maintainability</li>
+          <li>Documentation-first engineering assets that teams can deploy, review, and extend</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-section" id="skills">
+    <div class="portfolio-section__header">
+      <p class="portfolio-eyebrow">Capabilities</p>
+      <h2>Skills grouped around industrial delivery, not just tooling.</h2>
+    </div>
+    <div class="portfolio-skill-grid">
+      <article class="portfolio-card">
+        <h3>Industrial</h3>
+        <ul class="portfolio-list">
+          <li>Industrial automation and PLC integration</li>
+          <li>Industrial Internet of Things architecture</li>
+          <li>Modbus TCP, MQTT, and machine telemetry systems</li>
+          <li>Machine state modeling and factory signal interpretation</li>
+        </ul>
+      </article>
+      <article class="portfolio-card">
+        <h3>Software</h3>
+        <ul class="portfolio-list">
+          <li>Python systems development and data services</li>
+          <li>FastAPI and JSON-based service contracts</li>
+          <li>Structured ingestion, retry logic, and testable pipelines</li>
+          <li>Engineering documentation for reproducible deployments</li>
+        </ul>
+      </article>
+      <article class="portfolio-card">
+        <h3>Infrastructure</h3>
+        <ul class="portfolio-list">
+          <li>Dockerized stack deployment and local platform simulation</li>
+          <li>Linux-based edge environments and industrial data workflows</li>
+          <li>Message broker integration and service orchestration</li>
+          <li>Scalable edge-to-cloud telemetry patterns</li>
+        </ul>
+      </article>
+      <article class="portfolio-card">
+        <h3>Data and visualization</h3>
+        <ul class="portfolio-list">
+          <li>PostgreSQL and TimescaleDB for time-series storage</li>
+          <li>Grafana dashboards for machine insight and monitoring</li>
+          <li>Telemetry analytics for state, events, and trends</li>
+          <li>Data engineering for manufacturing systems</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="portfolio-section portfolio-section--feature" id="featured-project">
+    <div class="portfolio-section__header">
+      <p class="portfolio-eyebrow">Featured build</p>
+      <h2>IIoT telemetry stack for machine monitoring and industrial visibility.</h2>
+    </div>
+    <div class="portfolio-grid portfolio-grid--feature">
+      <div class="portfolio-card portfolio-card--feature">
+        <p>
+          This flagship portfolio project simulates a production-ready industrial telemetry pipeline:
+          machine data is collected through industrial protocols, moved through a brokered messaging
+          layer, stored in a time-series database, and visualized for operators and engineers.
+        </p>
+        <div class="portfolio-architecture">
+          <span>Machine simulator</span>
+          <span>Modbus TCP collector</span>
+          <span>MQTT transport</span>
+          <span>Python ingestion service</span>
+          <span>TimescaleDB</span>
+          <span>Grafana dashboards</span>
+        </div>
+        <ul class="portfolio-list">
+          <li>Structured telemetry and event pipelines</li>
+          <li>Run, idle, and fault state modeling</li>
+          <li>Containerized deployment for reproducible environments</li>
+          <li>Resilience features including retries, contracts, and migration-ready schemas</li>
+        </ul>
+      </div>
+      <div class="portfolio-card portfolio-card--aside">
+        <h3>Why it matters</h3>
+        <p>
+          The project shows how open-source tools can support industrial-grade digital transformation
+          by creating a clean bridge between OT signals and IT analytics platforms.
+        </p>
+        <a class="btn btn--primary btn--block" href="{{ '/portfolio/iiot-pipeline/' | relative_url }}">Explore the project</a>
+        <a class="btn btn--light-outline btn--block" href="{{ '/portfolio/' | relative_url }}">Browse all projects</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-section" id="projects">
+    <div class="portfolio-section__header">
+      <p class="portfolio-eyebrow">Selected work</p>
+      <h2>Secondary projects that support the wider engineering narrative.</h2>
+    </div>
+    <div class="portfolio-project-grid">
+      {% for project in secondary_projects limit: 3 %}
+      <article class="portfolio-card portfolio-card--project">
+        <p class="portfolio-project__label">Project</p>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.excerpt }}</p>
+        <a href="{{ project.url | relative_url }}">Open project</a>
+      </article>
+      {% endfor %}
+      <article class="portfolio-card portfolio-card--project portfolio-card--vision">
+        <p class="portfolio-project__label">Next direction</p>
+        <h3>ROS2, intelligent manufacturing, and robotics infrastructure</h3>
+        <p>
+          My long-term direction is at the intersection of automation engineering, software platforms,
+          and intelligent industrial systems, with growing emphasis on ROS2-enabled infrastructure and
+          scalable factory telemetry.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="portfolio-section portfolio-section--contact" id="contact">
+    <div class="portfolio-grid portfolio-grid--contact">
+      <div>
+        <p class="portfolio-eyebrow">Vision and contact</p>
+        <h2>Building practical Industry 4.0 systems under Salbotics Solutions.</h2>
+        <p>
+          I am positioning my work toward industrial platform engineering, robotics-adjacent systems,
+          and digital transformation projects that improve productivity and human capability in factory environments.
+        </p>
+      </div>
+      <div class="portfolio-card portfolio-card--contact">
+        <h3>Let&apos;s connect</h3>
+        <ul class="portfolio-contact-list">
+          <li><strong>Email:</strong> <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+          <li><strong>GitHub:</strong> <a href="{{ site.author.github }}">{{ site.author.github }}</a></li>
+          <li><strong>LinkedIn:</strong> <a href="{{ site.author.linkedin }}">{{ site.author.linkedin }}</a></li>
+          <li><strong>CV:</strong> <a href="{{ '/cv/' | relative_url }}">Professional summary and focus areas</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
