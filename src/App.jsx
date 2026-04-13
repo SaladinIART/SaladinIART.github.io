@@ -24,12 +24,12 @@ function App() {
       <main className="page">
         <section className="hero" id="hero">
           <div className="hero-copy">
-            <p className="eyebrow">Industrial automation, IIoT, and platform engineering</p>
-            <h1>Bridging factory systems with modern software infrastructure.</h1>
+            <p className="eyebrow">Industrial automation, IIoT, and AI-driven system design</p>
+            <h1>Bridging factory systems with modern software and AI-driven infrastructure.</h1>
             <p className="lead">
-              I design practical telemetry stacks, automation integrations, and software-enabled
+              I design practical telemetry stacks, automation integrations, and AI-assisted
               workflows that help manufacturing teams move from isolated machines to usable
-              operational insight.
+              operational insight — faster and with greater clarity.
             </p>
             <div className="actions">
               <a className="button button-primary" href="#projects">
@@ -53,7 +53,7 @@ function App() {
               </article>
               <article>
                 <strong>Direction</strong>
-                <span>Industrial systems engineering under Salbotics Solutions</span>
+                <span>IIoT + AI integration, digital transformation, under Salbotics Solutions</span>
               </article>
             </div>
           </div>
@@ -81,12 +81,13 @@ function App() {
             <article className="panel">
               <p>
                 Muhamad Solehuddin bin Muhamad Yusuf is a systems engineer specializing in
-                industrial automation, IIoT architecture, and digital transformation for
+                industrial automation, IIoT architecture, and AI-driven digital transformation for
                 manufacturing environments.
               </p>
               <p>
-                His work focuses on turning machine data into resilient operational systems that are
-                usable by engineering teams, operators, and business stakeholders.
+                His work focuses on turning machine data into resilient operational systems —
+                accelerated by expert prompt engineering and AI-assisted design — that are usable
+                by engineering teams, operators, and business stakeholders.
               </p>
             </article>
             <article className="panel panel-accent">
@@ -96,6 +97,7 @@ function App() {
                 <li>Edge-to-cloud architectures using open protocols and containerized services</li>
                 <li>Automation-focused software systems designed for reliability</li>
                 <li>Documentation-first engineering assets that teams can deploy and extend</li>
+                <li>AI-assisted IIoT system design using expert prompt engineering</li>
               </ul>
             </article>
           </div>
@@ -147,19 +149,19 @@ function App() {
         <section className="section contact-section" id="contact">
           <div className="section-heading">
             <p className="eyebrow">Vision and contact</p>
-            <h2>Building practical Industry 4.0 systems under Salbotics Solutions.</h2>
+            <h2>Building practical Industry 4.0 and AI-integrated systems under Salbotics Solutions.</h2>
           </div>
           <div className="grid-two">
             <article className="panel">
               <p>
-                I am positioning my work toward industrial platform engineering, robotics-adjacent
-                systems, and digital transformation projects that improve productivity and human
+                I am positioning my work toward IIoT + AI integration, industrial platform
+                engineering, and digital transformation projects that improve productivity and human
                 capability in factory environments.
               </p>
               <p>
-                I am especially interested in practical OT-IT integration, telemetry architectures,
-                and the engineering patterns that make modern industrial systems maintainable over
-                time.
+                I am especially interested in practical OT-IT integration, AI-driven telemetry
+                architectures, and the engineering patterns — including expert prompt engineering —
+                that accelerate how modern industrial systems are designed and delivered.
               </p>
             </article>
             <article className="panel panel-accent">

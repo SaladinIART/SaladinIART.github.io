@@ -35,6 +35,15 @@ export const skillGroups = [
       "Data engineering for manufacturing systems",
     ],
   },
+  {
+    title: "AI & Digital Transformation",
+    items: [
+      "Expert prompt engineering for IIoT system design and architecture",
+      "AI-assisted telemetry pipeline design and optimization",
+      "LLM-driven rapid prototyping of industrial data workflows",
+      "Digital transformation strategy for manufacturing environments",
+    ],
+  },
 ];
 
 export const architectureFlow = [
@@ -75,7 +84,7 @@ export const projects = [
     cta: "Open repository",
   },
   {
-    label: "Next direction",
+    label: "Vision",
     title: "Salbotics Solutions",
     summary:
       "The long-term direction is toward industrial platform engineering, robotics-adjacent infrastructure, and practical technology that improves productivity in factory environments.",
