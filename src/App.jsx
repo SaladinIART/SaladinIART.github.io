@@ -1,6 +1,7 @@
 import profileImage from "../images/profile.png";
 import heroImage from "../images/banner.jpg";
-import { architectureFlow, projects, skillGroups } from "./data";
+import dashboardImage from "../images/nexus-aluminium-dashboard.png";
+import { architectureFlow, latestProject, projects, skillGroups } from "./data";
 
 function App() {
   return (
@@ -24,44 +25,44 @@ function App() {
       <main className="page">
         <section className="hero" id="hero">
           <div className="hero-copy">
-            <p className="eyebrow">Industrial automation, IIoT, and AI-driven system design</p>
-            <h1>Bridging factory systems with modern software and AI-driven infrastructure.</h1>
+            <p className="eyebrow">Latest build: NEXUS Aluminium Profile Decision Demo</p>
+            <h1>Salbotics Solutions</h1>
             <p className="lead">
-              I design practical telemetry stacks, automation integrations, and AI-assisted
-              workflows that help manufacturing teams move from isolated machines to usable
-              operational insight — faster and with greater clarity.
+              Industrial automation and IIoT portfolio focused on turning machine data into
+              decision-ready systems for manufacturing teams, from factory floor signals to
+              executive dashboards.
             </p>
             <div className="actions">
-              <a className="button button-primary" href="#projects">
-                View featured work
+              <a className="button button-primary" href="#latest">
+                View latest project
+              </a>
+              <a className="button button-secondary" href={latestProject.repo}>
+                Open GitHub repo
               </a>
               <a className="button button-secondary" href="mailto:solehuddin@salbotics.uk">
                 Contact me
               </a>
-              <a className="button button-secondary" href="https://github.com/SaladinIART">
-                GitHub
-              </a>
             </div>
             <div className="stats">
               <article>
-                <strong>Core focus</strong>
-                <span>IIoT architecture, telemetry, and automation integration</span>
+                <strong>Newest project</strong>
+                <span>Runnable aluminium extrusion decision demo with live alerts</span>
               </article>
               <article>
                 <strong>Primary stack</strong>
-                <span>Modbus TCP, MQTT, Python, Docker, Grafana, PostgreSQL</span>
+                <span>Modbus TCP, MQTT, Python, TimescaleDB, FastAPI, Svelte, Grafana</span>
               </article>
               <article>
-                <strong>Direction</strong>
-                <span>IIoT + AI integration, digital transformation, under Salbotics Solutions</span>
+                <strong>Demo surfaces</strong>
+                <span>Executive web app, Grafana decision board, API docs, and runbooks</span>
               </article>
             </div>
           </div>
           <div className="hero-visual">
             <img src={profileImage} alt="Muhamad Solehuddin bin Muhamad Yusuf" />
             <div className="hero-card">
-              <p className="eyebrow">Featured architecture</p>
-              <h2>IIoT telemetry stack</h2>
+              <p className="eyebrow">Architecture flow</p>
+              <h2>Factory floor to decision desk</h2>
               <div className="flow">
                 {architectureFlow.map((step) => (
                   <span key={step}>{step}</span>
@@ -70,6 +71,36 @@ function App() {
             </div>
           </div>
           <img className="hero-background" src={heroImage} alt="" />
+        </section>
+
+        <section className="section latest-project" id="latest">
+          <div className="section-heading">
+            <p className="eyebrow">{latestProject.label}</p>
+            <h2>{latestProject.title}</h2>
+          </div>
+          <div className="latest-layout">
+            <figure className="dashboard-shot">
+              <img src={dashboardImage} alt="Grafana Aluminium Profile Decision Board" />
+              <figcaption>Grafana decision board showing quench quality hold, alerts, and business risk.</figcaption>
+            </figure>
+            <div className="latest-copy">
+              <p>{latestProject.summary}</p>
+              <p className="scenario">{latestProject.scenario}</p>
+              <div className="chip-row">
+                {latestProject.stack.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+              <ul className="list">
+                {latestProject.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+              <a className="button button-primary latest-button" href={latestProject.repo}>
+                Open latest repository
+              </a>
+            </div>
+          </div>
         </section>
 
         <section className="section section-grid" id="about">
@@ -81,13 +112,12 @@ function App() {
             <article className="panel">
               <p>
                 Muhamad Solehuddin bin Muhamad Yusuf is a systems engineer specializing in
-                industrial automation, IIoT architecture, and AI-driven digital transformation for
-                manufacturing environments.
+                industrial automation, IIoT architecture, and AI-assisted digital transformation
+                for manufacturing environments.
               </p>
               <p>
-                His work focuses on turning machine data into resilient operational systems —
-                accelerated by expert prompt engineering and AI-assisted design — that are usable
-                by engineering teams, operators, and business stakeholders.
+                His work focuses on turning machine data into resilient operational systems that
+                are useful for engineering teams, operators, and business stakeholders.
               </p>
             </article>
             <article className="panel panel-accent">
@@ -95,9 +125,8 @@ function App() {
               <ul className="list">
                 <li>Industrial telemetry pipelines from machine interface to dashboard</li>
                 <li>Edge-to-cloud architectures using open protocols and containerized services</li>
-                <li>Automation-focused software systems designed for reliability</li>
+                <li>Alerting and decision surfaces for quality, maintenance, and business impact</li>
                 <li>Documentation-first engineering assets that teams can deploy and extend</li>
-                <li>AI-assisted IIoT system design using expert prompt engineering</li>
               </ul>
             </article>
           </div>
@@ -149,19 +178,19 @@ function App() {
         <section className="section contact-section" id="contact">
           <div className="section-heading">
             <p className="eyebrow">Vision and contact</p>
-            <h2>Building practical Industry 4.0 and AI-integrated systems under Salbotics Solutions.</h2>
+            <h2>Building practical Industry 4.0 systems under Salbotics Solutions.</h2>
           </div>
           <div className="grid-two">
             <article className="panel">
               <p>
-                I am positioning my work toward IIoT + AI integration, industrial platform
-                engineering, and digital transformation projects that improve productivity and human
-                capability in factory environments.
+                I am positioning my work toward IIoT integration, industrial platform engineering,
+                and digital transformation projects that improve productivity and human capability
+                in factory environments.
               </p>
               <p>
-                I am especially interested in practical OT-IT integration, AI-driven telemetry
-                architectures, and the engineering patterns — including expert prompt engineering —
-                that accelerate how modern industrial systems are designed and delivered.
+                I am especially interested in practical OT-IT integration, telemetry architectures,
+                and the engineering patterns that make modern industrial systems maintainable over
+                time.
               </p>
             </article>
             <article className="panel panel-accent">

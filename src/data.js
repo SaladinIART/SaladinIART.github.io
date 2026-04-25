@@ -1,85 +1,115 @@
+export const latestProject = {
+  label: "Latest flagship project",
+  title: "NEXUS - Aluminium Profile Decision Demo",
+  repo: "https://github.com/SaladinIART/salbotics-iiot-aluminium-demo",
+  summary:
+    "A self-contained IIoT monitoring platform for an aluminium extrusion line, built from Modbus register reads through MQTT, Python services, TimescaleDB, FastAPI, Svelte, Grafana, alerts, and CI/CD.",
+  scenario:
+    "QUALITY_HOLD_QUENCH: quench flow drops below spec, exit temperature rises beyond the T5/T6 window, and the dashboard turns raw telemetry into management actions.",
+  highlights: [
+    "Seven-station aluminium line simulator: furnace, press, quench, cooling, stretcher, saw, and ageing",
+    "REST API and Svelte executive dashboard for browser-based factory visibility",
+    "Grafana Aluminium Profile Decision Board with quality holds, alert state, and business-risk views",
+    "Three-layer alerting: threshold rules, statistical baseline, and ML anomaly detection with IsolationForest",
+    "Scale path from single-host Docker Compose to multi-site Docker and Kubernetes Helm deployment",
+  ],
+  stack: [
+    "Modbus TCP",
+    "MQTT / Mosquitto",
+    "Python 3.13",
+    "FastAPI",
+    "TimescaleDB",
+    "Svelte 5",
+    "Grafana",
+    "Docker Compose",
+    "Helm",
+    "GitHub Actions",
+  ],
+};
+
 export const skillGroups = [
   {
     title: "Industrial",
     items: [
       "Industrial automation and PLC integration",
-      "Industrial Internet of Things architecture",
+      "Aluminium extrusion process modeling",
       "Modbus TCP, MQTT, and machine telemetry systems",
-      "Machine state modeling and factory signal interpretation",
+      "ISA-95 topic hierarchy and factory asset semantics",
     ],
   },
   {
     title: "Software",
     items: [
-      "Python systems development and data services",
-      "FastAPI and JSON-based service contracts",
-      "Structured ingestion, retry logic, and testable pipelines",
-      "Documentation for reproducible deployments",
+      "Python services for collection, ingestion, and alerting",
+      "FastAPI REST and server-sent event streams",
+      "Svelte and Vite frontend delivery",
+      "Typed contracts, tests, and architecture decision records",
     ],
   },
   {
     title: "Infrastructure",
     items: [
-      "Dockerized stack deployment and local platform simulation",
-      "Linux-based edge environments and industrial data workflows",
-      "Message broker integration and service orchestration",
-      "Scalable edge-to-cloud telemetry patterns",
+      "Docker Compose for single-command local deployment",
+      "Kubernetes and Helm scale path for multi-site operations",
+      "Mosquitto now, EMQX cluster path for larger deployments",
+      "CI/CD with GitHub Actions on every push",
     ],
   },
   {
     title: "Data and Visualization",
     items: [
-      "PostgreSQL and TimescaleDB for time-series storage",
-      "Grafana dashboards for machine insight and monitoring",
-      "Telemetry analytics for state, events, and trends",
-      "Data engineering for manufacturing systems",
+      "TimescaleDB hypertables, views, and decision-board queries",
+      "Grafana dashboards for quality, business, and station risk",
+      "Executive KPI views for OEE, alerts, assets, and production signals",
+      "Alert deduplication, routing, and acknowledgement workflows",
     ],
   },
   {
-    title: "AI & Digital Transformation",
+    title: "AI and Decision Support",
     items: [
-      "Expert prompt engineering for IIoT system design and architecture",
-      "AI-assisted telemetry pipeline design and optimization",
-      "LLM-driven rapid prototyping of industrial data workflows",
-      "Digital transformation strategy for manufacturing environments",
+      "IsolationForest anomaly detection for offline industrial alerts",
+      "Statistical baselines layered with deterministic thresholds",
+      "Structured agentic scaffold with architecture ownership",
+      "Decision surfaces designed for managers, operators, and engineers",
     ],
   },
 ];
 
 export const architectureFlow = [
-  "RX380 Modbus meter",
-  "Modbus TCP collector",
-  "MQTT broker",
-  "Python ingestion service",
+  "7-station Modbus sim",
+  "MQTT topics",
+  "Python collectors",
   "TimescaleDB",
-  "Grafana dashboard",
+  "FastAPI + SSE",
+  "Svelte executive view",
+  "Grafana decision board",
 ];
 
 export const projects = [
   {
-    label: "Featured build",
-    title: "NEXUS — IIoT Telemetry Stack",
+    label: "Latest build",
+    title: "NEXUS - Aluminium Profile Decision Demo",
     summary:
-      "A full-stack industrial IoT monitoring platform built for manufacturing environments. Eight integrated layers from field data collection to ML-based anomaly detection, scalable from a single Docker host to multi-site Kubernetes deployment.",
+      "A runnable aluminium extrusion decision demo that turns simulated machine signals into live dashboards, alerts, and executive actions.",
     details: [
-      "Modbus TCP data collection → MQTT → FastAPI → TimescaleDB pipeline",
-      "Three-layer alerting: threshold rules, statistical baselines, ML anomaly detection",
-      "Svelte 5 frontend with Grafana dashboards for real-time machine insight",
-      "Scales from local Docker Compose to Kubernetes with autoscaling and health probes",
+      "Modbus TCP simulator covering seven aluminium production stations",
+      "MQTT, Python ingestion, TimescaleDB views, FastAPI, Svelte, and Grafana",
+      "QUALITY_HOLD_QUENCH scenario for quality, delay, and business-risk visibility",
+      "Deployable with Docker Compose, with documented paths to Tier 2 and Tier 3 scale",
     ],
-    link: "https://github.com/SaladinIART/IIoT-Telemetry-Stack",
+    link: "https://github.com/SaladinIART/salbotics-iiot-aluminium-demo",
     cta: "Open repository",
   },
   {
     label: "Real-world deployment",
     title: "Factory Energy Monitor",
     summary:
-      "A machine energy monitoring system originally deployed across 25 locations at a Malaysian manufacturer, where it became the department standard for production-line cost reporting — built in response to rising TNB tariffs and Malaysia's EECA 2024 energy compliance mandate.",
+      "A machine energy monitoring system originally deployed across production locations at a Malaysian manufacturer, then rebuilt as a portfolio-friendly open-source stack.",
     details: [
-      "Modbus TCP data collection from RX380 power meters on IRIV Cytron industrial PCs",
-      "Monthly energy cost dashboard used by management — RM30K–65K/month visibility",
-      "EECA 2024 context: mandatory energy audits for facilities consuming >21,600 GJ/year",
-      "Dockerized open-source version with 4-zone simulated factory load profiles and RM cost tracking",
+      "Modbus TCP data collection from industrial power meters",
+      "Monthly energy cost dashboard for management visibility",
+      "Factory-load simulation with RM cost tracking",
+      "Dockerized open-source version for reproducible demonstration",
     ],
     link: "https://github.com/SaladinIART/factory-energy-monitor",
     cta: "Open repository",
@@ -88,12 +118,12 @@ export const projects = [
     label: "Infrastructure",
     title: "Edge Telemetry Platform",
     summary:
-      "A compact edge-computing telemetry stack demonstrating Kubernetes operations on local hardware — persistent storage, autoscaling, health probes, Prometheus metrics, and secrets management on a single Windows 11 machine.",
+      "A compact edge-computing telemetry stack demonstrating local Kubernetes operations, persistent storage, health probes, metrics, and secrets management.",
     details: [
-      "Three-tier architecture: simulator → FastAPI → PostgreSQL, fully containerized",
-      "Kubernetes (Minikube) with HPA autoscaling, configmaps, and persistent volumes",
+      "Three-tier architecture: simulator, FastAPI service, and PostgreSQL",
+      "Kubernetes with autoscaling, configmaps, and persistent volumes",
       "Prometheus metrics endpoint and health probe integration",
-      "Reproducible deployment designed for Windows 11 development environments",
+      "Reproducible Windows 11 development environment",
     ],
     link: "https://github.com/SaladinIART/edge-telemetry-platform",
     cta: "Open repository",
@@ -102,12 +132,12 @@ export const projects = [
     label: "Robotics",
     title: "PicoClaw Line Robot",
     summary:
-      "An AI-assisted line-following robot architecture on Raspberry Pi Pico W — combining embedded control, distributed telemetry logging, and topological track mapping without GPS or cameras.",
+      "An AI-assisted line-following robot architecture on Raspberry Pi Pico W with embedded control, telemetry logging, and topological track mapping.",
     details: [
-      "Three-layer architecture: robot control, data logging, AI advisory (planned)",
-      "Recovery system: detects line loss, reverses, searches, and resumes autonomously",
-      "Topological mapping — robot learns track patterns from repeated runs",
-      "Docker-backed telemetry services with MQTT and SQLite for driving analytics",
+      "Three-layer architecture: robot control, data logging, and AI advisory",
+      "Recovery behavior for line loss, reverse, search, and resume",
+      "Topological mapping from repeated runs",
+      "Docker-backed telemetry services with MQTT and SQLite",
     ],
     link: "https://github.com/SaladinIART/PicoClaw_LineRobo",
     cta: "Open repository",

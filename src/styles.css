@@ -2,7 +2,8 @@
   color-scheme: dark;
   font-family: "Segoe UI", "Inter", sans-serif;
   background:
-    radial-gradient(circle at top right, rgba(240, 140, 46, 0.16), transparent 30%),
+    radial-gradient(circle at top right, rgba(240, 140, 46, 0.14), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(77, 201, 132, 0.08), transparent 24%),
     linear-gradient(180deg, #07111b, #0a1623 38%, #08111a 100%);
   color: #e9f1f8;
   line-height: 1.5;
@@ -75,7 +76,7 @@ img {
 .brand-mark {
   align-items: center;
   background: linear-gradient(135deg, #f08c2e, #ffbe7b);
-  border-radius: 16px;
+  border-radius: 8px;
   color: #08111a;
   display: inline-flex;
   font-size: 1rem;
@@ -111,7 +112,7 @@ img {
 .hero {
   background: linear-gradient(145deg, rgba(11, 28, 42, 0.94), rgba(7, 17, 27, 0.98));
   border: 1px solid rgba(153, 177, 194, 0.14);
-  border-radius: 32px;
+  border-radius: 16px;
   display: grid;
   gap: 1.5rem;
   grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
@@ -149,15 +150,15 @@ img {
 .hero h1,
 .section h2,
 .panel h3 {
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   margin: 0;
 }
 
 .hero h1 {
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: 4.6rem;
   line-height: 0.95;
   margin-bottom: 1rem;
-  max-width: 10ch;
+  max-width: 12ch;
 }
 
 .lead,
@@ -183,7 +184,7 @@ img {
 
 .button {
   border: 1px solid rgba(153, 177, 194, 0.18);
-  border-radius: 999px;
+  border-radius: 8px;
   display: inline-flex;
   font-weight: 700;
   padding: 0.85rem 1.2rem;
@@ -214,7 +215,7 @@ img {
 .panel {
   background: linear-gradient(180deg, rgba(17, 34, 50, 0.9), rgba(9, 19, 29, 0.96));
   border: 1px solid rgba(153, 177, 194, 0.14);
-  border-radius: 24px;
+  border-radius: 8px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
   padding: 1.35rem;
 }
@@ -232,7 +233,7 @@ img {
 .hero-visual img {
   aspect-ratio: 4 / 4.2;
   border: 1px solid rgba(153, 177, 194, 0.14);
-  border-radius: 28px;
+  border-radius: 8px;
   object-fit: cover;
   width: 100%;
 }
@@ -240,7 +241,7 @@ img {
 .hero-card {
   background: linear-gradient(180deg, rgba(14, 30, 45, 0.96), rgba(8, 18, 27, 0.98));
   border: 1px solid rgba(153, 177, 194, 0.14);
-  border-radius: 24px;
+  border-radius: 8px;
   padding: 1.25rem;
 }
 
@@ -258,7 +259,7 @@ img {
 .flow span {
   background: rgba(240, 140, 46, 0.12);
   border: 1px solid rgba(240, 140, 46, 0.22);
-  border-radius: 999px;
+  border-radius: 8px;
   color: #ffd8b4;
   font-size: 0.92rem;
   padding: 0.48rem 0.8rem;
@@ -274,7 +275,7 @@ img {
 }
 
 .section-heading h2 {
-  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-size: 2.65rem;
 }
 
 .grid-two,
@@ -289,11 +290,11 @@ img {
 }
 
 .skills-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .projects-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .panel-accent {
@@ -349,14 +350,81 @@ img {
   text-decoration: none;
 }
 
+.latest-project {
+  scroll-margin-top: 6rem;
+}
+
+.latest-layout {
+  align-items: start;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+}
+
+.dashboard-shot {
+  margin: 0;
+}
+
+.dashboard-shot img {
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(153, 177, 194, 0.14);
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top left;
+  width: 100%;
+}
+
+.dashboard-shot figcaption {
+  color: #9eb0be;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+.latest-copy {
+  background: linear-gradient(180deg, rgba(15, 32, 47, 0.92), rgba(8, 18, 28, 0.96));
+  border: 1px solid rgba(153, 177, 194, 0.14);
+  border-radius: 8px;
+  padding: 1.35rem;
+}
+
+.latest-copy p {
+  color: #b2c2cf;
+  margin-top: 0;
+}
+
+.scenario {
+  border-left: 3px solid #f08c2e;
+  padding-left: 0.9rem;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1rem 0;
+}
+
+.chip-row span {
+  background: rgba(77, 201, 132, 0.08);
+  border: 1px solid rgba(77, 201, 132, 0.24);
+  border-radius: 8px;
+  color: #bff0d1;
+  font-size: 0.88rem;
+  padding: 0.45rem 0.65rem;
+}
+
+.latest-button {
+  margin-top: 1rem;
+}
+
 @media (max-width: 1050px) {
   .hero {
     grid-template-columns: 1fr;
   }
 
-  .skills-grid,
+  .latest-layout,
   .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 }
 
@@ -376,6 +444,14 @@ img {
   .page {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .section-heading h2 {
+    font-size: 2rem;
   }
 
   .grid-two,
