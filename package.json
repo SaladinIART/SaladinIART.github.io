@@ -6,7 +6,7 @@
   "description": "React portfolio for Muhamad Solehuddin bin Muhamad Yusuf",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/copy-404.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

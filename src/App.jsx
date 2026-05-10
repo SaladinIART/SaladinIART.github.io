@@ -1,221 +1,406 @@
-import profileImage from "../images/profile.png";
-import heroImage from "../images/banner.jpg";
+import { useEffect, useState } from "react";
+import logoHorizontal from "../images/brand/salbotics-logo-2026-05-10/salbotics-horizontal-white-bg.png";
+import logoMark from "../images/brand/salbotics-logo-2026-05-10/salbotics-monogram-color-white-bg.png";
 import dashboardImage from "../images/nexus-aluminium-dashboard.png";
-import { architectureFlow, latestProject, projects, skillGroups } from "./data";
+import profileImage from "../images/profile.png";
+import {
+  capabilities,
+  contact,
+  contactPrompts,
+  navItems,
+  proofAssets,
+  serviceOffers,
+  techStack,
+  workSteps,
+} from "./data";
+
+const routes = new Set(navItems.map((item) => item.path));
+
+function getPath() {
+  const path = window.location.pathname.replace(/\/$/, "") || "/";
+  return routes.has(path) ? path : "/";
+}
 
 function App() {
+  const [path, setPath] = useState(getPath);
+
+  useEffect(() => {
+    const onPopState = () => setPath(getPath());
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  function navigate(nextPath) {
+    if (nextPath === path) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    window.history.pushState({}, "", nextPath);
+    setPath(nextPath);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  const Page = {
+    "/": HomePage,
+    "/services": ServicesPage,
+    "/proof": ProofPage,
+    "/freelance": FreelancePage,
+    "/contact": ContactPage,
+  }[path];
+
   return (
     <div className="site-shell">
-      <header className="topbar">
-        <a className="brand" href="#hero">
-          <span className="brand-mark">S</span>
-          <div>
-            <strong>Salbotics Solutions</strong>
-            <span>Industrial systems portfolio</span>
-          </div>
-        </a>
-        <nav className="nav">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
-
+      <Header path={path} onNavigate={navigate} />
       <main className="page">
-        <section className="hero" id="hero">
-          <div className="hero-copy">
-            <p className="eyebrow">Latest build: NEXUS Aluminium Profile Decision Demo</p>
-            <h1>Salbotics Solutions</h1>
-            <p className="lead">
-              Industrial automation and IIoT portfolio focused on turning machine data into
-              decision-ready systems for manufacturing teams, from factory floor signals to
-              executive dashboards.
-            </p>
-            <div className="actions">
-              <a className="button button-primary" href="#latest">
-                View latest project
-              </a>
-              <a className="button button-secondary" href={latestProject.repo}>
-                Open GitHub repo
-              </a>
-              <a className="button button-secondary" href="mailto:solehuddin@salbotics.uk">
-                Contact me
-              </a>
-            </div>
-            <div className="stats">
-              <article>
-                <strong>Newest project</strong>
-                <span>Runnable aluminium extrusion decision demo with live alerts</span>
-              </article>
-              <article>
-                <strong>Primary stack</strong>
-                <span>Modbus TCP, MQTT, Python, TimescaleDB, FastAPI, Svelte, Grafana</span>
-              </article>
-              <article>
-                <strong>Demo surfaces</strong>
-                <span>Executive web app, Grafana decision board, API docs, and runbooks</span>
-              </article>
-            </div>
-          </div>
-          <div className="hero-visual">
-            <img src={profileImage} alt="Muhamad Solehuddin bin Muhamad Yusuf" />
-            <div className="hero-card">
-              <p className="eyebrow">Architecture flow</p>
-              <h2>Factory floor to decision desk</h2>
-              <div className="flow">
-                {architectureFlow.map((step) => (
-                  <span key={step}>{step}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-          <img className="hero-background" src={heroImage} alt="" />
-        </section>
-
-        <section className="section latest-project" id="latest">
-          <div className="section-heading">
-            <p className="eyebrow">{latestProject.label}</p>
-            <h2>{latestProject.title}</h2>
-          </div>
-          <div className="latest-layout">
-            <figure className="dashboard-shot">
-              <img src={dashboardImage} alt="Grafana Aluminium Profile Decision Board" />
-              <figcaption>Grafana decision board showing quench quality hold, alerts, and business risk.</figcaption>
-            </figure>
-            <div className="latest-copy">
-              <p>{latestProject.summary}</p>
-              <p className="scenario">{latestProject.scenario}</p>
-              <div className="chip-row">
-                {latestProject.stack.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-              <ul className="list">
-                {latestProject.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-              <a className="button button-primary latest-button" href={latestProject.repo}>
-                Open latest repository
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="section section-grid" id="about">
-          <div className="section-heading">
-            <p className="eyebrow">Professional profile</p>
-            <h2>Industrial systems engineering with a software delivery mindset.</h2>
-          </div>
-          <div className="grid-two">
-            <article className="panel">
-              <p>
-                Muhamad Solehuddin bin Muhamad Yusuf is a systems engineer specializing in
-                industrial automation, IIoT architecture, and AI-assisted digital transformation
-                for manufacturing environments.
-              </p>
-              <p>
-                His work focuses on turning machine data into resilient operational systems that
-                are useful for engineering teams, operators, and business stakeholders.
-              </p>
-            </article>
-            <article className="panel panel-accent">
-              <h3>What I build</h3>
-              <ul className="list">
-                <li>Industrial telemetry pipelines from machine interface to dashboard</li>
-                <li>Edge-to-cloud architectures using open protocols and containerized services</li>
-                <li>Alerting and decision surfaces for quality, maintenance, and business impact</li>
-                <li>Documentation-first engineering assets that teams can deploy and extend</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section className="section" id="skills">
-          <div className="section-heading">
-            <p className="eyebrow">Capabilities</p>
-            <h2>Skills grouped around industrial delivery, not just tooling.</h2>
-          </div>
-          <div className="skills-grid">
-            {skillGroups.map((group) => (
-              <article className="panel" key={group.title}>
-                <h3>{group.title}</h3>
-                <ul className="list">
-                  {group.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section featured-section" id="projects">
-          <div className="section-heading">
-            <p className="eyebrow">Selected work</p>
-            <h2>Portfolio pieces built around industrial visibility and practical delivery.</h2>
-          </div>
-          <div className="projects-grid">
-            {projects.map((project) => (
-              <article className="panel project-card" key={project.title}>
-                <p className="project-label">{project.label}</p>
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-                <ul className="list">
-                  {project.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
-                  ))}
-                </ul>
-                <a className="text-link" href={project.link}>
-                  {project.cta}
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section contact-section" id="contact">
-          <div className="section-heading">
-            <p className="eyebrow">Vision and contact</p>
-            <h2>Building practical Industry 4.0 systems under Salbotics Solutions.</h2>
-          </div>
-          <div className="grid-two">
-            <article className="panel">
-              <p>
-                I am positioning my work toward IIoT integration, industrial platform engineering,
-                and digital transformation projects that improve productivity and human capability
-                in factory environments.
-              </p>
-              <p>
-                I am especially interested in practical OT-IT integration, telemetry architectures,
-                and the engineering patterns that make modern industrial systems maintainable over
-                time.
-              </p>
-            </article>
-            <article className="panel panel-accent">
-              <h3>Let&apos;s connect</h3>
-              <ul className="contact-list">
-                <li>
-                  <strong>Email</strong>
-                  <a href="mailto:solehuddin@salbotics.uk">solehuddin@salbotics.uk</a>
-                </li>
-                <li>
-                  <strong>GitHub</strong>
-                  <a href="https://github.com/SaladinIART">github.com/SaladinIART</a>
-                </li>
-                <li>
-                  <strong>LinkedIn</strong>
-                  <a href="https://www.linkedin.com/in/solehuddin-muhamad-b67068132/">
-                    solehuddin-muhamad
-                  </a>
-                </li>
-              </ul>
-            </article>
-          </div>
-        </section>
+        <Page onNavigate={navigate} />
       </main>
+      <Footer onNavigate={navigate} />
     </div>
+  );
+}
+
+function Header({ path, onNavigate }) {
+  return (
+    <header className="topbar">
+      <button className="brand" type="button" onClick={() => onNavigate("/")}>
+        <img src={logoMark} alt="" />
+        <span>
+          <strong>Salbotics Solutions</strong>
+          <small>Freelance IIoT Consultant</small>
+        </span>
+      </button>
+      <nav className="nav" aria-label="Primary navigation">
+        {navItems.map((item) => (
+          <button
+            key={item.path}
+            className={path === item.path ? "active" : ""}
+            type="button"
+            onClick={() => onNavigate(item.path)}
+          >
+            <span className="nav-label-full">{item.label}</span>
+            <span className="nav-label-short">
+              {item.path === "/freelance" ? "Profile" : item.label}
+            </span>
+          </button>
+        ))}
+      </nav>
+    </header>
+  );
+}
+
+function Footer({ onNavigate }) {
+  return (
+    <footer className="footer">
+      <div>
+        <strong>Salbotics Solutions</strong>
+        <span>Practical digital transformation for factories and small businesses.</span>
+      </div>
+      <div className="footer-links">
+        <button type="button" onClick={() => onNavigate("/proof")}>
+          Proof
+        </button>
+        <button type="button" onClick={() => onNavigate("/contact")}>
+          Contact
+        </button>
+      </div>
+    </footer>
+  );
+}
+
+function HomePage({ onNavigate }) {
+  return (
+    <>
+      <section className="hero">
+        <div className="hero-copy">
+          <h1>Salbotics Solutions</h1>
+          <p className="title-line">Freelance IIoT Consultant</p>
+          <p className="lead">
+            I help factories and small businesses turn messy operations into visible, measurable
+            systems through scoped sprints, industrial proof assets, and documented handover.
+          </p>
+          <div className="actions">
+            <button className="button button-primary" type="button" onClick={() => onNavigate("/contact")}>
+              Contact for interview or scoped work
+            </button>
+            <button className="button button-secondary" type="button" onClick={() => onNavigate("/proof")}>
+              Review proof
+            </button>
+          </div>
+        </div>
+        <div className="hero-visual">
+          <img className="hero-logo" src={logoHorizontal} alt="Salbotics Solutions" />
+          <div className="signal-panel">
+            <span>Open to roles</span>
+            <strong>Full-time, contract, and freelance opportunities</strong>
+          </div>
+        </div>
+      </section>
+
+      <section className="split-band">
+        <PathCard
+          title="For businesses"
+          text="Start with a focused sprint: energy visibility, SME operations digitization, or a clean lead funnel."
+          action="View services"
+          onClick={() => onNavigate("/services")}
+        />
+        <PathCard
+          title="For recruiters"
+          text="Review industrial systems, IIoT, software delivery, documentation, and practical OT/IT capability."
+          action="View freelance profile"
+          onClick={() => onNavigate("/freelance")}
+        />
+      </section>
+
+      <section className="section">
+        <SectionIntro
+          label="Quick proof"
+          title="Evidence before promises."
+          text="NEXUS and factory energy monitoring work show the current capability. SOL is kept as future roadmap, not a product claim."
+        />
+        <div className="proof-strip">
+          {proofAssets.slice(0, 2).map((asset) => (
+            <ProofMini key={asset.title} asset={asset} />
+          ))}
+          <article className="panel roadmap-note">
+            <span>Future roadmap</span>
+            <h3>SOL - Salbotics Operations Layer</h3>
+            <p>
+              A planned operations layer direction for future product work. It is not offered as a
+              finished product today.
+            </p>
+          </article>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ServicesPage({ onNavigate }) {
+  return (
+    <>
+      <PageHero
+        title="Scoped sprints for visible operations."
+        text="Current Salbotics work is service-first: short, practical engagements with clear scope, price range, handover, and boundaries."
+        action="Start a conversation"
+        onAction={() => onNavigate("/contact")}
+      />
+      <section className="offers">
+        {serviceOffers.map((offer) => (
+          <article className="offer" key={offer.title}>
+            <div>
+              <h2>{offer.title}</h2>
+              <p>{offer.buyer}</p>
+            </div>
+            <dl className="offer-meta">
+              <div>
+                <dt>Typical range</dt>
+                <dd>{offer.range}</dd>
+              </div>
+              <div>
+                <dt>Timeline</dt>
+                <dd>{offer.timeline}</dd>
+              </div>
+            </dl>
+            <p className="outcome">{offer.outcome}</p>
+            <ul className="list">
+              {offer.deliverables.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </section>
+      <section className="section process-band">
+        <SectionIntro
+          label="Working style"
+          title="Sprints, not vague transformation."
+          text="The work moves through a written scope and handover so the result can survive after the sprint."
+        />
+        <div className="step-row">
+          {workSteps.map((step, index) => (
+            <span key={step}>
+              {index + 1}. {step}
+            </span>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ProofPage({ onNavigate }) {
+  return (
+    <>
+      <PageHero
+        title="Proof assets built around industrial visibility."
+        text="These projects show system thinking, not finished SaaS claims: telemetry, dashboards, alerts, documentation, and handover discipline."
+        action="View profile"
+        onAction={() => onNavigate("/freelance")}
+      />
+      <section className="proof-feature">
+        <figure>
+          <img src={dashboardImage} alt="NEXUS dashboard proof for aluminium decision support" />
+          <figcaption>NEXUS dashboard proof asset: aluminium decision visibility and alert context.</figcaption>
+        </figure>
+        <div className="stack-panel">
+          <h2>Factory floor to decision desk</h2>
+          <p>
+            The strongest public proof is the ability to connect machine signals, data services,
+            dashboards, and written runbooks into one explainable system.
+          </p>
+          <div className="chip-row">
+            {techStack.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="cards-grid">
+        {proofAssets.map((asset) => (
+          <article className="panel proof-card" key={asset.title}>
+            <span>{asset.label}</span>
+            <h2>{asset.title}</h2>
+            <strong>{asset.maturity}</strong>
+            <p>{asset.summary}</p>
+            <ul className="list">
+              {asset.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
+            <a className="text-link" href={asset.link}>
+              {asset.cta}
+            </a>
+          </article>
+        ))}
+      </section>
+    </>
+  );
+}
+
+function FreelancePage({ onNavigate }) {
+  return (
+    <>
+      <PageHero
+        title="Freelance IIoT Consultant. Industrial Systems Engineer."
+        text="Open to full-time roles, contract work, and scoped freelance projects across industrial automation, OT/IT integration, dashboards, APIs, and documentation-heavy delivery."
+        action="Contact for interview"
+        onAction={() => onNavigate("/contact")}
+      />
+      <section className="profile-layout">
+        <img src={profileImage} alt="Muhamad Solehuddin bin Muhamad Yusuf" />
+        <div className="profile-copy">
+          <h2>Role fit</h2>
+          <p>
+            I connect factory realities to software systems: machine data, operational dashboards,
+            alerts, API services, DevOps workflows, and clear handover documentation.
+          </p>
+          <div className="capability-list">
+            {capabilities.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <SectionIntro
+          label="How I work"
+          title="AI-assisted, architecture-owned, proof-led."
+          text="AI can accelerate drafting, scaffolding, and review. The engineering responsibility remains human: domain fit, architecture, verification, and handover."
+        />
+      </section>
+    </>
+  );
+}
+
+function ContactPage() {
+  return (
+    <>
+      <PageHero
+        title="Contact for interviews, scoped work, or practical collaboration."
+        text="Use email or LinkedIn. Share enough context so the first reply can be useful."
+        action="Email Solehuddin"
+        href={`mailto:${contact.email}`}
+      />
+      <section className="contact-layout">
+        <article className="contact-card">
+          <h2>Direct channels</h2>
+          <ul className="contact-list">
+            <li>
+              <strong>Email</strong>
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </li>
+            <li>
+              <strong>LinkedIn</strong>
+              <a href={contact.linkedin}>solehuddin-muhamad</a>
+            </li>
+            <li>
+              <strong>GitHub</strong>
+              <a href={contact.github}>github.com/SaladinIART</a>
+            </li>
+          </ul>
+        </article>
+        <div className="prompt-grid">
+          {contactPrompts.map((prompt) => (
+            <article className="panel" key={prompt.title}>
+              <h3>{prompt.title}</h3>
+              <p>{prompt.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+function PageHero({ title, text, action, onAction, href }) {
+  const content = href ? (
+    <a className="button button-primary" href={href}>
+      {action}
+    </a>
+  ) : (
+    <button className="button button-primary" type="button" onClick={onAction}>
+      {action}
+    </button>
+  );
+
+  return (
+    <section className="page-hero">
+      <h1>{title}</h1>
+      <p>{text}</p>
+      {content}
+    </section>
+  );
+}
+
+function SectionIntro({ label, title, text }) {
+  return (
+    <div className="section-intro">
+      <span>{label}</span>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+  );
+}
+
+function PathCard({ title, text, action, onClick }) {
+  return (
+    <article className="path-card">
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <button className="text-button" type="button" onClick={onClick}>
+        {action}
+      </button>
+    </article>
+  );
+}
+
+function ProofMini({ asset }) {
+  return (
+    <article className="panel proof-mini">
+      <span>{asset.label}</span>
+      <h3>{asset.title}</h3>
+      <p>{asset.summary}</p>
+    </article>
   );
 }
 

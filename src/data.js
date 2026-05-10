@@ -1,145 +1,150 @@
-export const latestProject = {
-  label: "Latest flagship project",
-  title: "NEXUS - Aluminium Profile Decision Demo",
-  repo: "https://github.com/SaladinIART/salbotics-iiot-aluminium-demo",
-  summary:
-    "A self-contained IIoT monitoring platform for an aluminium extrusion line, built from Modbus register reads through MQTT, Python services, TimescaleDB, FastAPI, Svelte, Grafana, alerts, and CI/CD.",
-  scenario:
-    "QUALITY_HOLD_QUENCH: quench flow drops below spec, exit temperature rises beyond the T5/T6 window, and the dashboard turns raw telemetry into management actions.",
-  highlights: [
-    "Seven-station aluminium line simulator: furnace, press, quench, cooling, stretcher, saw, and ageing",
-    "REST API and Svelte executive dashboard for browser-based factory visibility",
-    "Grafana Aluminium Profile Decision Board with quality holds, alert state, and business-risk views",
-    "Three-layer alerting: threshold rules, statistical baseline, and ML anomaly detection with IsolationForest",
-    "Scale path from single-host Docker Compose to multi-site Docker and Kubernetes Helm deployment",
-  ],
-  stack: [
-    "Modbus TCP",
-    "MQTT / Mosquitto",
-    "Python 3.13",
-    "FastAPI",
-    "TimescaleDB",
-    "Svelte 5",
-    "Grafana",
-    "Docker Compose",
-    "Helm",
-    "GitHub Actions",
-  ],
+export const contact = {
+  email: "solehuddin@salbotics.uk",
+  linkedin: "https://www.linkedin.com/in/solehuddin-muhamad-b67068132/",
+  github: "https://github.com/SaladinIART",
 };
 
-export const skillGroups = [
+export const navItems = [
+  { label: "Home", path: "/" },
+  { label: "Services", path: "/services" },
+  { label: "Proof", path: "/proof" },
+  { label: "Freelance Profile", path: "/freelance" },
+  { label: "Contact", path: "/contact" },
+];
+
+export const serviceOffers = [
   {
-    title: "Industrial",
-    items: [
-      "Industrial automation and PLC integration",
-      "Aluminium extrusion process modeling",
-      "Modbus TCP, MQTT, and machine telemetry systems",
-      "ISA-95 topic hierarchy and factory asset semantics",
+    title: "Factory Energy Visibility Sprint",
+    buyer: "Factories, workshops, and plants where the energy bill is rising but the source is unclear.",
+    outcome:
+      "Machine or zone-level visibility, a readable dashboard, a baseline cost map, and a next-step roadmap.",
+    range: "RM 2,500-6,000",
+    timeline: "2-4 weeks",
+    deliverables: [
+      "Site or remote workflow review",
+      "Energy visibility setup using existing meters or practical sensor options",
+      "Dashboard for phone or browser review",
+      "Written handover and next-step monitoring roadmap",
     ],
   },
   {
-    title: "Software",
-    items: [
-      "Python services for collection, ingestion, and alerting",
-      "FastAPI REST and server-sent event streams",
-      "Svelte and Vite frontend delivery",
-      "Typed contracts, tests, and architecture decision records",
+    title: "SME Ops Digitization Sprint",
+    buyer: "Small businesses running jobs through chat messages, paper, spreadsheets, or someone's memory.",
+    outcome:
+      "A simple intake flow, tracker, reporting view, and handover so operations become visible.",
+    range: "RM 800-2,500",
+    timeline: "1-2 weeks",
+    deliverables: [
+      "Customer or internal intake flow",
+      "Status tracker with owner, dates, notes, and IDs",
+      "One-page report for open, late, and completed work",
+      "Written instructions for staff handover",
     ],
   },
   {
-    title: "Infrastructure",
-    items: [
-      "Docker Compose for single-command local deployment",
-      "Kubernetes and Helm scale path for multi-site operations",
-      "Mosquitto now, EMQX cluster path for larger deployments",
-      "CI/CD with GitHub Actions on every push",
-    ],
-  },
-  {
-    title: "Data and Visualization",
-    items: [
-      "TimescaleDB hypertables, views, and decision-board queries",
-      "Grafana dashboards for quality, business, and station risk",
-      "Executive KPI views for OEE, alerts, assets, and production signals",
-      "Alert deduplication, routing, and acknowledgement workflows",
-    ],
-  },
-  {
-    title: "AI and Decision Support",
-    items: [
-      "IsolationForest anomaly detection for offline industrial alerts",
-      "Statistical baselines layered with deterministic thresholds",
-      "Structured agentic scaffold with architecture ownership",
-      "Decision surfaces designed for managers, operators, and engineers",
+    title: "Starter Website + Lead Funnel",
+    buyer: "Small service businesses, freelancers, and early ventures that need a clean public front door.",
+    outcome:
+      "A brochure site with a clear offer page and contact path, deployed without agency overhead.",
+    range: "RM 500-1,500",
+    timeline: "About 1 week",
+    deliverables: [
+      "One to five page static website",
+      "Clear offer and contact path",
+      "Cloudflare or GitHub Pages deployment",
+      "Update notes for future copy and asset changes",
     ],
   },
 ];
 
-export const architectureFlow = [
-  "7-station Modbus sim",
-  "MQTT topics",
-  "Python collectors",
-  "TimescaleDB",
-  "FastAPI + SSE",
-  "Svelte executive view",
-  "Grafana decision board",
+export const workSteps = [
+  "Discovery",
+  "Scope memo",
+  "Build sprint",
+  "Handover",
+  "Follow-up",
 ];
 
-export const projects = [
+export const proofAssets = [
   {
-    label: "Latest build",
+    label: "Flagship IIoT proof",
     title: "NEXUS - Aluminium Profile Decision Demo",
+    maturity: "Runnable demo and architecture proof",
     summary:
-      "A runnable aluminium extrusion decision demo that turns simulated machine signals into live dashboards, alerts, and executive actions.",
+      "A full-stack IIoT proof asset that turns aluminium line telemetry into dashboards, alerts, and management actions.",
     details: [
-      "Modbus TCP simulator covering seven aluminium production stations",
-      "MQTT, Python ingestion, TimescaleDB views, FastAPI, Svelte, and Grafana",
+      "Modbus TCP simulator for seven aluminium production stations",
+      "MQTT, Python services, TimescaleDB, FastAPI, Svelte, and Grafana",
       "QUALITY_HOLD_QUENCH scenario for quality, delay, and business-risk visibility",
-      "Deployable with Docker Compose, with documented paths to Tier 2 and Tier 3 scale",
+      "Documented scale path from Docker Compose to multi-site deployment",
     ],
     link: "https://github.com/SaladinIART/salbotics-iiot-aluminium-demo",
-    cta: "Open repository",
+    cta: "Open NEXUS repository",
   },
   {
-    label: "Real-world deployment",
+    label: "Real-world lineage",
     title: "Factory Energy Monitor",
+    maturity: "Factory energy visibility experience and rebuilt proof",
     summary:
-      "A machine energy monitoring system originally deployed across production locations at a Malaysian manufacturer, then rebuilt as a portfolio-friendly open-source stack.",
+      "Energy monitoring work rooted in practical industrial visibility, later rebuilt as a portfolio-friendly stack.",
     details: [
-      "Modbus TCP data collection from industrial power meters",
-      "Monthly energy cost dashboard for management visibility",
-      "Factory-load simulation with RM cost tracking",
-      "Dockerized open-source version for reproducible demonstration",
+      "Machine and zone energy visibility patterns",
+      "Management-oriented cost mapping",
+      "Industrial meter and Modbus-style data collection experience",
+      "Dashboard-first reporting for operations review",
     ],
     link: "https://github.com/SaladinIART/factory-energy-monitor",
-    cta: "Open repository",
+    cta: "Open energy monitor repository",
   },
   {
-    label: "Infrastructure",
+    label: "Supporting proof",
     title: "Edge Telemetry Platform",
+    maturity: "Infrastructure and telemetry demonstration",
     summary:
-      "A compact edge-computing telemetry stack demonstrating local Kubernetes operations, persistent storage, health probes, metrics, and secrets management.",
+      "A compact edge telemetry stack showing API service design, database persistence, health probes, and deployment thinking.",
     details: [
-      "Three-tier architecture: simulator, FastAPI service, and PostgreSQL",
-      "Kubernetes with autoscaling, configmaps, and persistent volumes",
-      "Prometheus metrics endpoint and health probe integration",
-      "Reproducible Windows 11 development environment",
+      "FastAPI service and PostgreSQL persistence",
+      "Container and Kubernetes operating patterns",
+      "Metrics and health-check discipline",
+      "Reproducible engineering documentation",
     ],
     link: "https://github.com/SaladinIART/edge-telemetry-platform",
-    cta: "Open repository",
+    cta: "Open telemetry repository",
+  },
+];
+
+export const capabilities = [
+  "Industrial automation and IIoT architecture",
+  "OT/IT integration using open protocols",
+  "Python, FastAPI, dashboards, and data pipelines",
+  "Docker, CI/CD, runbooks, and handover documentation",
+  "Operational workflows for SMEs using practical tools",
+  "AI-assisted engineering with human architecture ownership",
+];
+
+export const techStack = [
+  "Modbus TCP",
+  "MQTT",
+  "Python",
+  "FastAPI",
+  "TimescaleDB",
+  "React / Svelte",
+  "Grafana",
+  "Docker",
+  "GitHub Actions",
+];
+
+export const contactPrompts = [
+  {
+    title: "Recruiters",
+    text: "Share the role title, location or remote expectation, core stack, and hiring timeline.",
   },
   {
-    label: "Robotics",
-    title: "PicoClaw Line Robot",
-    summary:
-      "An AI-assisted line-following robot architecture on Raspberry Pi Pico W with embedded control, telemetry logging, and topological track mapping.",
-    details: [
-      "Three-layer architecture: robot control, data logging, and AI advisory",
-      "Recovery behavior for line loss, reverse, search, and resume",
-      "Topological mapping from repeated runs",
-      "Docker-backed telemetry services with MQTT and SQLite",
-    ],
-    link: "https://github.com/SaladinIART/PicoClaw_LineRobo",
-    cta: "Open repository",
+    title: "Businesses",
+    text: "Share your business type, the messy operation you want visible, rough size, and preferred timeline.",
+  },
+  {
+    title: "Collaborators",
+    text: "Share what you want to build, test, or review, plus the practical outcome you need.",
   },
 ];
