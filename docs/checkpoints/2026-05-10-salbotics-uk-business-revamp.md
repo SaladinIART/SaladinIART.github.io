@@ -178,4 +178,11 @@ Acceptance:
 
 Status:
 
-- Pending.
+- Completed on 2026-05-10.
+
+Implementation notes:
+
+- Added `docs/implementation-plan.md`.
+- Confirmed React + Vite remains the implementation stack.
+- Confirmed clean URLs require a GitHub Pages fallback, likely via `404.html`.
+- Defined route list, implementation sequence, acceptance criteria, commit plan, and QA checklist for the future site rewrite.
