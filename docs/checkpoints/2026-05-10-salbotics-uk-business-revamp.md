@@ -154,7 +154,13 @@ Acceptance:
 
 Status:
 
-- Pending.
+- Completed on 2026-05-10.
+
+Implementation notes:
+
+- Added `docs/copy-guardrails.md`.
+- Defined approved language, restricted language, banned claims, page-level copy rules, and review checklist.
+- Locked the key maturity distinction: NEXUS and Factory Energy Monitor are proof assets; SOL / MES-ERP is future roadmap only.
 
 ## Checkpoint 6 - Future Implementation Plan
 
