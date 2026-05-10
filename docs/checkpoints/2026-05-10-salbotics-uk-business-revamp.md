@@ -94,7 +94,13 @@ Acceptance:
 
 Status:
 
-- Pending.
+- Completed on 2026-05-10.
+
+Implementation notes:
+
+- Copied the Salbotics logo set into `images/brand/salbotics-logo-2026-05-10/`.
+- Added `images/brand/salbotics-logo-2026-05-10/README.md` with filename meanings, palette, and usage cautions.
+- Existing NEXUS proof visual remains available at `images/nexus-aluminium-dashboard.png`.
 
 ## Checkpoint 4 - Information Architecture
 
