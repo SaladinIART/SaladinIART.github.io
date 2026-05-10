@@ -119,7 +119,13 @@ Acceptance:
 
 Status:
 
-- Pending.
+- Completed on 2026-05-10.
+
+Implementation notes:
+
+- Added `docs/information-architecture.md`.
+- Locked the global nav, route map, page jobs, primary CTAs, proof placement, service offer boundaries, and recruiter-safe profile framing.
+- Confirmed the implementation handoff should keep `/`, `/services`, `/proof`, `/freelance`, and `/contact` as the five public routes.
 
 ## Checkpoint 5 - Copy Guardrails
 
