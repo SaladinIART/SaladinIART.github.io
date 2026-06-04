@@ -4,23 +4,25 @@ import { scenes } from "./scenes";
 import {
   about,
   approach,
+  build,
+  consult,
+  contact,
   contactSection,
   footer,
   hero,
+  how,
+  lab,
   nav,
-  services,
-  work,
 } from "./data";
 
 // Injects a verbatim SVG vignette. display:contents on the mount keeps the inner
-// <figure class="scene"> as a direct grid child of its row (see styles.css).
+// <figure class="scene"> as a direct grid/flow child (see styles.css).
 function Scene({ sceneKey }) {
   const html = scenes[sceneKey];
   if (!html) return null;
   return <div className="scene-mount" dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
-// Renders a paragraph, bolding any emphasis phrase found within it.
 function AboutParagraph({ text, emphasis }) {
   const phrase = emphasis.find((e) => text.includes(e));
   if (!phrase) return <p>{text}</p>;
@@ -77,100 +79,129 @@ function Hero() {
   );
 }
 
-function Services() {
+// #how — gallery of plain-language explainer scenes (primary first).
+// To ship just one later, drop the others from `how.scenes` in data.js.
+function HowItWorks() {
+  const ordered = [...how.scenes].sort((a, b) =>
+    a.key === how.primary ? -1 : b.key === how.primary ? 1 : 0,
+  );
   return (
-    <section id="services">
+    <section id="how">
       <div className="wrap">
-        <p className="sec-label">{services.label}</p>
-        <h2>{services.title}</h2>
-        <p className="sec-intro">{services.intro}</p>
-
-        <div className="svc">
-          {services.offers.map((offer) => (
-            <div className="svc-row" key={offer.title}>
-              <div>
-                <div className="svc-head">
-                  <h3>{offer.title}</h3>
-                  <span className="svc-rate">{offer.rate}</span>
-                </div>
-                <p className="svc-who">
-                  <strong>For</strong> {offer.who}
-                </p>
-                <p className="svc-out">
-                  <strong>You get</strong> {offer.out}
-                </p>
-              </div>
-              <ul className="svc-inc">
-                {offer.includes.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+        <p className="sec-label">{how.label}</p>
+        <h2>{how.title}</h2>
+        <p className="sec-intro">{how.intro}</p>
+        <div className="explainers">
+          {ordered.map((s) => (
+            <figure className="explainer" key={s.key}>
+              <Scene sceneKey={s.key} />
+              <figcaption>{s.caption}</figcaption>
+            </figure>
           ))}
         </div>
-
-        <p className="svc-note">{services.note}</p>
       </div>
     </section>
   );
 }
 
-function Work() {
+function Consult() {
   return (
-    <section id="work">
+    <section id="consult">
       <div className="wrap">
-        <p className="sec-label">{work.label}</p>
-        <h2>{work.title}</h2>
-        <p className="sec-intro">{work.intro}</p>
+        <p className="sec-label">{consult.label}</p>
+        <h2>{consult.title}</h2>
+        <p className="sec-intro">{consult.intro}</p>
 
-        {work.projects.map((project) => (
-          <div className={`work-row${project.reverse ? " rev" : ""}`} key={project.title}>
-            <Scene sceneKey={project.sceneKey} />
-            <div className="work-copy">
-              <h3>{project.title}</h3>
-              <span className="stack">{project.stack}</span>
-              <p>{project.body}</p>
-              <div className="work-links">
-                {project.links.map((link) => (
-                  <a key={link.href} href={link.href} rel="noopener">
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+        <div className="consult-grid">
+          <article className="offer-card offer-free">
+            <span className="offer-tag">free</span>
+            <h3>{consult.freeCall.title}</h3>
+            <ul className="list">
+              {consult.freeCall.points.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+            <div className="cta-row">
+              <a className="btn btn-primary" href={consult.cta.href}>
+                {consult.cta.label}
+              </a>
+              <a className="btn btn-ghost" href={consult.ctaAlt.href}>
+                {consult.ctaAlt.label}
+              </a>
             </div>
-          </div>
-        ))}
+          </article>
 
-        <p style={{ marginTop: "3rem", color: "var(--ink-soft)", maxWidth: "62ch" }}>
-          The full body of work lives at{" "}
-          <a href="https://github.com/SaladinIART" rel="noopener">
-            github.com/SaladinIART
-          </a>
-          . These projects show system thinking, not finished product claims. SOL, the
-          Salbotics Operations Layer, is a planned direction for future product work and is
-          not offered as a finished product today.
-        </p>
-      </div>
-    </section>
-  );
-}
+          <article className="offer-card offer-roadmap">
+            <span className="offer-tag offer-tag-paid">paid roadmap</span>
+            <h3>{consult.roadmap.title}</h3>
+            <p className="offer-sub">{consult.roadmap.subtitle}</p>
+            <ul className="list">
+              {consult.roadmap.points.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+          </article>
+        </div>
+        <p className="svc-note">{consult.note}</p>
 
-function Approach() {
-  return (
-    <section id="approach">
-      <div className="wrap">
-        <p className="sec-label">{approach.label}</p>
-        <h2>{approach.title}</h2>
-        <div className="principles">
+        <div className="principles principles-compact">
           {approach.principles.map((p) => (
-            <div className="principle" key={p.idx}>
-              <span className="idx">{p.idx}</span>
+            <div className="principle" key={p.title}>
               <div>
                 <h3>{p.title}</h3>
                 <p>{p.body}</p>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Build() {
+  return (
+    <section id="build">
+      <div className="wrap">
+        <p className="sec-label">{build.label}</p>
+        <h2>{build.title}</h2>
+        <p className="sec-intro">{build.intro}</p>
+        <div className="svc">
+          {build.options.map((o) => (
+            <div className="svc-row" key={o.title}>
+              <div>
+                <div className="svc-head">
+                  <h3>{o.title}</h3>
+                  <span className="svc-rate">{o.timeline}</span>
+                </div>
+                <p className="svc-who">
+                  <strong>For</strong> {o.who}
+                </p>
+                <p className="svc-out">
+                  <strong>You get</strong> {o.out}
+                </p>
+              </div>
+              <p className="svc-pricing">Pricing shared after a free scope call.</p>
+            </div>
+          ))}
+        </div>
+        <p className="svc-note">{build.pricingNote}</p>
+      </div>
+    </section>
+  );
+}
+
+function Lab() {
+  return (
+    <section id="lab">
+      <div className="wrap">
+        <div className="lab-band">
+          <p className="sec-label">{lab.label}</p>
+          <h2>{lab.title}</h2>
+          <p className="sub">{lab.body}</p>
+          <a className="btn btn-primary" href={lab.link.href} rel="noopener">
+            {lab.link.label}
+          </a>
         </div>
       </div>
     </section>
@@ -188,6 +219,12 @@ function About() {
             {about.body.map((text, i) => (
               <AboutParagraph key={i} text={text} emphasis={about.emphasis} />
             ))}
+            <p className="recruiter-note">
+              {about.recruiter.note}{" "}
+              <a href={about.recruiter.href} rel="noopener">
+                {about.recruiter.linkLabel}
+              </a>
+            </p>
           </div>
           <div className="readout" role="list" aria-label="Field record figures">
             {about.readout.map((row) => (
@@ -230,6 +267,10 @@ function Contact() {
               </div>
             ))}
           </div>
+          <p className="trust-line">
+            <strong>{contact.identity}</strong>
+            <span> · {contact.responseTime}</span>
+          </p>
         </div>
       </div>
     </section>
@@ -254,9 +295,10 @@ function App() {
       <Header />
       <main id="top">
         <Hero />
-        <Services />
-        <Work />
-        <Approach />
+        <HowItWorks />
+        <Consult />
+        <Build />
+        <Lab />
         <About />
         <Contact />
       </main>

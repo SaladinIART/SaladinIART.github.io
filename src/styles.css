@@ -5,11 +5,12 @@
 body, h1, h2, h3, p, ul, ol, figure { margin: 0; padding: 0; }
 
 :root {
-  --paper:    oklch(98% 0.005 90);
-  --paper-2:  oklch(96% 0.007 90);
-  --card:     oklch(99.2% 0.003 90);
-  --ink:      oklch(25% 0.035 270);
-  --ink-soft: oklch(44% 0.022 262);
+  /* warmer paper — easier on the eyes (Rev2 comfort pass) */
+  --paper:    oklch(98.2% 0.009 83);
+  --paper-2:  oklch(96.5% 0.011 83);
+  --card:     oklch(99.4% 0.005 83);
+  --ink:      oklch(27% 0.032 270);
+  --ink-soft: oklch(45% 0.02 262);
   --line:     oklch(88% 0.010 90);
   --line-2:   oklch(82% 0.012 90);
   --teal:     oklch(56% 0.095 185);
@@ -31,8 +32,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
-  line-height: 1.75;
+  font-size: clamp(1.02rem, 0.98rem + 0.22vw, 1.09rem);
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -263,3 +264,78 @@ footer { border-top: 1px solid var(--line); padding-block: 1.8rem; }
 }
 .squeeze { transform-box: fill-box; transform-origin: center bottom; animation: squeeze 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate; }
 @keyframes squeeze { from { transform: scaleY(1); } to { transform: scaleY(0.5); } }
+
+/* ════════════════════════════════════════════════════════════════
+   REVISION 2 — consultation-first sections
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── #how : plain-language explainer gallery ── */
+.explainers { margin-top: 2.4rem; display: grid; gap: clamp(1.6rem, 4vw, 2.6rem); }
+.explainer { margin: 0; }
+.explainer figcaption {
+  margin-top: 0.9rem; color: var(--ink-soft); font-size: 0.98rem;
+  max-width: 60ch; line-height: 1.6;
+}
+
+/* ── #consult : free call + paid roadmap ── */
+.consult-grid {
+  margin-top: 2.4rem; display: grid; gap: clamp(1.2rem, 3vw, 2rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 52rem) { .consult-grid { grid-template-columns: 1fr; } }
+.offer-card {
+  border: 1px solid var(--line); border-radius: 0.9rem; background: var(--card);
+  padding: clamp(1.4rem, 3vw, 2rem); position: relative;
+}
+.offer-free { border-color: oklch(72% 0.06 185); background: linear-gradient(150deg, var(--teal-mist), var(--card) 60%); }
+.offer-tag {
+  display: inline-block; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--teal-deep); background: oklch(98% 0.02 185);
+  border: 1px solid oklch(80% 0.05 185); border-radius: 999px; padding: 0.16rem 0.7rem; margin-bottom: 0.9rem;
+}
+.offer-tag-paid { color: var(--ink-soft); background: var(--paper-2); border-color: var(--line-2); }
+.offer-card h3 { font-size: 1.18rem; font-weight: 600; color: var(--navy); }
+.offer-sub { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-soft); letter-spacing: 0.04em; margin-top: 0.3rem; }
+.offer-card .list { margin-top: 1.1rem; }
+.offer-card .cta-row { margin-top: 1.5rem; }
+
+/* shared simple list with check marks */
+.list { list-style: none; display: grid; gap: 0.55rem; }
+.list li { color: var(--ink-soft); font-size: 0.96rem; padding-left: 1.4rem; position: relative; line-height: 1.55; }
+.list li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-size: 0.9rem; }
+
+/* compact "how I work" principles under consult */
+.principles-compact { margin-top: 2.6rem; max-width: none; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0; }
+.principles-compact .principle { grid-template-columns: 1fr; padding: 1.3rem 1.4rem; border: 1px solid var(--line); border-radius: 0.6rem; }
+.principles-compact .principle + .principle { border-top: 1px solid var(--line); }
+@media (min-width: 46rem) {
+  .principles-compact { display: grid; gap: 1rem; }
+  .principles-compact .principle:last-child { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 46rem) { .principles-compact { grid-template-columns: 1fr; } }
+
+/* ── #build : demoted delivery options, no price ── */
+.svc-pricing { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); align-self: start; }
+
+/* ── #lab : give-back callout ── */
+.lab-band {
+  border: 1px solid var(--line); border-radius: 0.9rem;
+  background: linear-gradient(135deg, oklch(96% 0.03 90), var(--card) 60%);
+  padding: clamp(1.8rem, 5vw, 3rem);
+}
+.lab-band .sub { margin-top: 1.1rem; color: var(--ink-soft); max-width: 62ch; }
+.lab-band .btn { margin-top: 1.6rem; }
+
+/* ── recruiter mini-note in About ── */
+.recruiter-note {
+  margin-top: 1.4rem; padding-top: 1.1rem; border-top: 1px dashed var(--line-2);
+  font-size: 0.92rem; color: var(--ink-soft);
+}
+.recruiter-note a { font-family: var(--mono); font-size: 0.85rem; }
+
+/* ── contact trust line ── */
+.trust-line {
+  margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+  font-size: 0.92rem; color: var(--ink-soft);
+}
+.trust-line strong { color: var(--ink); font-weight: 600; }

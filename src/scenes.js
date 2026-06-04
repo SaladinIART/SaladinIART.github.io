@@ -266,4 +266,145 @@ export const scenes = {
     <text x="280" y="282" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">PDF + image batches · same quality, smaller files</text>
   </svg>
 </figure>`,
+
+  // ── LAYMAN EXPLAINERS (plain language, no jargon) ──────────────────
+
+  // 1 · PRIMARY — messy operation → clear, measured picture
+  messyToMeasured: `
+<figure class="scene vg" aria-label="From a messy operation (scattered paper, chats, guesswork) to one clear, measured screen.">
+  <div class="scene-head">
+    <span class="dot" style="background: var(--amber);"></span>
+    <span class="dot" style="background: var(--teal);"></span>
+    <span>before → after · scattered work becomes a clear picture</span>
+  </div>
+  <svg viewBox="0 0 760 300" role="img" aria-hidden="true">
+    <!-- LEFT: the messy "today" -->
+    <g transform="rotate(-8 110 150)">
+      <rect x="60" y="96" width="96" height="116" rx="4" fill="oklch(99.2% 0.003 90)" stroke="oklch(80% 0.012 90)"/>
+      <g stroke="oklch(86% 0.01 90)" stroke-width="3" stroke-linecap="round"><line x1="74" y1="124" x2="142" y2="124"/><line x1="74" y1="142" x2="142" y2="142"/><line x1="74" y1="160" x2="120" y2="160"/></g>
+    </g>
+    <g transform="rotate(7 150 165)"><rect x="98" y="112" width="96" height="116" rx="4" fill="oklch(98% 0.005 90)" stroke="oklch(80% 0.012 90)"/></g>
+    <g>
+      <rect x="56" y="36" width="92" height="42" rx="10" fill="oklch(93% 0.02 185)" stroke="oklch(70% 0.04 185)"/>
+      <path d="M82 78 l0 14 l16 -14 z" fill="oklch(93% 0.02 185)" stroke="oklch(70% 0.04 185)"/>
+      <g stroke="oklch(56% 0.095 185)" stroke-width="3" stroke-linecap="round"><line x1="70" y1="52" x2="134" y2="52"/><line x1="70" y1="64" x2="112" y2="64"/></g>
+    </g>
+    <text class="blink" x="206" y="116" font-family="IBM Plex Mono, monospace" font-size="40" fill="oklch(74% 0.145 75)">?</text>
+    <text x="132" y="262" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="oklch(44% 0.022 262)">today · paper, chats, guesswork</text>
+
+    <!-- MIDDLE: make it visible -->
+    <path id="flow-messy" d="M 236 150 C 330 150 380 150 526 150" fill="none" stroke="oklch(56% 0.095 185 / 0.5)" stroke-width="2" stroke-dasharray="6 7"/>
+    <text x="382" y="134" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">make it visible</text>
+    <circle class="pulse-dot" r="4" fill="oklch(56% 0.095 185)"><animateMotion dur="4.5s" repeatCount="indefinite"><mpath href="#flow-messy"/></animateMotion></circle>
+    <circle class="pulse-dot" r="4" fill="oklch(74% 0.145 75)"><animateMotion dur="4.5s" begin="1.5s" repeatCount="indefinite"><mpath href="#flow-messy"/></animateMotion></circle>
+
+    <!-- RIGHT: one clear screen -->
+    <g>
+      <rect x="528" y="70" width="206" height="150" rx="8" fill="oklch(99.2% 0.003 90)" stroke="oklch(70% 0.02 262)"/>
+      <rect x="528" y="70" width="206" height="22" rx="8" fill="oklch(94% 0.008 90)"/>
+      <circle cx="542" cy="81" r="3" fill="oklch(74% 0.145 75)"/><circle cx="553" cy="81" r="3" fill="oklch(56% 0.095 185)"/>
+      <polyline points="546,190 576,178 606,184 636,160 666,168 696,140 718,150" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect class="blink" x="616" y="104" width="106" height="20" rx="5" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+      <text class="blink" x="669" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.082 190)">ON TRACK</text>
+      <text x="631" y="262" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="oklch(44% 0.022 262)">clear · one screen you trust</text>
+    </g>
+  </svg>
+</figure>`,
+
+  // 2 · the consultation as a simple 4-step map
+  decisionMap: `
+<figure class="scene vg" aria-label="The consultation as a simple four-step map: where you are, what to fix first, build or wait, spend wisely.">
+  <div class="scene-head">
+    <span class="dot" style="background: var(--teal);"></span>
+    <span>the conversation · how / when / what — before you spend</span>
+  </div>
+  <svg viewBox="0 0 760 260" role="img" aria-hidden="true">
+    <path id="flow-decision" d="M 70 150 C 180 90 230 90 320 130 C 410 170 470 170 560 120 C 620 88 660 92 700 120" fill="none" stroke="oklch(80% 0.012 90)" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>
+    <g font-family="IBM Plex Mono, monospace">
+      <circle cx="70" cy="150" r="20" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+      <text x="70" y="156" text-anchor="middle" font-size="15" fill="oklch(44% 0.082 190)">1</text>
+      <text x="70" y="196" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">where you</text>
+      <text x="70" y="210" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">are now</text>
+      <circle cx="320" cy="130" r="20" fill="oklch(96% 0.007 90)" stroke="oklch(70% 0.02 262)"/>
+      <text x="320" y="136" text-anchor="middle" font-size="15" fill="oklch(28% 0.045 270)">2</text>
+      <text x="320" y="176" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">what to</text>
+      <text x="320" y="190" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">fix first</text>
+      <circle cx="560" cy="120" r="20" fill="oklch(96% 0.007 90)" stroke="oklch(70% 0.02 262)"/>
+      <text x="560" y="126" text-anchor="middle" font-size="15" fill="oklch(28% 0.045 270)">3</text>
+      <text x="560" y="166" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">build now</text>
+      <text x="560" y="180" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">or wait?</text>
+      <circle cx="700" cy="120" r="20" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/>
+      <text x="700" y="126" text-anchor="middle" font-size="15" fill="oklch(50% 0.11 70)">4</text>
+      <text x="700" y="166" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">spend</text>
+      <text x="700" y="180" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">wisely</text>
+    </g>
+    <circle class="pulse-dot" r="5" fill="oklch(56% 0.095 185)"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#flow-decision"/></animateMotion></circle>
+  </svg>
+</figure>`,
+
+  // 3 · the invisible bill, made visible
+  costOfNotMeasuring: `
+<figure class="scene vg" aria-label="The cost of not measuring: a rising bill becomes visible as where the money actually goes.">
+  <div class="scene-head">
+    <span class="dot" style="background: var(--amber);"></span>
+    <span>the invisible bill · made visible</span>
+  </div>
+  <svg viewBox="0 0 560 300" role="img" aria-hidden="true">
+    <text x="120" y="58" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="oklch(44% 0.022 262)">your monthly bill</text>
+    <g font-family="IBM Plex Mono, monospace" font-size="26" text-anchor="middle">
+      <text class="fade-a" x="120" y="116" fill="oklch(44% 0.022 262)">RM 38k</text>
+      <text class="fade-b" x="120" y="116" fill="oklch(50% 0.11 70)">RM 52k</text>
+    </g>
+    <g stroke="oklch(74% 0.145 75)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="120" y1="168" x2="120" y2="136"/><path d="M108 150 L120 134 L132 150"/>
+    </g>
+    <text x="120" y="196" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(50% 0.11 70)">rising · source unclear</text>
+    <g stroke="oklch(56% 0.095 185)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="196" y1="150" x2="252" y2="150"/><path d="M240 138 L252 150 L240 162"/></g>
+    <g>
+      <line x1="290" y1="216" x2="540" y2="216" stroke="oklch(80% 0.012 90)"/>
+      <rect class="bar-p" x="300" y="120" width="44" height="96" fill="oklch(56% 0.095 185 / 0.75)" style="animation-delay:0s"/>
+      <rect class="bar-p" x="368" y="96" width="44" height="120" fill="oklch(74% 0.145 75 / 0.85)" style="animation-delay:0.6s"/>
+      <rect class="bar-p" x="436" y="146" width="44" height="70" fill="oklch(56% 0.095 185 / 0.75)" style="animation-delay:1.1s"/>
+      <g font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)" text-anchor="middle">
+        <text x="322" y="234">one line</text><text x="390" y="234">night shift</text><text x="458" y="234">idle time</text>
+      </g>
+      <text x="400" y="78" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.022 262)">where it actually goes</text>
+    </g>
+    <text x="280" y="278" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">you can't cut what you can't see</text>
+  </svg>
+</figure>`,
+
+  // 4 · how it works, in three plain steps
+  howItWorksSimple: `
+<figure class="scene vg" aria-label="How it works in plain terms: your operation, a small sensor or existing data, and a screen you understand.">
+  <div class="scene-head">
+    <span class="dot" style="background: var(--teal);"></span>
+    <span>how it works · no jargon</span>
+  </div>
+  <svg viewBox="0 0 720 230" role="img" aria-hidden="true">
+    <g>
+      <rect x="40" y="78" width="150" height="92" rx="8" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
+      <path d="M70 150 v-30 l18 12 v-12 l18 12 v-12 l18 12 v30 z" fill="oklch(98% 0.005 90)" stroke="oklch(70% 0.02 262)"/>
+      <rect x="120" y="120" width="40" height="30" rx="2" fill="oklch(96% 0.007 90)" stroke="oklch(80% 0.012 90)"/>
+      <text x="115" y="190" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.022 262)">your operation</text>
+    </g>
+    <g>
+      <rect x="285" y="86" width="150" height="76" rx="8" fill="oklch(93% 0.02 185)" stroke="oklch(56% 0.095 185)"/>
+      <circle class="blink" cx="312" cy="110" r="4" fill="oklch(56% 0.095 185)"/>
+      <text x="362" y="114" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">a small sensor</text>
+      <text x="362" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">or data you have</text>
+      <text x="360" y="190" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.022 262)">we connect it</text>
+    </g>
+    <g>
+      <rect x="540" y="74" width="140" height="96" rx="10" fill="oklch(99.2% 0.003 90)" stroke="oklch(70% 0.02 262)"/>
+      <rect x="556" y="88" width="108" height="58" rx="4" fill="oklch(96% 0.007 90)" stroke="oklch(80% 0.012 90)"/>
+      <polyline points="564,138 586,126 608,132 630,114 656,120" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="610" y="190" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.022 262)">a screen you read</text>
+    </g>
+    <path id="flow-how" d="M 190 124 H 285" fill="none" stroke="oklch(56% 0.095 185 / 0.5)" stroke-width="2" stroke-dasharray="6 7"/>
+    <path id="flow-how2" d="M 435 124 H 540" fill="none" stroke="oklch(56% 0.095 185 / 0.5)" stroke-width="2" stroke-dasharray="6 7"/>
+    <circle class="pulse-dot" r="4" fill="oklch(56% 0.095 185)"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#flow-how"/></animateMotion></circle>
+    <circle class="pulse-dot" r="4" fill="oklch(74% 0.145 75)"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite"><mpath href="#flow-how2"/></animateMotion></circle>
+  </svg>
+</figure>`,
 };
