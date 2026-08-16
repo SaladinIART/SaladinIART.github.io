@@ -1,38 +1,44 @@
-# Salbotics Website - Claude Entry Point
+# Salbotics Website - Agent Entry Point
 
 Read first:
 
-1. `docs/checkpoints/2026-05-10-salbotics-uk-business-revamp.md`
+1. `GEMINI.md`
 2. `README.md`
 3. `package.json`
 
 ## Current Mission
 
-This repo powers `https://salbotics.uk`.
-
-The next planned work is to transform the site from a portfolio-first page into a recruiter-safe business landing site for Salbotics Solutions.
+This repository powers `https://salbotics.uk` and is the canonical deployment
+source for Muhamad Solehuddin's personal engineering portfolio.
 
 Primary positioning:
 
-- Muhamad Solehuddin as **Freelance IIoT Consultant**
-- Salbotics Solutions as practical digital transformation / industrial systems service
-- Open to full-time, contract, and freelance opportunities
-- NEXUS and other projects as proof assets
-- SOL / MES-ERP as future roadmap only, not a current product claim
+- **Manufacturing Automation Engineer**
+- Hands-on manufacturing knowledge connected to automation and software
+- Evidence-led projects in process improvement, IIoT, MES, machine vision, and
+  robotics
+- Salbotics as a personal engineering lab, not an active services business
+
+Current branch mission: complete the approved manufacturing-automation
+portfolio checkpoints without publishing before the local preview is approved.
 
 ## Guardrails
 
-- Do not start website implementation unless Solehuddin explicitly asks.
-- Do not overclaim SOL, MES-ERP, NEXUS, or any demo as a finished SaaS/product.
-- Keep recruiter wording safe: freelance/contract/open-to-roles, not a conflict-heavy founder pitch.
-- Keep the tone grounded, proof-led, and business-oriented.
-- Preserve `public/CNAME` and `CNAME` for `salbotics.uk`.
-- This is a standalone git repo nested inside `solehuddin-founder-hub`; commit website changes here unless told otherwise.
+- Follow every public-safety boundary in `GEMINI.md`.
+- Do not restore sales offers, pricing, booking, client-capacity, or active
+  freelancing language.
+- Do not overclaim a demo, prototype, concept, or work in progress as a deployed
+  production product.
+- Keep the tone practical, recruiter-readable, and explicit about evidence and
+  limitations.
+- Preserve `public/CNAME`, `CNAME`, and the 404-copy build behavior.
+- Do not copy unreviewed changes from the dirty `salbotics-portfolio` variant.
+- This is a standalone Git repository; keep its changes isolated here.
 
 ## Useful Commands
 
 ```powershell
 npm run build
-git status --short
-git remote -v
+git diff --check
+git status --short --branch
 ```
