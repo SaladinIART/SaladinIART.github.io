@@ -33,8 +33,14 @@ not presented as an active services business.
 - CP-8: production build, deep routes, 404 fallback, privacy scan, PDF hash,
   CNAME, headings, images, runtime errors, and true 390 px/1440 px responsive
   preview gates — completed locally on 2026-08-16
-- Next planned checkpoint: CP-9 approved publication
-- Do not publish until a local preview has been reviewed and explicitly approved
+- CP-9: approved publication through PR #1, merge commit
+  `e26aa67252ce1b67736e9fa0ae79e53dfa8a3821`, successful GitHub Pages run
+  `31940901714`, verified custom domain, deep-route SPA fallback, live privacy
+  boundary, and exact public-resume PDF hash — completed on 2026-08-16
+- The public portfolio is live at `https://salbotics.uk/`.
+- Next planned checkpoint: CP-10 private AMR specification and scaffold. Keep
+  that work private and outside this public deployment repository until its
+  later publication gate.
 
 ## Public Safety Boundaries
 

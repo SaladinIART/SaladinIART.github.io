@@ -19,8 +19,8 @@ Primary positioning:
   robotics
 - Salbotics as a personal engineering lab, not an active services business
 
-Current branch mission: complete the approved manufacturing-automation
-portfolio checkpoints without publishing before the local preview is approved.
+The approved manufacturing-automation portfolio was published on 2026-08-16.
+Future AMR simulator work remains private until its separate publication gate.
 
 ## Guardrails
 
