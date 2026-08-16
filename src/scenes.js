@@ -311,32 +311,32 @@ export const scenes = {
   </svg>
 </figure>`,
 
-  // 2 · the consultation as a simple 4-step map
+  // 2 · evidence-led engineering as a simple 4-step map
   decisionMap: `
-<figure class="scene vg" aria-label="The consultation as a simple four-step map: where you are, what to fix first, build or wait, spend wisely.">
+<figure class="scene vg" aria-label="An engineering study as a four-step map: observe the current state, frame the constraint, build a proof, and validate the result.">
   <div class="scene-head">
     <span class="dot" style="background: var(--teal);"></span>
-    <span>the conversation · how / when / what — before you spend</span>
+    <span>observe · model · build · validate</span>
   </div>
   <svg viewBox="0 0 760 260" role="img" aria-hidden="true">
     <path id="flow-decision" d="M 70 150 C 180 90 230 90 320 130 C 410 170 470 170 560 120 C 620 88 660 92 700 120" fill="none" stroke="oklch(80% 0.012 90)" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>
     <g font-family="IBM Plex Mono, monospace">
       <circle cx="70" cy="150" r="20" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
       <text x="70" y="156" text-anchor="middle" font-size="15" fill="oklch(44% 0.082 190)">1</text>
-      <text x="70" y="196" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">where you</text>
-      <text x="70" y="210" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">are now</text>
+      <text x="70" y="196" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">observe</text>
+      <text x="70" y="210" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">current state</text>
       <circle cx="320" cy="130" r="20" fill="oklch(96% 0.007 90)" stroke="oklch(70% 0.02 262)"/>
       <text x="320" y="136" text-anchor="middle" font-size="15" fill="oklch(28% 0.045 270)">2</text>
-      <text x="320" y="176" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">what to</text>
-      <text x="320" y="190" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">fix first</text>
+      <text x="320" y="176" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">frame the</text>
+      <text x="320" y="190" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">constraint</text>
       <circle cx="560" cy="120" r="20" fill="oklch(96% 0.007 90)" stroke="oklch(70% 0.02 262)"/>
       <text x="560" y="126" text-anchor="middle" font-size="15" fill="oklch(28% 0.045 270)">3</text>
-      <text x="560" y="166" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">build now</text>
-      <text x="560" y="180" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">or wait?</text>
+      <text x="560" y="166" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">build the</text>
+      <text x="560" y="180" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">smallest proof</text>
       <circle cx="700" cy="120" r="20" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/>
       <text x="700" y="126" text-anchor="middle" font-size="15" fill="oklch(50% 0.11 70)">4</text>
-      <text x="700" y="166" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">spend</text>
-      <text x="700" y="180" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">wisely</text>
+      <text x="700" y="166" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">validate</text>
+      <text x="700" y="180" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">the result</text>
     </g>
     <circle class="pulse-dot" r="5" fill="oklch(56% 0.095 185)"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#flow-decision"/></animateMotion></circle>
   </svg>

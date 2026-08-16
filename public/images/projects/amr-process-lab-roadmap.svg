@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">AMR Process Lab private development roadmap</title>
+  <desc id="desc">A fictional assembly-kit order flows through virtual storage, one mobile robot, finite buffers, and assembly consumption while deterministic event history produces process metrics. It is a process visualization, not a navigation simulator.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071b2f"/><stop offset="1" stop-color="#103c56"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6 0 12Z" fill="#29c7bd"/></marker>
+    <style>
+      text{font-family:Inter,Segoe UI,Arial,sans-serif}.eyebrow{font-size:19px;letter-spacing:3px;fill:#76e3dc}.title{font-size:42px;font-weight:700;fill:#f5fbff}.sub{font-size:21px;fill:#a9c2d2}.zone{fill:#0a2438;stroke:#355b73;stroke-width:2}.node{fill:#102d45;stroke:#507b96;stroke-width:2}.robot{fill:#12394a;stroke:#29c7bd;stroke-width:3}.metric{fill:#182d47;stroke:#8fa7b7;stroke-width:2}.gate{fill:#172d3d;stroke:#f2be62;stroke-width:3}.code{font-size:16px;letter-spacing:2px;fill:#76e3dc}.name{font-size:23px;font-weight:650;fill:#f5fbff}.detail{font-size:17px;fill:#b7cbd8}.flow{fill:none;stroke:#29c7bd;stroke-width:6;marker-end:url(#arrow)}.event{fill:none;stroke:#7fa1b5;stroke-width:3;stroke-dasharray:9 8;marker-end:url(#arrow)}.note{font-size:18px;fill:#d6e4ec}.warn{font-size:18px;font-weight:700;fill:#ffd27a}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="72" y="76" class="eyebrow">PRIVATE WIP · SYNTHETIC PROCESS LAB</text>
+  <text x="72" y="132" class="title">One AMR, finite buffers, measurable flow</text>
+  <text x="72" y="174" class="sub">A deterministic browser simulation for studying intralogistics decisions—not robot navigation.</text>
+
+  <rect x="72" y="232" width="1080" height="390" rx="20" class="zone"/>
+  <text x="100" y="274" class="code">FICTIONAL ASSEMBLY-KIT SCENARIO</text>
+  <rect x="108" y="352" width="188" height="132" rx="14" class="node"/>
+  <text x="134" y="392" class="code">ORDER</text><text x="134" y="430" class="name">Demand event</text><text x="134" y="460" class="detail">Seeded interval</text>
+  <path d="M296 418H366" class="flow"/>
+  <rect x="368" y="352" width="188" height="132" rx="14" class="node"/>
+  <text x="394" y="392" class="code">STORAGE</text><text x="394" y="430" class="name">Virtual ASRS</text><text x="394" y="460" class="detail">Retrieval queue</text>
+  <path d="M556 418H626" class="flow"/>
+  <rect x="628" y="338" width="188" height="160" rx="20" class="robot"/>
+  <circle cx="680" cy="478" r="15" fill="#76e3dc"/><circle cx="764" cy="478" r="15" fill="#76e3dc"/>
+  <text x="654" y="382" class="code">RESOURCE</text><text x="654" y="420" class="name">One AMR</text><text x="654" y="450" class="detail">Pickup + delivery</text>
+  <path d="M816 418H886" class="flow"/>
+  <rect x="888" y="318" width="228" height="200" rx="14" class="node"/>
+  <text x="914" y="358" class="code">ASSEMBLY</text><text x="914" y="396" class="name">Finite buffers</text>
+  <rect x="916" y="424" width="48" height="48" rx="6" fill="#163d50" stroke="#29c7bd"/>
+  <rect x="980" y="424" width="48" height="48" rx="6" fill="#163d50" stroke="#29c7bd"/>
+  <rect x="1044" y="424" width="48" height="48" rx="6" fill="#101f31" stroke="#507b96" stroke-dasharray="6 5"/>
+  <text x="914" y="500" class="detail">Consume kit event</text>
+
+  <path d="M202 484V558H1004V520" class="event"/>
+  <text x="356" y="590" class="detail">Deterministic event history: created → retrieved → picked up → delivered → consumed</text>
+
+  <rect x="1190" y="232" width="338" height="390" rx="20" class="metric"/>
+  <text x="1220" y="274" class="code">PROCESS EVIDENCE</text>
+  <text x="1220" y="326" class="name">KPIs from events</text>
+  <text x="1220" y="368" class="detail">Throughput</text><text x="1220" y="402" class="detail">Work in process</text>
+  <text x="1220" y="436" class="detail">Median + P95 lead time</text><text x="1220" y="470" class="detail">Resource utilization</text>
+  <text x="1220" y="504" class="detail">Blocked + starved time</text><text x="1220" y="538" class="detail">Baseline comparison</text>
+  <text x="1220" y="584" class="code">CONSERVATION CHECK</text>
+  <text x="1220" y="610" class="detail">No lost or duplicated kits</text>
+
+  <rect x="72" y="670" width="1456" height="110" rx="16" class="gate"/>
+  <text x="100" y="708" class="code">PUBLICATION GATE</text>
+  <text x="100" y="748" class="note">Deterministic tests → evidence capture → limitations review → privacy review → separate approval before any source or demo is public.</text>
+
+  <text x="72" y="836" class="warn">IN DEVELOPMENT — NO PERFORMANCE RESULT OR PRODUCTION-READINESS CLAIM</text>
+  <text x="72" y="870" class="note">Animated movement will explain process state only. It will not represent physics, localization, path planning, or safety validation.</text>
+</svg>
