@@ -406,7 +406,7 @@ export const about = {
   body: [
     "I'm Muhamad Solehuddin, an Industrial Automation and Robotics engineering technologist based in Penang. My background spans production-equipment maintenance, CAD/CAM, manufacturing digitization, industrial communications, and engineering software.",
     "I am most useful where the physical process and the digital system meet: tracing a signal from equipment to a dashboard, turning an operational problem into a testable model, or building a practical prototype that a manufacturing team can evaluate.",
-    "Salbotics is now my personal engineering lab — a home for documented, evidence-led work in automation, IIoT, MES, machine vision, process improvement, and robotics.",
+    "From October 2025 to August 2026, I worked as a Freelance Systems Engineer through Salbotics Solutions, building documented, self-directed IIoT and manufacturing-data demonstrations. These portfolio projects are not presented as client deployments. Salbotics is now my personal engineering lab for evidence-led work in automation, IIoT, MES, machine vision, process improvement, and robotics.",
   ],
   emphasis: ["physical process and the digital system meet", "personal engineering lab"],
   readout: [
