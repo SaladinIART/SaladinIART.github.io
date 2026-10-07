@@ -11,6 +11,13 @@ Salbotics is a personal engineering lab for evidence-led work in manufacturing
 automation, process improvement, IIoT, MES, machine vision, and robotics. It is
 not presented as an active services business.
 
+On 2026-10-07, the user corrected the public freelance attribution to
+**Freelance Systems Engineer, Salbotics Solutions (Oct 2025-Aug 2026)**. The
+About copy and downloadable public CV use this title and organization while
+describing the portfolio demonstrations as self-directed work. This does not
+change the site's present personal-lab positioning or authorize client-deployment
+claims.
+
 ## Current Checkpoint
 
 - Branch: `codex/manufacturing-automation-portfolio`
