@@ -390,5 +390,5 @@ footer { border-top: 1px solid var(--line); padding-block: 1.8rem; }
   12%, 80% { opacity: 1; transform: scale(1); }
   92%, 100% { opacity: 0; transform: scale(0.6); }
 }
-.squeeze { transform-box: fill-box; transform-origin: center bottom; animation: squeeze 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate; }
-@keyframes squeeze { from { transform: scaleY(1); } to { transform: scaleY(0.5); } }
+.scan { animation: scan 2.8s ease-in-out infinite alternate; }
+@keyframes scan { from { transform: translateY(0); } to { transform: translateY(92px); } }

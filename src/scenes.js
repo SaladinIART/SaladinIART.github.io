@@ -231,39 +231,84 @@ export const scenes = {
   </svg>
 </figure>`,
 
-  // File compressor
-  compressor: `
-<figure class="scene vg" aria-label="Animated diagram of the file compressor: a large document squeezing down to a small one with its size label dropping.">
+  // Asset Vision: camera → detection + QR identity → local record + ROS 2 topic
+  assetVision: `
+<figure class="scene vg" aria-label="Animated diagram of Asset Vision: a camera frames a QR-tagged part on a conveyor, a detection box scans it, and the decoded identity is written to a local record and published on a ROS 2 topic.">
   <div class="scene-head">
-    <span class="dot" style="background: var(--amber);"></span>
-    <span>salbotics.filecompressor · desktop + CLI</span>
+    <span class="dot" style="background: var(--teal);"></span>
+    <span>asset.vision · inspection prototype</span>
   </div>
   <svg viewBox="0 0 560 300" role="img" aria-hidden="true">
-    <g class="squeeze">
-      <path d="M120 70 h70 l28 28 v118 h-98 z" fill="oklch(99.2% 0.003 90)" stroke="oklch(70% 0.02 262)" stroke-width="2"/>
-      <path d="M190 70 v28 h28" fill="none" stroke="oklch(70% 0.02 262)" stroke-width="2"/>
-      <g stroke="oklch(85% 0.01 90)" stroke-width="3" stroke-linecap="round">
-        <line x1="136" y1="120" x2="200" y2="120"/><line x1="136" y1="140" x2="200" y2="140"/>
-        <line x1="136" y1="160" x2="184" y2="160"/><line x1="136" y1="180" x2="196" y2="180"/>
-      </g>
+    <rect x="24" y="18" width="104" height="22" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+    <text x="76" y="33" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">SAMPLE MODE</text>
+
+    <!-- camera -->
+    <text x="70" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">CAMERA</text>
+    <rect x="36" y="72" width="66" height="42" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
+    <rect x="48" y="66" width="20" height="8" rx="2" fill="oklch(85% 0.01 90)" stroke="oklch(70% 0.02 262)"/>
+    <circle cx="102" cy="93" r="13" fill="oklch(99.2% 0.003 90)" stroke="oklch(28% 0.045 270)" stroke-width="2"/>
+    <circle cx="102" cy="93" r="6" fill="oklch(56% 0.095 185)"/>
+    <circle class="blink" cx="46" cy="82" r="3" fill="oklch(56% 0.095 185)"/>
+    <line x1="69" y1="114" x2="69" y2="232" stroke="oklch(70% 0.02 262)" stroke-width="2"/>
+
+    <!-- field of view -->
+    <g stroke="oklch(56% 0.095 185)" stroke-width="1.5" stroke-dasharray="4 5" fill="none" opacity="0.7">
+      <line x1="114" y1="86" x2="196" y2="140"/>
+      <line x1="114" y1="100" x2="196" y2="240"/>
     </g>
-    <text x="169" y="48" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="oklch(28% 0.045 270)">12.4 MB</text>
-    <g stroke="oklch(56% 0.095 185)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="276" y1="146" x2="336" y2="146"/>
-      <path d="M324 134 L336 146 L324 158"/>
+
+    <!-- conveyor -->
+    <line x1="150" y1="244" x2="350" y2="244" stroke="oklch(70% 0.02 262)" stroke-width="2"/>
+    <g fill="oklch(85% 0.01 90)">
+      <circle cx="170" cy="255" r="7"/><circle cx="230" cy="255" r="7"/>
+      <circle cx="290" cy="255" r="7"/><circle cx="340" cy="255" r="7"/>
     </g>
-    <text x="306" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.082 190)">compress</text>
-    <path d="M398 122 h46 l18 18 v76 h-64 z" fill="oklch(93% 0.02 185)" stroke="oklch(56% 0.095 185)" stroke-width="2"/>
-    <path d="M444 122 v18 h18" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2"/>
-    <g stroke="oklch(70% 0.05 185)" stroke-width="2.5" stroke-linecap="round">
-      <line x1="410" y1="158" x2="450" y2="158"/><line x1="410" y1="172" x2="444" y2="172"/>
-      <line x1="410" y1="186" x2="452" y2="186"/>
+
+    <!-- QR-tagged part -->
+    <rect x="208" y="156" width="92" height="86" rx="4" fill="oklch(99.2% 0.003 90)" stroke="oklch(50% 0.03 262)" stroke-width="2"/>
+    <g fill="oklch(28% 0.045 270)">
+      <rect x="230" y="172" width="14" height="14"/><rect x="264" y="172" width="14" height="14"/>
+      <rect x="230" y="206" width="14" height="14"/>
+      <rect x="248" y="172" width="6" height="6"/><rect x="250" y="190" width="6" height="6"/>
+      <rect x="262" y="194" width="6" height="6"/><rect x="272" y="206" width="6" height="6"/>
+      <rect x="248" y="210" width="6" height="6"/><rect x="262" y="214" width="6" height="6"/>
+      <rect x="236" y="192" width="6" height="6"/>
     </g>
-    <g font-family="IBM Plex Mono, monospace" font-size="13" text-anchor="middle">
-      <text class="fade-a" x="430" y="106" fill="oklch(44% 0.082 190)">1.1 MB</text>
-      <text class="fade-b" x="430" y="106" fill="oklch(44% 0.082 190)">0.9 MB</text>
+
+    <!-- detection box + scan line -->
+    <rect x="196" y="140" width="116" height="104" rx="3" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2" stroke-dasharray="6 4"/>
+    <rect x="196" y="122" width="92" height="18" rx="3" fill="oklch(56% 0.095 185)"/>
+    <text x="242" y="135" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(99.2% 0.003 90)">asset · QR</text>
+    <line class="scan" x1="198" y1="146" x2="310" y2="146" stroke="oklch(56% 0.095 185)" stroke-width="2" opacity="0.8"/>
+
+    <!-- detection → record -->
+    <path id="avflow" d="M314 192 C 344 192, 348 128, 378 128" fill="none" stroke="oklch(70% 0.02 262)" stroke-width="1.5" stroke-dasharray="4 5"/>
+    <circle class="pulse-dot" r="4" fill="oklch(56% 0.095 185)"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#avflow"/></animateMotion></circle>
+    <circle class="pulse-dot" r="4" fill="oklch(74% 0.145 75)"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite"><mpath href="#avflow"/></animateMotion></circle>
+
+    <!-- local record + ROS 2 -->
+    <text x="456" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">RECORD</text>
+    <rect x="380" y="72" width="152" height="148" rx="6" fill="oklch(99.2% 0.003 90)" stroke="oklch(70% 0.02 262)"/>
+    <g font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">
+      <text x="394" y="98">asset_id</text>
+      <text x="394" y="124">state</text>
+      <text x="394" y="150">source</text>
     </g>
-    <text x="280" y="282" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">PDF + image batches · same quality, smaller files</text>
+    <line x1="394" y1="108" x2="518" y2="108" stroke="oklch(88% 0.01 90)"/>
+    <line x1="394" y1="134" x2="518" y2="134" stroke="oklch(88% 0.01 90)"/>
+    <line x1="394" y1="160" x2="518" y2="160" stroke="oklch(88% 0.01 90)"/>
+    <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="end">
+      <text class="fade-a" x="518" y="98" fill="oklch(28% 0.045 270)">AV-0142</text>
+      <text class="fade-b" x="518" y="98" fill="oklch(28% 0.045 270)">AV-0157</text>
+      <text class="fade-a" x="518" y="124" fill="oklch(44% 0.082 190)">PRESENT</text>
+      <text class="fade-b" x="518" y="124" fill="oklch(50% 0.11 70)">MISSING</text>
+      <text x="518" y="150" fill="oklch(28% 0.045 270)">sample.jpg</text>
+    </g>
+    <rect x="386" y="178" width="140" height="26" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+    <circle class="blink" cx="397" cy="191" r="3" fill="oklch(56% 0.095 185)"/>
+    <text x="461" y="195" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.082 190)">ROS 2 /asset_state</text>
+
+    <text x="280" y="290" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">detect · identify · record · publish — hardware-independent</text>
   </svg>
 </figure>`,
 

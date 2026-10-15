@@ -251,7 +251,7 @@ export const projects = [
         href: "https://github.com/SaladinIART/asset-vision",
       },
     ],
-    sceneKey: "compressor",
+    sceneKey: "assetVision",
   },
   {
     slug: "tube-preparation-concept",
