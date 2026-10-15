@@ -384,11 +384,7 @@ footer { border-top: 1px solid var(--line); padding-block: 1.8rem; }
 .fade-b { animation: fadeB 5s ease-in-out infinite; }
 @keyframes fadeA { 0%, 45% { opacity: 1; } 55%, 95% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes fadeB { 0%, 45% { opacity: 0; } 55%, 95% { opacity: 1; } 100% { opacity: 0; } }
-.pod { transform-box: fill-box; transform-origin: center; animation: pod 4.8s ease-out infinite; }
-@keyframes pod {
-  0% { opacity: 0; transform: scale(0.6); }
-  12%, 80% { opacity: 1; transform: scale(1); }
-  92%, 100% { opacity: 0; transform: scale(0.6); }
-}
 .scan { animation: scan 2.8s ease-in-out infinite alternate; }
 @keyframes scan { from { transform: translateY(0); } to { transform: translateY(92px); } }
+.fill-x { transform-box: fill-box; transform-origin: left center; animation: fillx 4.8s ease-in-out infinite; }
+@keyframes fillx { 0% { transform: scaleX(0.12); } 85%, 100% { transform: scaleX(1); } }
