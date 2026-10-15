@@ -44,6 +44,57 @@ export const projectStatusLabels = {
 
 export const projects = [
   {
+    slug: "factory-energy-monitor",
+    title: "Factory Energy Visibility",
+    status: "deployed",
+    engineeringAreas: ["Industrial data", "Edge systems", "Operations visibility"],
+    summary:
+      "An anonymized manufacturing deployment that brought machine-level energy signals into durable data services, dashboards, and operational reporting.",
+    boundary: "Field-deployed manufacturing system.",
+    objective:
+      "Operational energy information existed at equipment level but was difficult to collect, retain, and interpret consistently for manufacturing decisions.",
+    result:
+      "Deployed in a manufacturing environment: repeatable edge services, historical records, and operator-facing dashboards.",
+    problem:
+      "Operational energy information existed at equipment level but was difficult to collect, retain, and interpret consistently for manufacturing decisions.",
+    constraints: [
+      "Industrial meters and serial communication links required practical field troubleshooting.",
+      "Edge services had to recover cleanly and preserve useful records over time.",
+      "The public case study must remove site identity, commercial figures, and operational details.",
+    ],
+    contribution: [
+      "Developed the edge-to-dashboard data path and the supporting operational views.",
+      "Integrated industrial signals, data storage, reporting, and service documentation.",
+      "Diagnosed faults across field communication, edge services, databases, and dashboards.",
+    ],
+    architecture: [
+      "Industrial power meters and Modbus RTU / RS-485",
+      "Edge Linux devices and Python services",
+      "PostgreSQL data storage",
+      "Node-RED dashboards and operational reporting",
+    ],
+    evidence: [
+      "Field-deployed manufacturing system.",
+      "Repeatable edge services, historical records, and operator-facing dashboards.",
+      "Public presentation intentionally removes customer, site-count, and expenditure details.",
+    ],
+    limitations: [
+      "The public portfolio cannot reproduce the original production environment.",
+      "No customer identity, exact deployment scale, or commercial outcome is published.",
+    ],
+    technologies: ["Python", "Modbus RTU", "RS-485", "PostgreSQL", "Node-RED", "Linux"],
+    images: [
+      {
+        src: "/images/projects/factory-energy-architecture.svg",
+        alt: "An anonymized architecture showing energy meters, edge services, historical storage, and dashboards",
+        caption:
+          "Sanitized system lineage: equipment readings move through resilient edge collection into historical storage and decision-facing views.",
+      },
+    ],
+    links: [],
+    sceneKey: "energy",
+  },
+  {
     slug: "nexus-iiot",
     title: "NEXUS OPC UA and IIoT Condition Assessment",
     status: "validated-demo",
@@ -216,57 +267,6 @@ export const projects = [
       { label: "Handoff checklist", href: "https://github.com/SaladinIART/salbotics-ai-harness-lab/blob/da4cd05673ced1a50c3a4edbc256ec68af03b533/episodes/02-lessons-from-real-projects/worksheets/handoff-checklist.md" },
     ],
     sceneKey: "aiWorkflow",
-  },
-  {
-    slug: "factory-energy-monitor",
-    title: "Factory Energy Visibility",
-    status: "deployed",
-    engineeringAreas: ["Industrial data", "Edge systems", "Operations visibility"],
-    summary:
-      "An anonymized manufacturing deployment that brought machine-level energy signals into durable data services, dashboards, and operational reporting.",
-    boundary: "Field-deployed manufacturing system.",
-    objective:
-      "Operational energy information existed at equipment level but was difficult to collect, retain, and interpret consistently for manufacturing decisions.",
-    result:
-      "Deployed in a manufacturing environment: repeatable edge services, historical records, and operator-facing dashboards.",
-    problem:
-      "Operational energy information existed at equipment level but was difficult to collect, retain, and interpret consistently for manufacturing decisions.",
-    constraints: [
-      "Industrial meters and serial communication links required practical field troubleshooting.",
-      "Edge services had to recover cleanly and preserve useful records over time.",
-      "The public case study must remove site identity, commercial figures, and operational details.",
-    ],
-    contribution: [
-      "Developed the edge-to-dashboard data path and the supporting operational views.",
-      "Integrated industrial signals, data storage, reporting, and service documentation.",
-      "Diagnosed faults across field communication, edge services, databases, and dashboards.",
-    ],
-    architecture: [
-      "Industrial power meters and Modbus RTU / RS-485",
-      "Edge Linux devices and Python services",
-      "PostgreSQL data storage",
-      "Node-RED dashboards and operational reporting",
-    ],
-    evidence: [
-      "Field-deployed manufacturing system.",
-      "Repeatable edge services, historical records, and operator-facing dashboards.",
-      "Public presentation intentionally removes customer, site-count, and expenditure details.",
-    ],
-    limitations: [
-      "The public portfolio cannot reproduce the original production environment.",
-      "No customer identity, exact deployment scale, or commercial outcome is published.",
-    ],
-    technologies: ["Python", "Modbus RTU", "RS-485", "PostgreSQL", "Node-RED", "Linux"],
-    images: [
-      {
-        src: "/images/projects/factory-energy-architecture.svg",
-        alt: "An anonymized architecture showing energy meters, edge services, historical storage, and dashboards",
-        caption:
-          "Sanitized system lineage: equipment readings move through resilient edge collection into historical storage and decision-facing views.",
-      },
-    ],
-    links: [],
-    sceneKey: "energy",
   },
 ];
 
