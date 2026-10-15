@@ -14,6 +14,7 @@ export const contact = {
 export const nav = [
   { label: "Projects", href: "/projects" },
   { label: "Capabilities", href: "/#capabilities" },
+  { label: "PLC Learning Hub", href: "https://salbotics.uk/salbotics-plc-learning-hub/" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
