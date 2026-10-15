@@ -140,7 +140,7 @@ export const projects = [
     links: [
       {
         label: "GitHub repository",
-        href: "https://github.com/SaladinIART/salbotics-iiot-aluminium-demo",
+        href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack",
       },
     ],
     sceneKey: "nexus",
