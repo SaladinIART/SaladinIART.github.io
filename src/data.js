@@ -104,6 +104,13 @@ export const projects = [
       "Designed the end-to-end equipment, messaging, storage, API, dashboard, and alerting architecture.",
       "Implemented local deployment, health checks, technical documentation, and repeatable demonstrations.",
       "Created decision-oriented views instead of treating data collection as the final outcome.",
+      "Built a browser-only replay of the recorded system output so the demonstration can be explored without installing anything.",
+      "Extended the pipeline with a read-only OPC UA path and a condition-assessment study that separates steady processes from frozen or unreliable data.",
+    ],
+    buildProcess: [
+      "I set the architecture, constraints, and acceptance criteria; AI coding agents (Claude Code and Codex) produced much of the implementation in small, reviewable checkpoints.",
+      "Each checkpoint had written acceptance criteria and was accepted only after lint, unit tests, and a CI trace that follows a real payload through MQTT, the database, the API, and a Grafana query.",
+      "Claims were kept honest by the same process: untested material, such as a Kubernetes chart and a multi-site overlay, was removed rather than left in as an unverified claim.",
     ],
     architecture: [
       "Simulated process stations and Modbus signals",
@@ -112,15 +119,20 @@ export const projects = [
       "FastAPI services",
       "Svelte and Grafana decision views",
       "Docker Compose deployment",
+      "Optional read-only OPC UA collector path into the same MQTT contract",
     ],
     evidence: [
       "Runnable multi-service demonstration.",
       "Documented architecture and Windows demonstration workflow.",
       "Dashboard, asset-state, alert, and fault-scenario evidence.",
+      "Browser demo that replays output recorded from the pipeline, with a visible notice whenever the data is sample data.",
+      "OPC UA study with retained raw traces, hash manifests, and a written condition-assessment report.",
     ],
     limitations: [
       "This is a learning and portfolio demonstration, not a production control system.",
       "Process values, events, and stations are simulated.",
+      "The hosted browser demo replays recorded output; it is not a live connection to equipment.",
+      "Only the single-host Docker Compose deployment is built and verified.",
     ],
     technologies: ["Python", "FastAPI", "MQTT", "TimescaleDB", "Svelte", "Grafana", "Docker"],
     images: [
@@ -138,6 +150,10 @@ export const projects = [
       },
     ],
     links: [
+      {
+        label: "Try the live demo (browser, simulated equipment)",
+        href: "https://salbotics.uk/IIoT-Telemetry-Stack/",
+      },
       {
         label: "GitHub repository",
         href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack",

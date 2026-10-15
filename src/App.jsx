@@ -464,6 +464,12 @@ function ProjectCaseStudyPage() {
         <CaseList items={project.contribution} />
       </CaseSection>
 
+      {project.buildProcess && (
+        <CaseSection label="process" title="How it was built, with AI">
+          <CaseList items={project.buildProcess} />
+        </CaseSection>
+      )}
+
       <CaseSection label="architecture" title="System flow">
         <div className="principles">
           {project.architecture.map((item, index) => (
