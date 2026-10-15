@@ -138,16 +138,21 @@ function Header() {
           <ul>
             {nav.map((item) => (
               <li key={item.href}>
-                <Link
-                  to={item.href}
-                  aria-current={
-                    item.href === "/projects" && pathname.startsWith("/projects")
-                      ? "page"
-                      : undefined
-                  }
-                >
-                  {item.label}
-                </Link>
+                {/^https?:/.test(item.href) ? (
+                  // Separate static site served from the same domain (not an app route)
+                  <a href={item.href}>{item.label}</a>
+                ) : (
+                  <Link
+                    to={item.href}
+                    aria-current={
+                      item.href === "/projects" && pathname.startsWith("/projects")
+                        ? "page"
+                        : undefined
+                    }
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
