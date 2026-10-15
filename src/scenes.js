@@ -108,47 +108,6 @@ export const scenes = {
   </svg>
 </figure>`,
 
-  // NEXUS aluminium line
-  nexus: `
-<figure class="scene vg" aria-label="Animated diagram of the NEXUS aluminium line: billets moving through casting, quench, and saw stations while the dashboard raises a quality hold.">
-  <div class="scene-head">
-    <span class="dot" style="background: var(--teal);"></span>
-    <span>nexus.aluminium-line · decision support</span>
-  </div>
-  <svg viewBox="0 0 560 300" role="img" aria-hidden="true">
-    <rect x="24" y="22" width="84" height="22" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
-    <text x="66" y="37" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">LINE RUN</text>
-    <rect class="blink" x="118" y="22" width="150" height="22" rx="4" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/>
-    <text class="blink" x="193" y="37" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(50% 0.11 70)">QUALITY_HOLD_QUENCH</text>
-    <polyline points="380,46 404,36 428,42 452,30 476,38 500,24 524,32"
-              fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2" stroke-linecap="round"/>
-    <g>
-      <rect x="40" y="120" width="100" height="86" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
-      <rect x="56" y="136" width="68" height="36" rx="3" fill="oklch(98% 0.005 90)" stroke="oklch(80% 0.012 90)"/>
-      <circle class="blink" cx="128" cy="132" r="3" fill="oklch(56% 0.095 185)"/>
-      <text x="90" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">CAST</text>
-    </g>
-    <g>
-      <rect x="230" y="120" width="100" height="86" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
-      <path d="M250 140 q8 12 0 24 M270 140 q8 12 0 24 M290 140 q8 12 0 24 M310 140 q8 12 0 24" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2" stroke-linecap="round"/>
-      <circle class="blink" cx="318" cy="132" r="3" fill="oklch(74% 0.145 75)"/>
-      <text x="280" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">QUENCH</text>
-    </g>
-    <g>
-      <rect x="420" y="120" width="100" height="86" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
-      <circle cx="470" cy="158" r="20" fill="none" stroke="oklch(50% 0.03 262)" stroke-width="2.5"/>
-      <circle cx="470" cy="158" r="20" fill="none" stroke="oklch(80% 0.012 90)" stroke-width="2.5" stroke-dasharray="4 6"/>
-      <text x="470" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">SAW</text>
-    </g>
-    <line x1="30" y1="232" x2="530" y2="232" stroke="oklch(70% 0.02 262)" stroke-width="2"/>
-    <g fill="oklch(85% 0.01 90)">
-      <circle cx="70" cy="244" r="7"/><circle cx="150" cy="244" r="7"/><circle cx="230" cy="244" r="7"/>
-      <circle cx="310" cy="244" r="7"/><circle cx="390" cy="244" r="7"/><circle cx="470" cy="244" r="7"/>
-    </g>
-    <rect class="billet" x="60" y="218" width="70" height="12" rx="3" fill="oklch(74% 0.145 75)"/>
-    <text x="280" y="282" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">7 stations simulated · alerts to action board</text>
-  </svg>
-</figure>`,
 
   // Factory energy monitor
   energy: `
@@ -185,245 +144,192 @@ export const scenes = {
   </svg>
 </figure>`,
 
-  // MES / ERP: order → plan (ERP) → work order (MES) → traceability, with the system boundary shown
-  mesErp: `
-<figure class="scene vg" aria-label="Animated diagram of the MES and ERP flow: a synthetic sales order is planned on the ERP side, released as a work order to MES, progresses through operations, and leaves a traceability record with a quality result.">
+  // Selected projects (2026-10): objective → decision → result vignettes
+  opcuaCondition: `
+<figure class="scene vg" aria-label="Animated diagram of the NEXUS OPC UA study: a flat furnace temperature reading is classified as steady or frozen by checking whether the acquisition sequence advances, then passed through MQTT, the database, the API and Grafana.">
   <div class="scene-head">
     <span class="dot" style="background: var(--teal);"></span>
-    <span>mes-erp.flow · order to traceability</span>
+    <span>nexus.opcua · condition assessment</span>
   </div>
   <svg viewBox="0 0 560 300" role="img" aria-hidden="true">
-    <!-- system boundary -->
-    <rect x="30" y="20" width="56" height="22" rx="4" fill="oklch(93% 0.012 270)" stroke="oklch(28% 0.045 270)"/>
-    <text x="58" y="35" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(28% 0.045 270)">ERP</text>
-    <text x="96" y="35" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">plan</text>
-    <rect x="284" y="20" width="56" height="22" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
-    <text x="312" y="35" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">MES</text>
-    <text x="350" y="35" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">execute · trace</text>
-    <line x1="266" y1="20" x2="266" y2="246" stroke="oklch(70% 0.02 262)" stroke-width="1.5" stroke-dasharray="5 5"/>
-    <text x="266" y="262" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.082 190)">release ▸</text>
+    <rect x="24" y="18" width="92" height="22" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+    <text x="70" y="33" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">READ-ONLY</text>
+    <text x="74" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">FURNACE · OPC UA</text>
+    <rect x="30" y="72" width="88" height="70" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
+    <path d="M48 132 q6 -12 0 -24 q-6 -12 0 -24 M74 132 q6 -12 0 -24 q-6 -12 0 -24 M100 132 q6 -12 0 -24 q-6 -12 0 -24" fill="none" stroke="oklch(74% 0.145 75)" stroke-width="2" stroke-linecap="round"/>
+    <circle class="blink" cx="110" cy="80" r="3" fill="oklch(56% 0.095 185)"/>
 
-    <!-- order token travels under the cards -->
-    <path id="mesflow" d="M78 132 H478" fill="none" stroke="oklch(70% 0.02 262)" stroke-width="1.5" stroke-dasharray="4 5"/>
-    <circle class="pulse-dot" r="4.5" fill="oklch(56% 0.095 185)"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#mesflow"/></animateMotion></circle>
-    <circle class="pulse-dot" r="4.5" fill="oklch(74% 0.145 75)"><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite"><mpath href="#mesflow"/></animateMotion></circle>
-
-    <!-- 1 order -->
-    <text x="78" y="84" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">ORDER</text>
-    <rect x="34" y="94" width="88" height="76" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
-    <text x="46" y="118" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(28% 0.045 270)">SO-1042</text>
-    <text x="46" y="136" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.022 262)">qty 120</text>
-    <text x="46" y="154" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.022 262)">due D+3</text>
-
-    <!-- 2 plan -->
-    <text x="194" y="84" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">PLAN</text>
-    <rect x="138" y="94" width="114" height="76" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
-    <text x="150" y="116" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.022 262)">BOM</text>
-    <g stroke="oklch(70% 0.02 262)" stroke-width="1.5" fill="none">
-      <path d="M164 124 v10 M164 134 h-10 v8 M164 134 h12 v8"/>
-    </g>
-    <rect x="149" y="142" width="10" height="8" rx="1" fill="oklch(85% 0.01 90)"/>
-    <rect x="171" y="142" width="10" height="8" rx="1" fill="oklch(85% 0.01 90)"/>
-    <text x="192" y="116" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.022 262)">routing</text>
-    <g font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(28% 0.045 270)">
-      <text x="192" y="132">10 cut</text><text x="192" y="146">20 form</text><text x="192" y="160">30 pack</text>
-    </g>
-
-    <!-- 3 work order (MES) -->
-    <text x="340" y="84" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">WORK ORDER</text>
-    <rect x="290" y="94" width="100" height="76" rx="6" fill="oklch(97% 0.012 185)" stroke="oklch(56% 0.095 185)"/>
-    <text x="302" y="116" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(28% 0.045 270)">WO-1042</text>
-    <circle class="blink" cx="378" cy="108" r="3" fill="oklch(56% 0.095 185)"/>
-    <rect x="302" y="128" width="76" height="8" rx="4" fill="oklch(88% 0.01 90)"/>
-    <rect class="fill-x" x="302" y="128" width="76" height="8" rx="4" fill="oklch(56% 0.095 185)"/>
+    <text x="226" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">billet_temp_c</text>
+    <rect x="140" y="72" width="172" height="70" rx="6" fill="oklch(99.2% 0.003 90)" stroke="oklch(88% 0.01 90)"/>
+    <polyline points="150,118 170,112 190,104 210,98 230,96 250,96 270,96 290,96 302,96" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2" stroke-linecap="round"/>
+    <text x="150" y="136" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.022 262)">value unchanged</text>
     <g font-family="IBM Plex Mono, monospace" font-size="9.5">
-      <text class="fade-a" x="302" y="156" fill="oklch(44% 0.082 190)">OP20 running</text>
-      <text class="fade-b" x="302" y="156" fill="oklch(44% 0.082 190)">OP30 running</text>
+      <text class="fade-a" x="302" y="86" text-anchor="end" fill="oklch(44% 0.082 190)">seq 1042 → 1043</text>
+      <text class="fade-b" x="302" y="86" text-anchor="end" fill="oklch(50% 0.11 70)">seq 1042 → 1042</text>
     </g>
 
-    <!-- 4 traceability -->
-    <text x="474" y="84" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">TRACE</text>
-    <rect x="414" y="94" width="120" height="76" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
-    <g font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(28% 0.045 270)">
-      <text x="426" y="114">LOT A17</text>
-      <text x="426" y="130">↳ WO-1042</text>
-      <text x="426" y="146">↳ FG-5531</text>
+    <text x="436" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">DIAGNOSIS</text>
+    <rect x="336" y="72" width="200" height="104" rx="6" fill="oklch(99.2% 0.003 90)" stroke="oklch(70% 0.02 262)"/>
+    <g font-family="IBM Plex Mono, monospace" font-size="10">
+      <rect class="fade-a" x="346" y="80" width="180" height="20" rx="3" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+      <rect class="fade-b" x="346" y="102" width="180" height="20" rx="3" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/>
+      <text x="356" y="94" fill="oklch(28% 0.045 270)">STEADY PROCESS</text>
+      <text x="356" y="116" fill="oklch(28% 0.045 270)">FROZEN ACQUISITION</text>
+      <text x="356" y="138" fill="oklch(44% 0.022 262)">BAD / UNCERTAIN SOURCE</text>
+      <text x="356" y="160" fill="oklch(44% 0.022 262)">CONNECTION LOST</text>
     </g>
-    <rect class="fade-a" x="426" y="152" width="58" height="13" rx="3" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
-    <text class="fade-a" x="455" y="162" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(44% 0.082 190)">QC PASS</text>
-    <rect class="fade-b" x="426" y="152" width="58" height="13" rx="3" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/>
-    <text class="fade-b" x="455" y="162" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(50% 0.11 70)">ON HOLD</text>
 
-    <!-- event log -->
-    <rect x="290" y="196" width="244" height="40" rx="5" fill="oklch(99.2% 0.003 90)" stroke="oklch(88% 0.01 90)"/>
-    <text x="300" y="212" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.022 262)">traceability events</text>
-    <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(28% 0.045 270)">
-      <text class="fade-a" x="300" y="228">OP20 complete · LOT A17 · 10:42</text>
-      <text class="fade-b" x="300" y="228">QC sample · FG-5531 · 10:47</text>
+    <path id="opcflow" d="M60 222 H500" fill="none" stroke="oklch(70% 0.02 262)" stroke-width="1.5" stroke-dasharray="4 5"/>
+    <circle class="pulse-dot" r="4" fill="oklch(56% 0.095 185)"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#opcflow"/></animateMotion></circle>
+    <circle class="pulse-dot" r="4" fill="oklch(74% 0.145 75)"><animateMotion dur="4s" begin="2s" repeatCount="indefinite"><mpath href="#opcflow"/></animateMotion></circle>
+    <g font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle">
+      <rect x="30" y="210" width="62" height="24" rx="4" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/><text x="61" y="226" fill="oklch(28% 0.045 270)">OPC UA</text>
+      <rect x="132" y="210" width="62" height="24" rx="4" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/><text x="163" y="226" fill="oklch(28% 0.045 270)">MQTT</text>
+      <rect x="234" y="210" width="80" height="24" rx="4" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/><text x="274" y="226" fill="oklch(28% 0.045 270)">TimescaleDB</text>
+      <rect x="354" y="210" width="62" height="24" rx="4" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/><text x="385" y="226" fill="oklch(28% 0.045 270)">API</text>
+      <rect x="456" y="210" width="74" height="24" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/><text x="493" y="226" fill="oklch(44% 0.082 190)">Grafana</text>
     </g>
-    <rect x="34" y="196" width="218" height="40" rx="5" fill="oklch(99.2% 0.003 90)" stroke="oklch(88% 0.01 90)"/>
-    <text x="44" y="212" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.022 262)">material</text>
-    <text x="44" y="228" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(28% 0.045 270)">LOT A17 reserved → issued</text>
-
-    <text x="280" y="288" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">order · plan · execute · trace — synthetic data</text>
+    <text x="280" y="256" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.082 190)">62 cases pass · CI matched one sample to its exact DB row</text>
+    <text x="280" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">same reading, four explanations · simulated furnace</text>
   </svg>
 </figure>`,
 
-  // Asset Vision: camera → detection + QR identity → local record + ROS 2 topic
-  assetVision: `
-<figure class="scene vg" aria-label="Animated diagram of Asset Vision: a camera frames a QR-tagged part on a conveyor, a detection box scans it, and the decoded identity is written to a local record and published on a ROS 2 topic.">
+  bocobotStudy: `
+<figure class="scene vg" aria-label="Animated diagram of the BocoBot study: a line-following robot's synthetic sensor trace with a shift, spikes and a gap is labelled by condition, and a route is found on an invented warehouse graph.">
   <div class="scene-head">
     <span class="dot" style="background: var(--teal);"></span>
-    <span>asset.vision · inspection prototype</span>
+    <span>bocobot.study · signal → condition · graph → route</span>
   </div>
   <svg viewBox="0 0 560 300" role="img" aria-hidden="true">
-    <rect x="24" y="18" width="104" height="22" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
-    <text x="76" y="33" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">SAMPLE MODE</text>
-
-    <!-- camera -->
-    <text x="70" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">CAMERA</text>
-    <rect x="36" y="72" width="66" height="42" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
-    <rect x="48" y="66" width="20" height="8" rx="2" fill="oklch(85% 0.01 90)" stroke="oklch(70% 0.02 262)"/>
-    <circle cx="102" cy="93" r="13" fill="oklch(99.2% 0.003 90)" stroke="oklch(28% 0.045 270)" stroke-width="2"/>
-    <circle cx="102" cy="93" r="6" fill="oklch(56% 0.095 185)"/>
-    <circle class="blink" cx="46" cy="82" r="3" fill="oklch(56% 0.095 185)"/>
-    <line x1="69" y1="114" x2="69" y2="232" stroke="oklch(70% 0.02 262)" stroke-width="2"/>
-
-    <!-- field of view -->
-    <g stroke="oklch(56% 0.095 185)" stroke-width="1.5" stroke-dasharray="4 5" fill="none" opacity="0.7">
-      <line x1="114" y1="86" x2="196" y2="140"/>
-      <line x1="114" y1="100" x2="196" y2="240"/>
+    <text x="140" y="34" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">LINE SENSOR · SYNTHETIC</text>
+    <path d="M30 70 C 90 40, 150 100, 250 60" fill="none" stroke="oklch(28% 0.045 270)" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+    <rect x="112" y="58" width="34" height="24" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
+    <circle cx="116" cy="84" r="5" fill="oklch(85% 0.01 90)" stroke="oklch(70% 0.02 262)"/><circle cx="142" cy="84" r="5" fill="oklch(85% 0.01 90)" stroke="oklch(70% 0.02 262)"/>
+    <circle class="blink" cx="129" cy="66" r="3" fill="oklch(56% 0.095 185)"/>
+    <rect x="24" y="104" width="232" height="96" rx="6" fill="oklch(99.2% 0.003 90)" stroke="oklch(88% 0.01 90)"/>
+    <line x1="34" y1="152" x2="246" y2="152" stroke="oklch(88% 0.01 90)" stroke-dasharray="3 4"/>
+    <polyline points="34,150 54,148 74,151 94,140 104,139 114,141" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2"/>
+    <polyline points="114,141 124,118 132,142 152,140 160,182 168,140 176,139" fill="none" stroke="oklch(74% 0.145 75)" stroke-width="2"/>
+    <polyline points="206,140 226,141 246,139" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2"/>
+    <text x="191" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(44% 0.022 262)">gap</text>
+    <g font-family="IBM Plex Mono, monospace" font-size="9.5">
+      <rect x="34" y="210" width="68" height="20" rx="3" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/><text x="68" y="224" text-anchor="middle" fill="oklch(50% 0.11 70)">SHIFTED</text>
+      <rect class="fade-a" x="110" y="210" width="62" height="20" rx="3" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/><text class="fade-a" x="141" y="224" text-anchor="middle" fill="oklch(50% 0.11 70)">SPIKY</text>
+      <rect class="fade-b" x="110" y="210" width="90" height="20" rx="3" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/><text class="fade-b" x="155" y="224" text-anchor="middle" fill="oklch(50% 0.11 70)">INCOMPLETE</text>
     </g>
+    <text x="140" y="250" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.022 262)">cause not claimed: bias and offset look identical</text>
 
-    <!-- conveyor -->
-    <line x1="150" y1="244" x2="350" y2="244" stroke="oklch(70% 0.02 262)" stroke-width="2"/>
-    <g fill="oklch(85% 0.01 90)">
-      <circle cx="170" cy="255" r="7"/><circle cx="230" cy="255" r="7"/>
-      <circle cx="290" cy="255" r="7"/><circle cx="340" cy="255" r="7"/>
+    <text x="420" y="34" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">INVENTED WAREHOUSE GRAPH</text>
+    <g stroke="oklch(85% 0.01 90)" stroke-width="2">
+      <line x1="320" y1="70" x2="400" y2="70"/><line x1="400" y1="70" x2="500" y2="70"/>
+      <line x1="320" y1="70" x2="320" y2="150"/><line x1="400" y1="70" x2="400" y2="150"/><line x1="500" y1="70" x2="500" y2="150"/>
+      <line x1="320" y1="150" x2="400" y2="150"/><line x1="400" y1="150" x2="500" y2="150"/>
+      <line x1="320" y1="150" x2="320" y2="210"/><line x1="500" y1="150" x2="500" y2="210"/><line x1="320" y1="210" x2="500" y2="210"/>
     </g>
-
-    <!-- QR-tagged part -->
-    <rect x="208" y="156" width="92" height="86" rx="4" fill="oklch(99.2% 0.003 90)" stroke="oklch(50% 0.03 262)" stroke-width="2"/>
-    <g fill="oklch(28% 0.045 270)">
-      <rect x="230" y="172" width="14" height="14"/><rect x="264" y="172" width="14" height="14"/>
-      <rect x="230" y="206" width="14" height="14"/>
-      <rect x="248" y="172" width="6" height="6"/><rect x="250" y="190" width="6" height="6"/>
-      <rect x="262" y="194" width="6" height="6"/><rect x="272" y="206" width="6" height="6"/>
-      <rect x="248" y="210" width="6" height="6"/><rect x="262" y="214" width="6" height="6"/>
-      <rect x="236" y="192" width="6" height="6"/>
+    <path id="bocoroute" d="M320 70 H400 V150 H500 V210" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle class="pulse-dot" r="5" fill="oklch(74% 0.145 75)"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#bocoroute"/></animateMotion></circle>
+    <g fill="oklch(99.2% 0.003 90)" stroke="oklch(28% 0.045 270)" stroke-width="2">
+      <circle cx="320" cy="70" r="8"/><circle cx="400" cy="70" r="8"/><circle cx="500" cy="70" r="8"/>
+      <circle cx="320" cy="150" r="8"/><circle cx="400" cy="150" r="8"/><circle cx="500" cy="150" r="8"/>
+      <circle cx="320" cy="210" r="8"/><circle cx="500" cy="210" r="8"/>
     </g>
-
-    <!-- detection box + scan line -->
-    <rect x="196" y="140" width="116" height="104" rx="3" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2" stroke-dasharray="6 4"/>
-    <rect x="196" y="122" width="92" height="18" rx="3" fill="oklch(56% 0.095 185)"/>
-    <text x="242" y="135" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(99.2% 0.003 90)">asset · QR</text>
-    <line class="scan" x1="198" y1="146" x2="310" y2="146" stroke="oklch(56% 0.095 185)" stroke-width="2" opacity="0.8"/>
-
-    <!-- detection → record -->
-    <path id="avflow" d="M314 192 C 344 192, 348 128, 378 128" fill="none" stroke="oklch(70% 0.02 262)" stroke-width="1.5" stroke-dasharray="4 5"/>
-    <circle class="pulse-dot" r="4" fill="oklch(56% 0.095 185)"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#avflow"/></animateMotion></circle>
-    <circle class="pulse-dot" r="4" fill="oklch(74% 0.145 75)"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite"><mpath href="#avflow"/></animateMotion></circle>
-
-    <!-- local record + ROS 2 -->
-    <text x="456" y="62" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">RECORD</text>
-    <rect x="380" y="72" width="152" height="148" rx="6" fill="oklch(99.2% 0.003 90)" stroke="oklch(70% 0.02 262)"/>
-    <g font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">
-      <text x="394" y="98">asset_id</text>
-      <text x="394" y="124">state</text>
-      <text x="394" y="150">source</text>
+    <text x="298" y="56" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.082 190)">start</text>
+    <text x="512" y="228" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.082 190)">goal</text>
+    <g font-family="IBM Plex Mono, monospace" font-size="9.5" text-anchor="middle">
+      <text class="fade-a" x="410" y="250" fill="oklch(44% 0.082 190)">Dijkstra cost = A* cost</text>
+      <text class="fade-b" x="410" y="250" fill="oklch(44% 0.082 190)">256 / 256 pairs checked</text>
     </g>
-    <line x1="394" y1="108" x2="518" y2="108" stroke="oklch(88% 0.01 90)"/>
-    <line x1="394" y1="134" x2="518" y2="134" stroke="oklch(88% 0.01 90)"/>
-    <line x1="394" y1="160" x2="518" y2="160" stroke="oklch(88% 0.01 90)"/>
-    <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="end">
-      <text class="fade-a" x="518" y="98" fill="oklch(28% 0.045 270)">AV-0142</text>
-      <text class="fade-b" x="518" y="98" fill="oklch(28% 0.045 270)">AV-0157</text>
-      <text class="fade-a" x="518" y="124" fill="oklch(44% 0.082 190)">PRESENT</text>
-      <text class="fade-b" x="518" y="124" fill="oklch(50% 0.11 70)">MISSING</text>
-      <text x="518" y="150" fill="oklch(28% 0.045 270)">sample.jpg</text>
-    </g>
-    <rect x="386" y="178" width="140" height="26" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
-    <circle class="blink" cx="397" cy="191" r="3" fill="oklch(56% 0.095 185)"/>
-    <text x="461" y="195" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.082 190)">ROS 2 /asset_state</text>
-
-    <text x="280" y="290" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">detect · identify · record · publish — hardware-independent</text>
+    <text x="280" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">30 synthetic runs · 6 scenarios · 20 routing tests</text>
   </svg>
 </figure>`,
+
+  plcVision: `
+<figure class="scene vg" aria-label="Animated diagram of two software checks: PLC training-model timing lanes for start, stop, emergency stop and motor output with 18 of 18 checks passing, and a QR frame being scanned with 5 of 5 payloads decoded.">
+  <div class="scene-head">
+    <span class="dot" style="background: var(--teal);"></span>
+    <span>plc.sequence + vision.qr · bounded checks</span>
+  </div>
+  <svg viewBox="0 0 560 300" role="img" aria-hidden="true">
+    <text x="158" y="34" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">PLC TRAINING MODEL · 4 TRACES</text>
+    <rect x="24" y="46" width="268" height="168" rx="6" fill="oklch(99.2% 0.003 90)" stroke="oklch(88% 0.01 90)"/>
+    <text x="34" y="74" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.022 262)">START</text>
+    <polyline points="96,74 112,74 112,62 128,62 128,74 280,74" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2" stroke-linejoin="round"/>
+    <text x="34" y="108" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.022 262)">STOP</text>
+    <polyline points="96,108 196,108 196,96 210,96 210,108 280,108" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2" stroke-linejoin="round"/>
+    <text x="34" y="142" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.022 262)">E-STOP</text>
+    <polyline points="96,142 236,142 236,130 254,130 254,142 280,142" fill="none" stroke="oklch(74% 0.145 75)" stroke-width="2" stroke-linejoin="round"/>
+    <text x="34" y="176" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(44% 0.022 262)">MOTOR</text>
+    <polyline points="96,176 120,176 120,164 196,164 196,176 236,176 236,176 254,176 254,164 280,164" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2" stroke-linejoin="round"/>
+    <text x="34" y="204" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(50% 0.11 70)">auto-restart after E-STOP clears → flagged</text>
+    <rect x="96" y="228" width="128" height="22" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+    <circle class="blink" cx="108" cy="239" r="3" fill="oklch(56% 0.095 185)"/>
+    <text x="164" y="243" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.082 190)">18 / 18 checks</text>
+
+    <text x="424" y="34" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.022 262)">ASSET VISION · QR DECODE</text>
+    <rect x="320" y="46" width="96" height="96" rx="4" fill="oklch(99.2% 0.003 90)" stroke="oklch(28% 0.045 270)" stroke-width="2"/>
+    <g fill="oklch(28% 0.045 270)">
+      <rect x="332" y="58" width="20" height="20"/><rect x="384" y="58" width="20" height="20"/><rect x="332" y="110" width="20" height="20"/>
+      <rect x="360" y="60" width="8" height="8"/><rect x="362" y="84" width="8" height="8"/><rect x="376" y="92" width="8" height="8"/>
+      <rect x="388" y="110" width="8" height="8"/><rect x="362" y="114" width="8" height="8"/><rect x="340" y="88" width="8" height="8"/>
+    </g>
+    <line class="scan" x1="322" y1="48" x2="414" y2="48" stroke="oklch(56% 0.095 185)" stroke-width="2" opacity="0.85"/>
+    <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(28% 0.045 270)">
+      <text x="436" y="62">AV-0001 ✓</text><text x="436" y="80">AV-0002 ✓</text><text x="436" y="98">AV-0003 ✓</text>
+      <text x="436" y="116">AV-0004 ✓</text><text x="436" y="134">AV-0005 ✓</text>
+    </g>
+    <text x="368" y="160" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(44% 0.022 262)">clean synthetic frame</text>
+    <rect x="360" y="228" width="128" height="22" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+    <text x="424" y="243" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.082 190)">5 / 5 payloads</text>
+    <text x="280" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">software model and synthetic frames · no physical PLC or camera</text>
+  </svg>
+</figure>`,
+
+  aiWorkflow: `
+<figure class="scene vg" aria-label="Animated diagram of the AI-assisted engineering workflow: a bounded brief goes to implementation, then independent review; changes requested loop back to implementation until the review marks the work complete.">
+  <div class="scene-head">
+    <span class="dot" style="background: var(--teal);"></span>
+    <span>ai.workflow · brief → build → review → accept</span>
+  </div>
+  <svg viewBox="0 0 560 300" role="img" aria-hidden="true">
+    <rect x="24" y="30" width="196" height="22" rx="4" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+    <text x="122" y="45" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.082 190)">failed checks kept on record</text>
+    <path id="aiflow" d="M120 122 H440" fill="none" stroke="oklch(70% 0.02 262)" stroke-width="1.5" stroke-dasharray="4 5"/>
+    <circle class="pulse-dot" r="4.5" fill="oklch(56% 0.095 185)"><animateMotion dur="4.4s" repeatCount="indefinite"><mpath href="#aiflow"/></animateMotion></circle>
+    <path d="M330 158 C 316 196, 214 196, 200 158" fill="none" stroke="oklch(74% 0.145 75)" stroke-width="2" stroke-dasharray="5 4"/>
+    <path d="M206 168 L200 156 L212 161" fill="none" stroke="oklch(74% 0.145 75)" stroke-width="2" stroke-linejoin="round"/>
+    <text x="265" y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(50% 0.11 70)">changes requested → fix → re-review</text>
+    <text x="72" y="80" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.022 262)">01</text>
+    <text x="200" y="80" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.022 262)">02</text>
+    <text x="340" y="80" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.022 262)">03</text>
+    <text x="488" y="80" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="oklch(44% 0.022 262)">04</text>
+    <rect x="24" y="92" width="96" height="60" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
+    <text x="72" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(28% 0.045 270)">BRIEF</text>
+    <text x="72" y="136" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(44% 0.022 262)">scope · criteria</text>
+    <rect x="152" y="92" width="96" height="60" rx="6" fill="oklch(94% 0.008 90)" stroke="oklch(70% 0.02 262)"/>
+    <text x="200" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(28% 0.045 270)">IMPLEMENT</text>
+    <text x="200" y="136" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(44% 0.022 262)">Claude Code</text>
+    <rect x="280" y="92" width="120" height="60" rx="6" fill="oklch(99.2% 0.003 90)" stroke="oklch(28% 0.045 270)" stroke-width="1.5"/>
+    <text x="340" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(28% 0.045 270)">REVIEW</text>
+    <text x="340" y="126" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(44% 0.022 262)">Codex · independent</text>
+    <g font-family="IBM Plex Mono, monospace" font-size="8.5" text-anchor="middle">
+      <rect class="fade-a" x="288" y="132" width="104" height="14" rx="3" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/>
+      <text class="fade-a" x="340" y="142" fill="oklch(50% 0.11 70)">CHANGES_REQUESTED</text>
+      <rect class="fade-b" x="300" y="132" width="80" height="14" rx="3" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+      <text class="fade-b" x="340" y="142" fill="oklch(44% 0.082 190)">COMPLETE</text>
+    </g>
+    <rect x="440" y="92" width="96" height="60" rx="6" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
+    <text x="488" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.082 190)">ACCEPT</text>
+    <text x="488" y="136" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="oklch(44% 0.022 262)">my decision</text>
+    <text x="280" y="250" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="oklch(28% 0.045 270)">one checkpoint at a time · return report · stop for review</text>
+    <text x="280" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="oklch(44% 0.022 262)">nothing accepted on an agent's own say-so</text>
+  </svg>
+</figure>`,
+
+
 
   // ── LAYMAN EXPLAINERS (plain language, no jargon) ──────────────────
 
-  // 1 · PRIMARY — messy operation → clear, measured picture
-  messyToMeasured: `
-<figure class="scene vg" aria-label="From a messy operation (scattered paper, chats, guesswork) to one clear, measured screen.">
-  <div class="scene-head">
-    <span class="dot" style="background: var(--amber);"></span>
-    <span class="dot" style="background: var(--teal);"></span>
-    <span>before → after · scattered work becomes a clear picture</span>
-  </div>
-  <svg viewBox="0 0 760 300" role="img" aria-hidden="true">
-    <!-- LEFT: the messy "today" -->
-    <g transform="rotate(-8 110 150)">
-      <rect x="60" y="96" width="96" height="116" rx="4" fill="oklch(99.2% 0.003 90)" stroke="oklch(80% 0.012 90)"/>
-      <g stroke="oklch(86% 0.01 90)" stroke-width="3" stroke-linecap="round"><line x1="74" y1="124" x2="142" y2="124"/><line x1="74" y1="142" x2="142" y2="142"/><line x1="74" y1="160" x2="120" y2="160"/></g>
-    </g>
-    <g transform="rotate(7 150 165)"><rect x="98" y="112" width="96" height="116" rx="4" fill="oklch(98% 0.005 90)" stroke="oklch(80% 0.012 90)"/></g>
-    <g>
-      <rect x="56" y="36" width="92" height="42" rx="10" fill="oklch(93% 0.02 185)" stroke="oklch(70% 0.04 185)"/>
-      <path d="M82 78 l0 14 l16 -14 z" fill="oklch(93% 0.02 185)" stroke="oklch(70% 0.04 185)"/>
-      <g stroke="oklch(56% 0.095 185)" stroke-width="3" stroke-linecap="round"><line x1="70" y1="52" x2="134" y2="52"/><line x1="70" y1="64" x2="112" y2="64"/></g>
-    </g>
-    <text class="blink" x="206" y="116" font-family="IBM Plex Mono, monospace" font-size="40" fill="oklch(74% 0.145 75)">?</text>
-    <text x="132" y="262" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="oklch(44% 0.022 262)">today · paper, chats, guesswork</text>
 
-    <!-- MIDDLE: make it visible -->
-    <path id="flow-messy" d="M 236 150 C 330 150 380 150 526 150" fill="none" stroke="oklch(56% 0.095 185 / 0.5)" stroke-width="2" stroke-dasharray="6 7"/>
-    <text x="382" y="134" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="oklch(44% 0.082 190)">make it visible</text>
-    <circle class="pulse-dot" r="4" fill="oklch(56% 0.095 185)"><animateMotion dur="4.5s" repeatCount="indefinite"><mpath href="#flow-messy"/></animateMotion></circle>
-    <circle class="pulse-dot" r="4" fill="oklch(74% 0.145 75)"><animateMotion dur="4.5s" begin="1.5s" repeatCount="indefinite"><mpath href="#flow-messy"/></animateMotion></circle>
-
-    <!-- RIGHT: one clear screen -->
-    <g>
-      <rect x="528" y="70" width="206" height="150" rx="8" fill="oklch(99.2% 0.003 90)" stroke="oklch(70% 0.02 262)"/>
-      <rect x="528" y="70" width="206" height="22" rx="8" fill="oklch(94% 0.008 90)"/>
-      <circle cx="542" cy="81" r="3" fill="oklch(74% 0.145 75)"/><circle cx="553" cy="81" r="3" fill="oklch(56% 0.095 185)"/>
-      <polyline points="546,190 576,178 606,184 636,160 666,168 696,140 718,150" fill="none" stroke="oklch(56% 0.095 185)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-      <rect class="blink" x="616" y="104" width="106" height="20" rx="5" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
-      <text class="blink" x="669" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="oklch(44% 0.082 190)">ON TRACK</text>
-      <text x="631" y="262" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="oklch(44% 0.022 262)">clear · one screen you trust</text>
-    </g>
-  </svg>
-</figure>`,
-
-  // 2 · evidence-led engineering as a simple 4-step map
-  decisionMap: `
-<figure class="scene vg" aria-label="An engineering study as a four-step map: observe the current state, frame the constraint, build a proof, and validate the result.">
-  <div class="scene-head">
-    <span class="dot" style="background: var(--teal);"></span>
-    <span>observe · model · build · validate</span>
-  </div>
-  <svg viewBox="0 0 760 260" role="img" aria-hidden="true">
-    <path id="flow-decision" d="M 70 150 C 180 90 230 90 320 130 C 410 170 470 170 560 120 C 620 88 660 92 700 120" fill="none" stroke="oklch(80% 0.012 90)" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>
-    <g font-family="IBM Plex Mono, monospace">
-      <circle cx="70" cy="150" r="20" fill="oklch(93% 0.025 185)" stroke="oklch(56% 0.095 185)"/>
-      <text x="70" y="156" text-anchor="middle" font-size="15" fill="oklch(44% 0.082 190)">1</text>
-      <text x="70" y="196" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">observe</text>
-      <text x="70" y="210" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">current state</text>
-      <circle cx="320" cy="130" r="20" fill="oklch(96% 0.007 90)" stroke="oklch(70% 0.02 262)"/>
-      <text x="320" y="136" text-anchor="middle" font-size="15" fill="oklch(28% 0.045 270)">2</text>
-      <text x="320" y="176" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">frame the</text>
-      <text x="320" y="190" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">constraint</text>
-      <circle cx="560" cy="120" r="20" fill="oklch(96% 0.007 90)" stroke="oklch(70% 0.02 262)"/>
-      <text x="560" y="126" text-anchor="middle" font-size="15" fill="oklch(28% 0.045 270)">3</text>
-      <text x="560" y="166" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">build the</text>
-      <text x="560" y="180" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">smallest proof</text>
-      <circle cx="700" cy="120" r="20" fill="oklch(96% 0.04 75)" stroke="oklch(74% 0.145 75)"/>
-      <text x="700" y="126" text-anchor="middle" font-size="15" fill="oklch(50% 0.11 70)">4</text>
-      <text x="700" y="166" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">validate</text>
-      <text x="700" y="180" text-anchor="middle" font-size="11" fill="oklch(44% 0.022 262)">the result</text>
-    </g>
-    <circle class="pulse-dot" r="5" fill="oklch(56% 0.095 185)"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#flow-decision"/></animateMotion></circle>
-  </svg>
-</figure>`,
 
   // 3 · the invisible bill, made visible
   costOfNotMeasuring: `
