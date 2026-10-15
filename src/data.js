@@ -193,7 +193,7 @@ export const projects = [
         href: "https://github.com/SaladinIART/salbotics-mes-erp-demo",
       },
     ],
-    sceneKey: "edge",
+    sceneKey: "mesErp",
   },
   {
     slug: "asset-vision",
@@ -251,7 +251,7 @@ export const projects = [
         href: "https://github.com/SaladinIART/asset-vision",
       },
     ],
-    sceneKey: "compressor",
+    sceneKey: "assetVision",
   },
   {
     slug: "tube-preparation-concept",
