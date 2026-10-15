@@ -230,6 +230,20 @@ h2 {
 .status-prototype { color: oklch(40% 0.08 305); background: oklch(95% 0.025 305); border-color: oklch(76% 0.055 305); }
 .status-engineering-concept { color: oklch(40% 0.085 72); background: oklch(96% 0.035 82); border-color: oklch(76% 0.08 78); }
 .status-in-development { color: oklch(40% 0.02 260); background: oklch(95% 0.01 260); border-color: oklch(76% 0.02 260); }
+.status-simulated-study { color: oklch(40% 0.085 200); background: oklch(95% 0.025 195); border-color: oklch(76% 0.06 195); }
+.status-working-practice { color: oklch(40% 0.06 20); background: oklch(96% 0.02 30); border-color: oklch(78% 0.05 30); }
+.odr { margin-top: 1rem; display: grid; gap: 0.6rem; max-width: 52ch; }
+.odr > div { display: grid; grid-template-columns: 7.2rem 1fr; gap: 0.75rem; align-items: baseline; }
+.odr dt {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--teal-deep);
+}
+.odr dd { margin: 0; color: var(--ink); font-size: 0.93rem; line-height: 1.5; }
+.work-copy p.boundary { font-size: 0.88rem; }
+.result-lead { color: var(--ink); font-weight: 500; }
+@media (max-width: 560px) {
+  .odr > div { grid-template-columns: 1fr; gap: 0.15rem; }
+}
 .svc-who { margin-top: 0.9rem; color: var(--ink-soft); font-size: 0.95rem; max-width: 50ch; }
 .svc-who strong { color: var(--ink); font-weight: 600; }
 .svc-out { margin-top: 0.7rem; color: var(--ink-soft); font-size: 0.95rem; max-width: 50ch; }

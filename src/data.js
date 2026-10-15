@@ -38,6 +38,8 @@ export const projectStatusLabels = {
   prototype: "Prototype",
   "engineering-concept": "Engineering concept",
   "in-development": "In development",
+  "simulated-study": "Simulated study",
+  "working-practice": "Working practice",
 };
 
 export const projects = [
@@ -48,6 +50,11 @@ export const projects = [
     engineeringAreas: ["Industrial data", "Edge systems", "Operations visibility"],
     summary:
       "An anonymized manufacturing deployment that brought machine-level energy signals into durable data services, dashboards, and operational reporting.",
+    boundary: "Field-deployed manufacturing system.",
+    objective:
+      "Operational energy information existed at equipment level but was difficult to collect, retain, and interpret consistently for manufacturing decisions.",
+    result:
+      "Deployed in a manufacturing environment: repeatable edge services, historical records, and operator-facing dashboards.",
     problem:
       "Operational energy information existed at equipment level but was difficult to collect, retain, and interpret consistently for manufacturing decisions.",
     constraints: [
@@ -89,272 +96,177 @@ export const projects = [
   },
   {
     slug: "nexus-iiot",
-    title: "NEXUS Industrial IIoT",
+    title: "NEXUS OPC UA and IIoT Condition Assessment",
     status: "validated-demo",
-    engineeringAreas: ["Industrial integration", "Time-series data", "Decision support"],
+    engineeringAreas: ["OPC UA / IIoT", "Data quality", "Condition assessment"],
     summary:
-      "A reproducible aluminium-process demonstration connecting equipment signals, time-series storage, APIs, dashboards, alerts, and decision support.",
-    problem:
-      "Demonstrate how equipment events can move through a maintainable industrial data architecture and become useful operational information.",
-    constraints: [
-      "The demonstration uses simulated process data rather than a live production connection.",
-      "Each service must remain understandable, replaceable, and runnable on a local development machine.",
+      "A simulated furnace exposed over read-only OPC UA and traced through MQTT, TimescaleDB, FastAPI and Grafana, to tell a steady process apart from frozen, unreliable or disconnected data.",
+    boundary: "Simulated equipment; the software and protocol path is verified by tests and CI.",
+    objective:
+      "When a simulated equipment reading stops changing, decide whether the process is stable, acquisition is frozen, the data is unreliable or the connection is lost — and trace accepted data through the whole monitoring stack.",
+    decisions: [
+      "Extended the existing NEXUS pipeline instead of starting a separate OPC UA lab, so the new path feeds the same MQTT contract, database and dashboards.",
+      "Kept the OPC UA connection read-only (browse, read and subscribe), leaving setpoint writes outside the demonstration.",
+      "Made IIoT-Telemetry-Stack the single canonical NEXUS repository while preserving the earlier aluminium-demo repository.",
     ],
+    result:
+      "62 automated cases pass (53 unit and 9 local OPC UA/MQTT integration), and a successful CI run traced one acknowledged sample to its exact database row, API response and Grafana datasource value.",
+    resultPoints: [
+      "Six scenarios are retained as raw traces with a hash manifest: normal, steady, frozen, bad, uncertain and process fault.",
+      "Equipment state and data quality are reported separately; Bad, Uncertain or stale readings are suppressed rather than converted to zero.",
+    ],
+    aiRole:
+      "AI agents, mainly Codex, implemented the typed model, freshness logic, subscriptions and reconnection, the MQTT bridge, the tests and the report. I set the scope and accepted results only with retained test and CI evidence.",
     contribution: [
-      "Designed the end-to-end equipment, messaging, storage, API, dashboard, and alerting architecture.",
-      "Implemented local deployment, health checks, technical documentation, and repeatable demonstrations.",
-      "Created decision-oriented views instead of treating data collection as the final outcome.",
+      "I selected a read-only OPC UA extension for NEXUS and directed AI-assisted implementation, using retained tests and CI evidence to distinguish equipment condition from data-quality and communication problems.",
     ],
-    architecture: [
-      "Simulated process stations and Modbus signals",
-      "MQTT event transport",
-      "TimescaleDB historian",
-      "FastAPI services",
-      "Svelte and Grafana decision views",
-      "Docker Compose deployment",
-    ],
-    evidence: [
-      "Runnable multi-service demonstration.",
-      "Documented architecture and Windows demonstration workflow.",
-      "Dashboard, asset-state, alert, and fault-scenario evidence.",
-    ],
+    evidence: ["Simulated equipment; the software and protocol path is verified by tests and CI."],
     limitations: [
-      "This is a learning and portfolio demonstration, not a production control system.",
-      "Process values, events, and stations are simulated.",
+      "Fictional furnace and teaching model: no physical furnace, field data, calibrated digital twin or predictive-maintenance accuracy.",
+      "The CI trace checks one retained sample path; it does not prove sustained throughput, exactly-once delivery, browser rendering or production readiness.",
+      "The OPC UA teaching endpoint is loopback-only and unsecured; no certificate or trust management is claimed.",
     ],
-    technologies: ["Python", "FastAPI", "MQTT", "TimescaleDB", "Svelte", "Grafana", "Docker"],
+    technologies: ["Python", "OPC UA", "MQTT", "TimescaleDB", "FastAPI", "Grafana", "Docker", "GitHub Actions"],
     images: [
       {
         src: "/images/projects/nexus-decision-board.png",
         alt: "NEXUS Grafana decision board showing a synthetic fault scenario, alerts, holds, and recommended actions",
         caption:
-          "Synthetic decision-board scenario: equipment and quality events are translated into prioritized operational actions.",
-      },
-      {
-        src: "/images/projects/nexus-floor-overview.png",
-        alt: "NEXUS browser dashboard showing the state of simulated aluminium-process assets",
-        caption:
-          "The browser view exposes simulated asset state from the same messaging, historian, and API pipeline.",
+          "The same NEXUS stack on its Modbus path: a synthetic fault becomes prioritised actions on the decision board.",
       },
     ],
     links: [
-      {
-        label: "GitHub repository",
-        href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack",
-      },
+      { label: "Condition-assessment report", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack/blob/e297d46c947cdac7ce6f39c3703411c9b37a566f/docs/opcua/CONDITION_ASSESSMENT.md" },
+      { label: "Release test summary (62 cases)", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack/blob/e297d46c947cdac7ce6f39c3703411c9b37a566f/docs/opcua/evidence/release-verification/tests_summary.json" },
+      { label: "Successful CI run", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack/actions/runs/38737854129" },
+      { label: "Exact-row verification", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack/blob/e297d46c947cdac7ce6f39c3703411c9b37a566f/docs/opcua/evidence/ci-38737854129/verification.json" },
+      { label: "Retained scenario traces", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack/tree/e297d46c947cdac7ce6f39c3703411c9b37a566f/docs/opcua/evidence/2026-10-15-run-02" },
+      { label: "GitHub repository", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack" },
     ],
-    sceneKey: "nexus",
+    sceneKey: "opcuaCondition",
   },
   {
-    slug: "mes-erp",
-    title: "MES / ERP Manufacturing Flow",
-    status: "validated-demo",
-    engineeringAreas: ["Production flow", "Traceability", "Manufacturing software"],
+    slug: "bocobot-condition-routing",
+    title: "BocoBot Condition Assessment and Warehouse Routing Study",
+    status: "simulated-study",
+    engineeringAreas: ["Signal analysis", "Condition assessment", "Route planning"],
     summary:
-      "A sanitized learning system connecting production orders, material state, work execution, and reporting across a manufacturing information flow.",
-    problem:
-      "Show how business orders, manufacturing execution, material movements, and traceability records relate without exposing a private operational system.",
-    constraints: [
-      "All organizations, orders, products, and transactions must be synthetic.",
-      "The public companion must demonstrate concepts without claiming production MES certification.",
+      "A study motivated by a small line-following robot: what shifted, noisy or missing sensor data can and cannot reveal, plus a Dijkstra and A* comparison on an invented warehouse graph.",
+    boundary: "Synthetic data and an invented graph; no new physical robot measurements.",
+    objective:
+      "Use a small line-following robot to understand what signal changes can reveal and what they cannot identify, and how route choices depend on a declared graph and heuristic.",
+    decisions: [
+      "Kept my BocoBot, and the alignment and deviation behaviour I had seen on it, at the centre of the study instead of dismissing a small kit as irrelevant.",
+      "Used synthetic observations and software studies under a no-new-hardware constraint, rather than waiting for a powered measurement session.",
+      "Treated warehouse routing as a separate abstraction on an invented graph, not as a claim about the physical robot.",
     ],
+    result:
+      "30 synthetic runs across six scenarios were assessed; the routing implementation passed 20 tests, and an independent review checked path costs for all 256 ordered node pairs.",
+    resultPoints: [
+      "Bias, sensor offset and their combination produce identical observations, so the study reports them as indistinguishable instead of guessing a physical cause.",
+      "Independent review found that reversed sample order could be called NORMAL and that extra false alerts were scored as correct; both were fixed without changing a threshold.",
+    ],
+    aiRole:
+      "The synthetic generator, signal assessor, scoring, report and routing code were produced in AI sessions and independently reviewed by Codex.",
     contribution: [
-      "Mapped the order-to-production information flow and the boundaries between ERP and MES responsibilities.",
-      "Built a sanitized demonstration and supporting architecture documentation.",
-      "Emphasized status visibility, traceable events, and maintainable handover.",
+      "I used my BocoBot experience to frame a synthetic condition-assessment and routing study, directed AI-assisted implementation, and retained independent review findings and the limits of what the data could establish.",
     ],
-    architecture: [
-      "Synthetic customer and production orders",
-      "Material and work-execution state",
-      "Traceability events",
-      "Operational reporting and documented process flow",
-    ],
-    evidence: [
-      "Sanitized public companion demonstration.",
-      "Documented manufacturing-information-flow diagram.",
-      "Repeatable local learning workflow.",
-    ],
+    evidence: ["Synthetic data and an invented graph; no new physical robot measurements."],
     limitations: [
-      "Not deployed as a production MES or ERP product.",
-      "No real customer, material, production, or financial records are included.",
+      "No newly measured robot traces, physical causal diagnosis or calibrated dynamics; the alignment behaviour is my own observation, not a measured finding.",
+      "Scenarios and assessor were written in the same study, and evaluation seeds had already been inspected.",
+      "Routing uses an invented graph and costs: no robot travel times, localisation, ROS 2 or physical warehouse integration.",
+      "The study source and results are not yet published; the linked repository is the existing robot source.",
     ],
-    technologies: ["Manufacturing workflows", "Traceability", "APIs", "SQL", "Documentation"],
-    images: [
-      {
-        src: "/images/projects/mes-erp-flow.svg",
-        alt: "A synthetic factory order flowing from order intake through planning, execution, quality, and reporting",
-        caption:
-          "Public learning flow: synthetic orders connect planning and material context to work execution, quality, output, and dashboards.",
-      },
-    ],
+    technologies: ["Python", "Synthetic data", "Signal analysis", "Dijkstra", "A*", "Unit testing"],
+    images: [],
     links: [
-      {
-        label: "GitHub repository",
-        href: "https://github.com/SaladinIART/salbotics-mes-erp-demo",
-      },
+      { label: "Existing robot source (study results not yet published)", href: "https://github.com/SaladinIART/PicoClaw_LineRobo" },
     ],
-    sceneKey: "mesErp",
+    sceneKey: "bocobotStudy",
   },
   {
-    slug: "asset-vision",
-    title: "Asset Vision",
-    status: "prototype",
-    engineeringAreas: ["Computer vision", "ROS 2", "Inspection software"],
+    slug: "plc-asset-vision-checks",
+    title: "PLC Sequence Verification and Asset Vision Checks",
+    status: "simulated-study",
+    engineeringAreas: ["PLC logic", "Verification", "Machine vision"],
     summary:
-      "A hardware-independent inspection prototype combining asset identity, visual detection, local records, a browser dashboard, and typed ROS 2 interfaces.",
-    problem:
-      "Explore a repeatable inspection workflow that connects visual evidence, asset identity, application services, and robotics interfaces without requiring dedicated hardware.",
-    constraints: [
-      "The core workflow must run with supplied sample images.",
-      "ROS 2 integration must remain separated from the application service boundary.",
-      "Prototype results must not be described as production inspection accuracy.",
+      "Two bounded software checks: an educational PLC training model against declared start, stop, fault and emergency sequences, and Asset Vision's QR decoder against known sample frames.",
+    boundary: "An educational software model and synthetic frames; no physical PLC or camera.",
+    objective:
+      "Check whether an educational controller follows its declared sequence and restart behaviour, and whether the existing QR decoder returns the expected identities on simple sample images.",
+    decisions: [
+      "Verified my existing PLC learning software and Asset Vision project instead of buying hardware or starting a new prototype.",
+      "Kept every claim to what software can show: no physical PLC, wiring or commissioning is implied.",
+      "Deferred the heavier object-detection path and kept the QR decoding check separate from detection.",
     ],
+    result:
+      "PLC: four training-model traces, with all 18 declared checks matching. Asset Vision: five clean sample frames, with 5/5 expected QR payloads decoded.",
+    resultPoints: [
+      "The traces covered normal timing, conflicting START/STOP inputs with fault reset, stop/restart, and emergency/restart.",
+      "The emergency trace showed the trainer resumes automatically once the input clears — recorded as behaviour that needs a design decision, not as safe machine operation.",
+    ],
+    aiRole:
+      "Claude Code prepared the predictions, runners and trace and image checks; Codex independently reviewed and reproduced the retained results.",
     contribution: [
-      "Built the vision, identity, API, local-record, and dashboard workflow.",
-      "Defined typed ROS 2 messages, services, and node boundaries for later robotic integration.",
-      "Added automated tests and a hardware-independent sample mode.",
+      "I prioritized software-based verification of my PLC learning model and Asset Vision project, using AI-assisted trace and QR checks with independent review, while keeping physical PLC and object-detection claims outside the evidence.",
     ],
-    architecture: [
-      "Sample or camera image input",
-      "Visual detection and identity decoding",
-      "FastAPI application service",
-      "SQLite records and browser dashboard",
-      "ROS 2 message, service, and node interfaces",
-    ],
-    evidence: [
-      "Working sample-mode inspection path.",
-      "Dashboard screenshot and architecture diagram.",
-      "Automated application and ROS-interface tests.",
-    ],
+    evidence: ["An educational software model and synthetic frames; no physical PLC or camera."],
     limitations: [
-      "No production inspection accuracy, cycle-time, or hardware validation claim.",
-      "Physical camera, lighting, and robot-cell integration remain future work.",
+      "Educational Python model: no vendor PLC runtime, wired I/O, commissioning or certified safety function; only the declared default-timer cases were checked.",
+      "The QR frames are generated, clean and easy; they support a decoding check, not real-world read rates or defect detection.",
+      "No object detection, live camera, ROS 2, dashboard or complete inspection pipeline was verified.",
+      "The detailed verification records are not published; the links show the checked source code.",
     ],
-    technologies: ["Python", "FastAPI", "OpenCV", "YOLO", "SQLite", "ROS 2"],
-    images: [
-      {
-        src: "/images/projects/asset-vision-dashboard.png",
-        alt: "Asset Vision sample-mode dashboard with a QR-tagged item, inventory states, and recent detections",
-        caption:
-          "Working sample-mode dashboard: visual identity, presence state, local records, and inspection evidence are visible together.",
-      },
-      {
-        src: "/images/projects/asset-vision-architecture.svg",
-        alt: "Asset Vision architecture connecting camera input, perception, asset state, web services, and ROS 2 interfaces",
-        caption:
-          "Architecture boundary between the plain-Python inspection workflow, shared data, and ROS 2 perception nodes.",
-      },
-    ],
+    technologies: ["Python", "PLC sequence logic", "Test specifications", "OpenCV", "pyzbar", "QR codes"],
+    images: [],
     links: [
-      {
-        label: "GitHub repository",
-        href: "https://github.com/SaladinIART/asset-vision",
-      },
+      { label: "Source: PLC training engine", href: "https://github.com/SaladinIART/salbotics-plc-learning-hub/blob/fb4bb4137c3459c09fac3947c05a5b8602384ed3/plc_engine.py" },
+      { label: "Source: Asset Vision QR decoder", href: "https://github.com/SaladinIART/asset-vision/blob/bda8c796516d79110ecc6050d91719a90c2ea427/asset_vision/qrtools.py" },
+      { label: "Asset Vision sample images", href: "https://github.com/SaladinIART/asset-vision/tree/bda8c796516d79110ecc6050d91719a90c2ea427/samples" },
     ],
-    sceneKey: "assetVision",
+    sceneKey: "plcVision",
   },
   {
-    slug: "tube-preparation-concept",
-    title: "Tube Preparation Automation Concept",
-    status: "engineering-concept",
-    engineeringAreas: ["Process improvement", "CAD", "Automation trade study"],
+    slug: "ai-assisted-engineering-workflow",
+    title: "AI-Assisted Engineering Workflow",
+    status: "working-practice",
+    engineeringAreas: ["Requirements", "Implementation review", "Evidence management"],
     summary:
-      "A sanitized modular concept exploring measurement, identification, labelling, inspection, and kitting as an engineering decision study.",
-    notice:
-      "Sanitized personal concept: every public input and geometry is invented or generalized. This work is unvalidated and unaffiliated with any employer, customer, or production line.",
-    problem:
-      "Explore how a repetitive preparation workflow could be decomposed into measurable modules before choosing between manual aids, partial automation, or a larger automated cell.",
-    constraints: [
-      "All public inputs and workflow descriptions are invented or generalized.",
-      "Concept selection must consider safety, maintainability, verification, and staged proof rather than automation novelty.",
+      "How I run AI coding agents on engineering work: bounded task briefs, acceptance criteria, cross-model review, and failed results kept on record before anything is accepted.",
+    boundary: "A documented working practice; no productivity or model-ranking claim.",
+    objective:
+      "Make AI-assisted engineering work resumable and checkable, through bounded briefs, retained failures, explicit corrections and independent acceptance.",
+    decisions: [
+      "Split the roles: Claude Code implements bounded checkpoints, Codex prepares task contracts and reviews independently, and no two agents duplicate the same task.",
+      "Used small checkpoints and shared documents so any tool or model can resume without relying on hidden chat memory.",
+      "Kept failed results and asked for re-review instead of accepting an AI's own claim that the work was complete.",
     ],
+    result:
+      "A retained example chain — task brief, CHANGES_REQUESTED review, revision, regression checks and a final COMPLETE decision — shows a real defect being caught and fixed.",
+    resultPoints: [
+      "In the BocoBot assessor, review caught reversed sample order being accepted as NORMAL and over-permissive scoring; the fix added input-order checks and exact-set scoring without changing thresholds.",
+      "The same discipline removed untested claims from NEXUS, such as a Kubernetes chart that had never been tested, instead of leaving them in place.",
+    ],
+    aiRole:
+      "Agents wrote briefs, code, tests, reports and review records within their assignments. I set the scope, chose the tools and decided what was accepted.",
     contribution: [
-      "Decomposed the workflow into modular preparation, identification, inspection, and kitting functions.",
-      "Created alternative architectures, trade-study documentation, and selected concept CAD.",
-      "Defined an offline proof path before any production recommendation.",
+      "I coordinate AI-assisted engineering through bounded briefs, evidence requirements and cross-model review, retaining failed checks and corrections before accepting a result.",
     ],
-    architecture: [
-      "Generic material input and verification",
-      "Feed and measurement concept",
-      "Identification and labelling concept",
-      "Guarded separation and distributed inspection",
-      "Output handling and kitting concept",
-    ],
-    evidence: [
-      "Sanitized functional decomposition and alternative-architecture trade study.",
-      "Public-safe concept views showing system boundaries and validation questions, not build geometry.",
-      "Invented or generalized inputs only; no production baseline has been measured.",
-    ],
+    evidence: ["A documented working practice; no productivity or model-ranking claim."],
     limitations: [
-      "Unvalidated engineering concept, not a production-ready machine.",
-      "Unaffiliated with any employer, customer, or production line.",
-      "No throughput, quality, cost-saving, or qualification claim is made.",
+      "The documents are an advisory coordination protocol, not enforced access control or automatic agent-to-agent communication.",
+      "AI review is not the same as industrial team experience, and no time saving or model ranking is claimed.",
+      "The specific review records are private; the links are sanitized teaching materials based on the same practice.",
     ],
-    technologies: ["FreeCAD", "Process decomposition", "Trade studies", "Risk framing", "Concept validation"],
-    images: [
-      {
-        src: "/images/projects/tube-preparation-modular-concept.svg",
-        alt: "A sanitized functional concept connecting generic material verification, measurement, identification, guarded separation, inspection, and kitting",
-        caption:
-          "Public-safe functional flow: generic preparation is decomposed into modules and verification gates before any mechanism or automation level is selected.",
-      },
-      {
-        src: "/images/projects/tube-preparation-inspection-concept.svg",
-        alt: "A sanitized distributed inspection concept with independent checks and pass, hold, or controlled-stop decisions",
-        caption:
-          "Conceptual inspection boundary: independent evidence informs a traceable disposition. Optics, tolerances, calibration, safety, and reject handling remain validation questions.",
-      },
+    technologies: ["Claude Code", "Codex", "Git", "Checkpoint plans", "Review protocols"],
+    images: [],
+    links: [
+      { label: "Workflow teaching materials", href: "https://github.com/SaladinIART/salbotics-ai-harness-lab/tree/da4cd05673ced1a50c3a4edbc256ec68af03b533/episodes/02-lessons-from-real-projects" },
+      { label: "Checkpoint review worksheet", href: "https://github.com/SaladinIART/salbotics-ai-harness-lab/blob/da4cd05673ced1a50c3a4edbc256ec68af03b533/episodes/02-lessons-from-real-projects/worksheets/checkpoint-review-sheet.md" },
+      { label: "Handoff checklist", href: "https://github.com/SaladinIART/salbotics-ai-harness-lab/blob/da4cd05673ced1a50c3a4edbc256ec68af03b533/episodes/02-lessons-from-real-projects/worksheets/handoff-checklist.md" },
     ],
-    links: [],
-    sceneKey: "messyToMeasured",
-  },
-  {
-    slug: "amr-process-lab",
-    title: "AMR Process Lab",
-    status: "in-development",
-    engineeringAreas: ["Intralogistics", "Discrete-event thinking", "Process analytics"],
-    summary:
-      "A private browser-based process simulator for fictional assembly-kit flow between virtual storage and assembly stations using one mobile robot.",
-    notice:
-      "Private work in progress: every job, resource, parameter, and event is synthetic. There is no public source, interactive demo, verified performance result, or autonomous-navigation claim yet.",
-    problem:
-      "Demonstrate how material-delivery timing, finite buffers, and shared resources influence queues, utilization, throughput, and lead time.",
-    constraints: [
-      "Every job, station, parameter, and event is fictional.",
-      "The first version is a process visualization, not a physics or navigation simulator.",
-      "Source and interactive evidence remain private until deterministic verification is complete.",
-    ],
-    contribution: [
-      "Defined the initial one-robot, virtual-storage, and assembly-station scenario.",
-      "Prioritized process analytics and reproducible comparison over visual complexity.",
-      "Planned deterministic tests for event ordering, queue capacity, and kit conservation.",
-    ],
-    architecture: [
-      "Synthetic assembly-kit order generator",
-      "Virtual storage retrieval station",
-      "Single mobile-robot resource",
-      "Finite assembly-station buffers",
-      "Event history, KPI calculation, and scenario comparison",
-    ],
-    evidence: [
-      "Defined problem statement, event lifecycle, KPI set, and verification roadmap.",
-      "Public roadmap diagram only; no public source code, simulator, or performance result yet.",
-    ],
-    limitations: [
-      "In development; behavior and KPIs are not yet verified.",
-      "Not a claim of autonomous navigation, warehouse control, or production readiness.",
-    ],
-    technologies: ["React", "TypeScript", "Process simulation", "Data visualization", "Deterministic testing"],
-    images: [
-      {
-        src: "/images/projects/amr-process-lab-roadmap.svg",
-        alt: "A private AMR process simulator roadmap showing fictional orders, virtual storage, one mobile robot, finite buffers, event history, and process metrics",
-        caption:
-          "Planned synthetic scenario and evidence path. Animated movement will visualize process state; it will not simulate physics, localization, navigation, or safety behavior.",
-      },
-    ],
-    links: [],
-    sceneKey: "decisionMap",
+    sceneKey: "aiWorkflow",
   },
 ];
 
