@@ -55,7 +55,7 @@ function ScrollToPage() {
 }
 
 const siteUrl = "https://salbotics.uk";
-const defaultSocialImage = `${siteUrl}/images/projects/asset-vision-dashboard.png`;
+const defaultSocialImage = `${siteUrl}/images/projects/nexus-decision-board.png`;
 
 function setMeta(selector, attribute, value) {
   let element = document.head.querySelector(selector);
@@ -87,7 +87,7 @@ function RouteMetadata() {
     const description = project
       ? project.summary
       : isProjectsIndex
-        ? "Explore deployed systems, validated demonstrations, prototypes, engineering concepts, and private work in progress across manufacturing automation."
+        ? "Selected engineering projects by Muhamad Solehuddin: OPC UA and IIoT condition assessment, signal and routing studies, PLC and vision verification, AI-assisted engineering workflow, and a deployed factory energy system."
         : isHome
           ? "Muhamad Solehuddin's manufacturing automation engineering portfolio: practical work in process improvement, IIoT, MES, machine vision, robotics, and industrial software."
           : "The requested Salbotics Engineering Lab portfolio page could not be found.";
@@ -96,9 +96,7 @@ function RouteMetadata() {
     const socialImage =
       project?.slug === "nexus-iiot"
         ? `${siteUrl}/images/projects/nexus-decision-board.png`
-        : project?.slug === "asset-vision"
-          ? `${siteUrl}/images/projects/asset-vision-dashboard.png`
-          : defaultSocialImage;
+        : defaultSocialImage;
 
     document.title = title;
     setMeta('meta[name="description"]', "content", description);
@@ -195,8 +193,22 @@ function ProjectPreview({ project, index = 0 }) {
         </div>
         <span className="stack">{project.engineeringAreas.join(" · ")}</span>
         <p>{project.summary}</p>
-        <p>
-          <strong>Evidence boundary:</strong> {project.evidence[0]}
+        <dl className="odr">
+          <div>
+            <dt>Objective</dt>
+            <dd>{project.objective ?? project.problem}</dd>
+          </div>
+          <div>
+            <dt>{project.decisions ? "Key decision" : "My role"}</dt>
+            <dd>{project.decisions ? project.decisions[0] : project.contribution[0]}</dd>
+          </div>
+          <div>
+            <dt>Result</dt>
+            <dd>{project.result}</dd>
+          </div>
+        </dl>
+        <p className="boundary">
+          <strong>Evidence boundary:</strong> {project.boundary ?? project.evidence[0]}
         </p>
         <div className="work-links">
           <Link to={`/projects/${project.slug}`}>View case study →</Link>
@@ -211,10 +223,10 @@ function ProjectsPreview() {
     <section id="projects">
       <div className="wrap">
         <p className="sec-label">selected engineering work</p>
-        <h2>Projects across the manufacturing stack.</h2>
+        <h2>Selected projects: objective, decision, result.</h2>
         <p className="sec-intro">
-          Each project is labelled by its actual maturity and separates working evidence from
-          assumptions and future work.
+          Each project states the question, the decision I made, and what the evidence shows —
+          labelled by its actual maturity, with simulated work kept visibly distinct.
         </p>
         {projects.map((project, index) => (
           <ProjectPreview project={project} index={index} key={project.slug} />
@@ -347,10 +359,10 @@ function ProjectsIndexPage() {
     <div id="top">
       <div className="wrap hero">
         <p className="kicker">Engineering project index</p>
-        <h1>Evidence, architecture, and limitations in one place.</h1>
+        <h1>Selected projects: objective, decision, result.</h1>
         <p className="sub">
-          Deployed work, validated demonstrations, prototypes, concepts, and work in progress are
-          kept visibly distinct.
+          Four independent engineering projects and one field deployment. Deployed, validated,
+          simulated, and working-practice evidence are kept visibly distinct.
         </p>
         <div className="cta-row">
           <Link className="btn btn-ghost" to="/">
@@ -360,8 +372,8 @@ function ProjectsIndexPage() {
       </div>
       <section aria-labelledby="project-index-title">
         <div className="wrap">
-          <p className="sec-label">all projects</p>
-          <h2 id="project-index-title">Manufacturing systems from equipment to information.</h2>
+          <p className="sec-label">selected projects</p>
+          <h2 id="project-index-title">From equipment signals to verified engineering decisions.</h2>
           {projects.map((project, index) => (
             <ProjectPreview project={project} index={index} key={project.slug} />
           ))}
@@ -452,40 +464,64 @@ function ProjectCaseStudyPage() {
 
       <EvidenceGallery images={project.images} projectTitle={project.title} />
 
-      <CaseSection label="problem" title="The engineering question">
-        <p>{project.problem}</p>
+      <CaseSection label="objective" title="What I set out to answer">
+        <p>{project.objective ?? project.problem}</p>
       </CaseSection>
 
-      <CaseSection label="constraints" title="Boundaries that shaped the work">
-        <CaseList items={project.constraints} />
+      {project.decisions ? (
+        <CaseSection label="decisions" title="Decisions I made">
+          <CaseList items={project.decisions} />
+        </CaseSection>
+      ) : (
+        <>
+          <CaseSection label="constraints" title="Boundaries that shaped the work">
+            <CaseList items={project.constraints} />
+          </CaseSection>
+          <CaseSection label="contribution" title="What I designed and built">
+            <CaseList items={project.contribution} />
+          </CaseSection>
+        </>
+      )}
+
+      <CaseSection label="result" title="Result">
+        <p className="result-lead">{project.result}</p>
+        {project.resultPoints && <CaseList items={project.resultPoints} />}
       </CaseSection>
 
-      <CaseSection label="contribution" title="What I designed and built">
-        <CaseList items={project.contribution} />
+      <CaseSection label="evidence" title="Evidence you can inspect">
+        <CaseList items={project.evidence} />
+        {project.links.length > 0 && (
+          <div className="work-links">
+            {project.links.map((link) => (
+              <a href={link.href} rel="noopener noreferrer" key={link.href}>
+                {link.label} →
+              </a>
+            ))}
+          </div>
+        )}
       </CaseSection>
 
-      {project.buildProcess && (
-        <CaseSection label="process" title="How it was built, with AI">
-          <CaseList items={project.buildProcess} />
+      {project.aiRole && (
+        <CaseSection label="process" title="How AI was used">
+          <p>{project.aiRole}</p>
+          <CaseList items={project.contribution} />
         </CaseSection>
       )}
 
-      <CaseSection label="architecture" title="System flow">
-        <div className="principles">
-          {project.architecture.map((item, index) => (
-            <div className="principle" key={item}>
-              <span className="idx">{String(index + 1).padStart(2, "0")}</span>
-              <div>
-                <h3>{item}</h3>
+      {project.architecture && (
+        <CaseSection label="architecture" title="System flow">
+          <div className="principles">
+            {project.architecture.map((item, index) => (
+              <div className="principle" key={item}>
+                <span className="idx">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{item}</h3>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </CaseSection>
-
-      <CaseSection label="evidence" title="What can be verified">
-        <CaseList items={project.evidence} />
-      </CaseSection>
+            ))}
+          </div>
+        </CaseSection>
+      )}
 
       <CaseSection label="limitations" title="What this project does not claim">
         <CaseList items={project.limitations} />
@@ -499,15 +535,6 @@ function ProjectCaseStudyPage() {
             </span>
           ))}
         </div>
-        {project.links.length > 0 && (
-          <div className="work-links">
-            {project.links.map((link) => (
-              <a href={link.href} rel="noopener noreferrer" key={link.href}>
-                {link.label} →
-              </a>
-            ))}
-          </div>
-        )}
       </CaseSection>
     </article>
   );
