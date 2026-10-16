@@ -121,11 +121,15 @@ export const projects = [
     contribution: [
       "I selected a read-only OPC UA extension for NEXUS and directed AI-assisted implementation, using retained tests and CI evidence to distinguish equipment condition from data-quality and communication problems.",
     ],
-    evidence: ["Simulated equipment; the software and protocol path is verified by tests and CI."],
+    evidence: [
+      "Simulated equipment; the software and protocol path is verified by tests and CI.",
+      "Browser demo that replays output recorded from the pipeline, with a visible notice whenever the data is sample data.",
+    ],
     limitations: [
       "Fictional furnace and teaching model: no physical furnace, field data, calibrated digital twin or predictive-maintenance accuracy.",
       "The CI trace checks one retained sample path; it does not prove sustained throughput, exactly-once delivery, browser rendering or production readiness.",
       "The OPC UA teaching endpoint is loopback-only and unsecured; no certificate or trust management is claimed.",
+      "The hosted browser demo replays recorded output; it is not a live connection to equipment.",
     ],
     technologies: ["Python", "OPC UA", "MQTT", "TimescaleDB", "FastAPI", "Grafana", "Docker", "GitHub Actions"],
     images: [
@@ -137,6 +141,7 @@ export const projects = [
       },
     ],
     links: [
+      { label: "Try the live demo (browser, simulated equipment)", href: "https://salbotics.uk/IIoT-Telemetry-Stack/" },
       { label: "Condition-assessment report", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack/blob/e297d46c947cdac7ce6f39c3703411c9b37a566f/docs/opcua/CONDITION_ASSESSMENT.md" },
       { label: "Release test summary (62 cases)", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack/blob/e297d46c947cdac7ce6f39c3703411c9b37a566f/docs/opcua/evidence/release-verification/tests_summary.json" },
       { label: "Successful CI run", href: "https://github.com/SaladinIART/IIoT-Telemetry-Stack/actions/runs/38737854129" },
