@@ -402,3 +402,77 @@ footer { border-top: 1px solid var(--line); padding-block: 1.8rem; }
 @keyframes scan { from { transform: translateY(0); } to { transform: translateY(92px); } }
 .fill-x { transform-box: fill-box; transform-origin: left center; animation: fillx 4.8s ease-in-out infinite; }
 @keyframes fillx { 0% { transform: scaleX(0.12); } 85%, 100% { transform: scaleX(1); } }
+
+/* ---------- Engineering notes ---------- */
+.note .sec-intro { max-width: 66ch; }
+.note .sec-intro > p + p, .note .sec-intro > .note-table-wrap + p { margin-top: 0.9rem; }
+.note .list li::before { content: "–"; color: var(--teal-deep); }
+.note ol.note-steps { counter-reset: step; }
+.note ol.note-steps li { counter-increment: step; padding-left: 1.8rem; }
+.note ol.note-steps li::before {
+  content: counter(step) "."; font-family: var(--mono); font-size: 0.85rem; top: 0.05rem;
+}
+
+.note-meta {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.6rem 1.4rem; margin-top: 1.4rem; max-width: 54rem;
+}
+.note-meta dt {
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.note-meta dd { margin: 0.2rem 0 0; color: var(--navy); font-size: 0.95rem; }
+
+.evidence-chip, .draft-chip {
+  display: inline-block; font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+  border-radius: 999px; padding: 0.12rem 0.65rem; border: 1px solid; white-space: nowrap;
+}
+.evidence-calculated, .evidence-cad-checked {
+  color: oklch(40% 0.085 72); background: oklch(96% 0.035 82); border-color: oklch(76% 0.08 78);
+}
+.evidence-simulated, .evidence-software-tested {
+  color: oklch(40% 0.085 200); background: oklch(95% 0.025 195); border-color: oklch(76% 0.06 195);
+}
+.evidence-bench-tested, .evidence-measured {
+  color: oklch(38% 0.09 155); background: oklch(94% 0.035 155); border-color: oklch(75% 0.07 155);
+}
+.draft-chip { color: oklch(42% 0.12 25); background: oklch(95% 0.03 25); border-color: oklch(76% 0.09 25); }
+
+.draft-banner {
+  margin-bottom: 1.4rem; padding: 0.7rem 1rem; border-radius: 0.6rem;
+  border: 1px dashed oklch(66% 0.12 25); background: oklch(96% 0.025 25);
+  color: oklch(36% 0.1 25); font-size: 0.9rem;
+}
+
+.note-figure { max-width: 46rem; margin: 0 auto; }
+.note-figure img { max-height: none; }
+
+.note-table-wrap { overflow-x: auto; margin: 0.4rem 0 1.2rem; }
+.note-table { width: 100%; min-width: 30rem; border-collapse: collapse; font-size: 0.93rem; }
+.note-table th, .note-table td {
+  text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.note-table thead th {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft); border-bottom-color: var(--line-2);
+}
+.note-table tbody th { font-weight: 500; color: var(--navy); }
+.note-table td { color: var(--ink); font-variant-numeric: tabular-nums; }
+.note-table td:last-child { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); }
+
+.note-list { list-style: none; display: grid; gap: 1rem; margin-top: 1.6rem; max-width: 54rem; }
+.note-card {
+  display: grid; gap: 0.55rem; padding: 1.15rem 1.25rem; border: 1px solid var(--line);
+  border-radius: 0.8rem; background: var(--card); color: inherit; text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.note-card:hover, .note-card:focus-visible {
+  border-color: var(--teal); box-shadow: 0 10px 28px oklch(60% 0.03 90 / 0.12);
+}
+.note-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.7rem; }
+.note-num { font-family: var(--mono); font-size: 0.8rem; color: var(--teal-deep); }
+.note-card-title { font-size: 1.12rem; line-height: 1.35; color: var(--navy); }
+.note-card-answer { color: var(--ink-soft); font-size: 0.94rem; line-height: 1.55; }
+.note-card-foot { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); }
+.note-licence { margin-top: 1.4rem; font-size: 0.85rem; color: var(--ink-soft); }
