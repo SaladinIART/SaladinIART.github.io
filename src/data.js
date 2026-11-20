@@ -6,8 +6,8 @@ export const contact = {
   githubLabel: "github.com/SaladinIART",
   linkedin: "https://www.linkedin.com/in/solehuddin-muhamad-b67068132/",
   linkedinLabel: "linkedin.com/in/solehuddin-muhamad-b67068132",
-  resume: "/resume/muhamad-solehuddin-manufacturing-automation.pdf",
-  resumeLabel: "Manufacturing Automation recruiter CV (PDF)",
+  resume: "/resume/muhamad-solehuddin-robotics-automation.pdf",
+  resumeLabel: "Robotics & Automation CV (PDF)",
   identity: "Muhamad Solehuddin · Penang, Malaysia",
 };
 
@@ -319,11 +319,11 @@ export const about = {
   body: [
     "I'm Muhamad Solehuddin, an Automation and Robotics engineering technologist based in Penang. My background spans production-equipment maintenance, CAD/CAM, manufacturing digitization, industrial communications, and engineering software.",
     "I am most useful where the physical process and the digital system meet: tracing a signal from equipment to a dashboard, turning an operational problem into a testable model, or building a practical prototype that a manufacturing team can evaluate.",
-    "From October 2025 to August 2026, I worked as a Freelance Systems Engineer through Salbotics Solutions, building documented, self-directed IIoT and manufacturing-data demonstrations. These portfolio projects are not presented as client deployments. Salbotics is now my personal engineering lab for evidence-led work in automation, IIoT, MES, machine vision, process improvement, and robotics.",
+    "Since October 2025 I have run Salbotics Solutions part-time as my robotics and automation R&D lab: open learning material, documented demonstrations, and robot design work. The projects on this site are demonstrations, not client deployments. Since July 2026 I have also worked as a contract test technician in electronics manufacturing in Penang.",
   ],
-  emphasis: ["physical process and the digital system meet", "personal engineering lab"],
+  emphasis: ["physical process and the digital system meet", "robotics and automation R&D lab"],
   readout: [
-    { k: "foundation", v: "B.Eng.Tech", d: "Automation and Robotics (Hons), UniKL Malaysia France Institute" },
+    { k: "foundation", v: "B.Tech", d: "Bachelor of Technology (Industrial Automation and Robotics), UniKL Malaysia France Institute" },
     { k: "practice", v: "OT → IT", d: "equipment, industrial data, software, and decisions" },
     { k: "standard", v: "Proof", d: "clear evidence, limitations, and reproducible documentation" },
   ],
