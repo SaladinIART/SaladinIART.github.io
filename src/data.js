@@ -14,23 +14,66 @@ export const contact = {
 export const nav = [
   { label: "Projects", href: "/projects" },
   { label: "Capabilities", href: "/#capabilities" },
-  { label: "PLC Learning Hub", href: "https://salbotics.uk/salbotics-plc-learning-hub/" },
+  { label: "Open Labs", href: "/labs" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
 
 export const hero = {
-  kicker: "Muhamad Solehuddin · Manufacturing Automation Engineer",
-  title: "Practical engineering from machine signals to manufacturing decisions.",
+  kicker: "Muhamad Solehuddin · Robotics & Automation Systems Engineer",
+  title: "I find the real cause when machines stop, and build tools that help teams fix them faster.",
   sub:
-    "I build and study systems that make factory work more visible, traceable, and reliable — " +
-    "combining hands-on equipment knowledge with industrial data, software, automation, and robotics.",
+    "I've worked in manufacturing since 2016: maintaining production lines, testing machines and monitoring " +
+    "factory equipment. Here you'll find my projects, and free labs where anyone can practise the same " +
+    "fault-finding method.",
   ctas: [
-    { label: "Explore engineering projects", href: "/projects", variant: "primary" },
-    { label: "Download recruiter CV", href: contact.resume, variant: "ghost", download: true },
-    { label: "View GitHub", href: contact.github, variant: "ghost", external: true },
+    { label: "See my work", href: "/projects", variant: "primary" },
+    { label: "Open Labs", href: "/labs", variant: "ghost" },
+    { label: "Download CV", href: contact.resume, variant: "ghost", download: true },
   ],
   sceneKey: "pipeline",
+};
+
+const troubleshootingLab = "https://github.com/SaladinIART/salbotics-plc-troubleshooting-lab";
+
+export const labs = {
+  label: "open labs",
+  title: "Free labs you can use today.",
+  intro:
+    "Learning material I build and share in the open. No sign-up and no cost: use it to learn, teach or practise.",
+  items: [
+    {
+      slug: "plc-troubleshooting-lab",
+      name: "PLC Troubleshooting Lab",
+      tag: "New",
+      what:
+        "A virtual factory line with seven realistic breakdowns. Follow each one from what the operator saw to " +
+        "the real cause and the fix, with screenshots at every step.",
+      who: "Maintenance newcomers, students, and anyone curious how a stopped line gets fixed.",
+      href: troubleshootingLab,
+      cta: "Open the lab on GitHub",
+      caseStudy: "/projects/plc-troubleshooting-lab",
+    },
+    {
+      slug: "plc-learning-hub",
+      name: "PLC Learning Hub",
+      what:
+        "Plain-language lessons on PLCs, operator screens (HMI) and SCADA, from the basics up, in your browser.",
+      who: "Beginners and students starting in industrial automation.",
+      href: "https://salbotics.uk/salbotics-plc-learning-hub/",
+      cta: "Open the hub",
+    },
+    {
+      slug: "ai-harness-lab",
+      name: "AI Harness Lab",
+      what:
+        "Beginner-friendly guides for working with AI coding assistants in a repeatable, checkable way: clear " +
+        "task briefs, reviews and handover checklists.",
+      who: "Engineers and learners starting to use AI tools on real work.",
+      href: "https://salbotics.uk/salbotics-ai-harness-lab/",
+      cta: "Open the lab",
+    },
+  ],
 };
 
 export const projectStatusLabels = {
@@ -40,10 +83,79 @@ export const projectStatusLabels = {
   "engineering-concept": "Engineering concept",
   "in-development": "In development",
   "simulated-study": "Simulated study",
+  "open-lab": "Open lab",
   "working-practice": "Working practice",
 };
 
 export const projects = [
+  {
+    slug: "plc-troubleshooting-lab",
+    title: "PLC Troubleshooting Lab",
+    status: "open-lab",
+    engineeringAreas: ["Troubleshooting", "PLC and HMI", "Teaching"],
+    summary:
+      "A free virtual factory line with seven realistic breakdowns, each written up step by step: what the operator " +
+      "saw, what the machine's own data showed, the real cause, and the fix.",
+    boundary:
+      "A virtual plant on free software; not any company's program. Ingredients, recipes and numbers are invented.",
+    objective:
+      "Show my fault-finding method in a way anyone can check, and turn it into something newcomers can practise " +
+      "on, using only free tools.",
+    decisions: [
+      "Rebuilt the kind of line I maintained (a weighing and batching line) as a virtual plant, because the real programs belong to the companies I worked for.",
+      "Based the seven faults on the kinds of work I did in maintenance: a broken sensor cable, a replaced module set to the wrong address, an overloaded conveyor, a jammed gate, a broken output wire, a bad program change and a wrong screen setting.",
+      "Wrote every fault as a short story in plain words, so recruiters and newcomers can follow it, with the technical detail kept for those who want it.",
+    ],
+    result:
+      "Seven illustrated breakdowns with 29 screenshots from the running system, and 37 automated tests that check a full batch and every fault.",
+    resultPoints: [
+      "Runs end to end on an ordinary laptop with free software: the PLC program (OpenPLC), the operator screens (FUXA) and a plant simulator.",
+      "A newcomer guide and a glossary, so the method can be learned, not just admired.",
+      "The real plant conditions behind the faults (corrosion, dust, humidity, worn belts and motors) are written up on their own page.",
+    ],
+    aiRole:
+      "Built with AI coding assistants under my direction: I designed the plant and the faults from my maintenance experience, and checked each fault on the running system before it was written up.",
+    contribution: [
+      "I designed the plant, chose and reproduced the faults, and set the step-by-step method from my own maintenance experience.",
+    ],
+    evidence: [
+      "Public repository with the PLC program, simulator, operator screens, fault write-ups and tests.",
+      "Screenshots taken from the running system for every fault.",
+    ],
+    limitations: [
+      "A simulated plant: no physical PLC, wiring or machines.",
+      "Not any employer's program or line; it shows the method, not a specific site.",
+      "Free software only, so vendor tools (Omron, Keyence and others) look different on a real line.",
+    ],
+    technologies: ["OpenPLC", "IEC 61131-3 Structured Text", "FUXA HMI", "Modbus TCP", "Python", "Automated tests"],
+    images: [
+      {
+        src: "/images/projects/plc-lab-f3-trip.png",
+        alt: "The maintenance screen of the virtual plant at the moment a conveyor trips",
+        caption: "Fault 3: a conveyor keeps tripping. Resetting isn't fixing: the lab traces what made it trip.",
+      },
+      {
+        src: "/images/projects/plc-lab-f1-signal-fault.png",
+        alt: "Operator screen showing a silo weight of minus 5000 kg after a sensor cable fault",
+        caption: "Fault 1: a silo suddenly 'weighs' minus 5 000 kg. A strange number often means a broken signal.",
+      },
+      {
+        src: "/images/projects/plc-lab-f7-monitoring.png",
+        alt: "OpenPLC monitoring page showing the values the PLC program actually holds",
+        caption: "Fault 7: checking the PLC's own values before believing the screen.",
+      },
+      {
+        src: "/images/projects/plc-lab-f3-after-repair.png",
+        alt: "Maintenance screen after the repair, with the conveyor running normally",
+        caption: "After the repair: the cause removed and the fix proved on the running system.",
+      },
+    ],
+    links: [
+      { label: "Open the lab on GitHub", href: troubleshootingLab },
+      { label: "Example: the conveyor that keeps tripping", href: `${troubleshootingLab}/blob/main/faults/F3-vfd-trip.md` },
+      { label: "Newcomer guide", href: `${troubleshootingLab}/blob/main/docs/START_HERE.md` },
+    ],
+  },
   {
     slug: "factory-energy-monitor",
     title: "Factory Energy Visibility",
@@ -276,26 +388,35 @@ export function getProjectBySlug(slug) {
 }
 
 export const capabilities = {
-  label: "engineering focus",
-  title: "A practical manufacturing-automation toolkit.",
+  label: "what I do",
+  title: "Troubleshooting first, then the systems around it.",
   intro:
-    "The common thread is disciplined problem solving: understand the physical process, model the information flow, build the smallest useful proof, and document its limits.",
+    "The common thread is finding the real cause before changing anything, then building the simplest tool that " +
+    "helps the next person find it faster.",
   areas: [
     {
-      title: "Equipment and process",
-      detail: "Troubleshooting, maintenance foundations, CAD/CAM, process observation, bottleneck framing, and improvement concepts.",
+      title: "Troubleshooting and maintenance",
+      detail:
+        "Fault-finding across mechanical, electrical, sensor, PLC and communication problems; preventive and " +
+        "corrective maintenance of motors, drives, sensors and conveyors; proving every fix.",
     },
     {
-      title: "Industrial connectivity",
-      detail: "Modbus RTU/TCP, RS-485, MQTT, edge devices, PLC concepts, equipment telemetry, and resilient data paths.",
+      title: "PLC and controls",
+      detail:
+        "Reading and editing PLC programs online (Omron, Keyence, IEC 61131-3 Structured Text), operator screen " +
+        "changes, and machine test-line checks.",
     },
     {
-      title: "Manufacturing software",
-      detail: "Python, APIs, SQL, time-series data, dashboards, MES/ERP learning systems, Docker, testing, and technical runbooks.",
+      title: "Machine data and monitoring",
+      detail:
+        "Bringing machine signals into dashboards: Modbus, RS-485, MQTT, OPC UA, edge devices and databases, " +
+        "built to keep recording through network drops.",
     },
     {
-      title: "Robotics and vision",
-      detail: "ROS 2 interfaces, computer-vision prototypes, mobile-robot concepts, process simulation, and evidence-led validation.",
+      title: "Robotics, vision and software",
+      detail:
+        "Mobile robot design (CAD, electronics, firmware), ROS 2 interfaces, machine-vision prototypes, Python, " +
+        "and AI-assisted development with independent review.",
     },
   ],
 };

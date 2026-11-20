@@ -476,3 +476,22 @@ footer { border-top: 1px solid var(--line); padding-block: 1.8rem; }
 .note-card-answer { color: var(--ink-soft); font-size: 0.94rem; line-height: 1.55; }
 .note-card-foot { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); }
 .note-licence { margin-top: 1.4rem; font-size: 0.85rem; color: var(--ink-soft); }
+
+/* ── Open labs ──────────────────────────────────── */
+.lab-list {
+  list-style: none; display: grid; gap: 1rem; margin-top: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+.lab-card {
+  display: grid; gap: 0.6rem; align-content: start; padding: 1.15rem 1.25rem;
+  border: 1px solid var(--line); border-radius: 0.8rem; background: var(--card);
+}
+.lab-card .work-links { margin-top: 0.2rem; }
+.lab-who { font-size: 0.88rem; color: var(--ink-soft); }
+.lab-who strong { color: var(--navy); font-weight: 500; }
+.lab-tag {
+  font-family: var(--mono); font-size: 0.72rem; border-radius: 999px; padding: 0.08rem 0.55rem;
+  color: var(--teal-deep); background: var(--teal-mist); border: 1px solid var(--teal);
+}
+.project-shot { margin: 0; }
+.project-shot img { display: block; width: 100%; height: auto; }

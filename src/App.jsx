@@ -10,6 +10,7 @@ import {
   footer,
   getProjectBySlug,
   hero,
+  labs,
   method,
   nav,
   projects,
@@ -83,6 +84,7 @@ function RouteMetadata() {
     const noteSlug = pathname.startsWith("/notes/") ? pathname.split("/")[2] : null;
     const note = noteSlug ? getNoteBySlug(noteSlug) : null;
     const isProjectsIndex = pathname === "/projects";
+    const isLabs = pathname.replace(/\/$/, "") === "/labs";
     const isNotesIndex = pathname.replace(/\/$/, "") === "/notes" && notes.length > 0;
     const isHome = pathname === "/";
 
@@ -94,9 +96,11 @@ function RouteMetadata() {
           ? "Engineering Notes | Salbotics Engineering Lab"
           : isProjectsIndex
             ? "Engineering Projects | Muhamad Solehuddin"
-            : isHome
-              ? "Muhamad Solehuddin | Manufacturing Automation Engineer"
-              : "Page Not Found | Salbotics Engineering Lab";
+            : isLabs
+              ? "Open Labs | Salbotics Engineering Lab"
+              : isHome
+                ? "Muhamad Solehuddin | Robotics & Automation Systems Engineer"
+                : "Page Not Found | Salbotics Engineering Lab";
     const description = project
       ? project.summary
       : note
@@ -104,10 +108,12 @@ function RouteMetadata() {
         : isNotesIndex
           ? notesSection.sub
           : isProjectsIndex
-            ? "Selected engineering projects by Muhamad Solehuddin: OPC UA and IIoT condition assessment, signal and routing studies, PLC and vision verification, AI-assisted engineering workflow, and a deployed factory energy system."
-            : isHome
-              ? "Muhamad Solehuddin's manufacturing automation engineering portfolio: practical work in process improvement, IIoT, MES, machine vision, robotics, and industrial software."
-              : "The requested Salbotics Engineering Lab portfolio page could not be found.";
+            ? "Selected engineering projects by Muhamad Solehuddin: a public PLC troubleshooting lab, OPC UA and IIoT condition assessment, signal and routing studies, PLC and vision verification, AI-assisted engineering workflow, and a deployed factory energy system."
+            : isLabs
+              ? labs.intro
+              : isHome
+                ? "Muhamad Solehuddin, robotics and automation systems engineer: finding the real cause when machines stop, with projects and free open labs for troubleshooting, PLCs and industrial data."
+                : "The requested Salbotics Engineering Lab portfolio page could not be found.";
     const canonicalPath = isHome ? "/" : pathname.replace(/\/$/, "");
     const canonical = `${siteUrl}${canonicalPath}`;
     const socialImage = note
@@ -116,7 +122,7 @@ function RouteMetadata() {
         ? `${siteUrl}/images/projects/nexus-decision-board.png`
         : defaultSocialImage;
     const indexable =
-      isHome || isProjectsIndex || project || isNotesIndex || (note && note.published);
+      isHome || isProjectsIndex || isLabs || project || isNotesIndex || (note && note.published);
 
     document.title = title;
     setMeta('meta[name="description"]', "content", description);
@@ -165,7 +171,7 @@ function Header() {
                   <Link
                     to={item.href}
                     aria-current={
-                      (item.href === "/projects" || item.href === "/notes") &&
+                      ["/projects", "/notes", "/labs"].includes(item.href) &&
                       pathname.startsWith(item.href)
                         ? "page"
                         : undefined
@@ -206,10 +212,21 @@ function Hero() {
   );
 }
 
+function ProjectVisual({ project }) {
+  if (project.sceneKey && scenes[project.sceneKey]) return <Scene sceneKey={project.sceneKey} />;
+  const image = project.images[0];
+  if (!image) return null;
+  return (
+    <figure className="scene project-shot">
+      <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+    </figure>
+  );
+}
+
 function ProjectPreview({ project, index = 0 }) {
   return (
     <article className={`work-row ${index % 2 ? "rev" : ""}`}>
-      <Scene sceneKey={project.sceneKey} />
+      <ProjectVisual project={project} />
       <div className="work-copy">
         <div className="svc-head">
           <h3>{project.title}</h3>
@@ -264,6 +281,63 @@ function ProjectsPreview() {
         </div>
       </div>
     </section>
+  );
+}
+
+function LabCards() {
+  return (
+    <ul className="lab-list">
+      {labs.items.map((lab) => (
+        <li className="lab-card" key={lab.slug}>
+          <span className="note-card-head">
+            <strong className="note-card-title">{lab.name}</strong>
+            {lab.tag && <span className="lab-tag">{lab.tag}</span>}
+          </span>
+          <span className="note-card-answer">{lab.what}</span>
+          <span className="lab-who">
+            <strong>For:</strong> {lab.who}
+          </span>
+          <span className="work-links">
+            <a href={lab.href} rel="noopener noreferrer">
+              {lab.cta} →
+            </a>
+            {lab.caseStudy && <Link to={lab.caseStudy}>How I built it →</Link>}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function OpenLabsStrip() {
+  return (
+    <section id="labs">
+      <div className="wrap">
+        <p className="sec-label">{labs.label}</p>
+        <h2>{labs.title}</h2>
+        <p className="sec-intro">{labs.intro}</p>
+        <LabCards />
+      </div>
+    </section>
+  );
+}
+
+function LabsPage() {
+  return (
+    <div id="top">
+      <div className="wrap hero">
+        <p className="kicker">Salbotics open labs</p>
+        <h1>{labs.title}</h1>
+        <p className="sub">{labs.intro}</p>
+      </div>
+      <section aria-labelledby="labs-list-title">
+        <div className="wrap">
+          <p className="sec-label">all labs</p>
+          <h2 id="labs-list-title">Pick one and start.</h2>
+          <LabCards />
+        </div>
+      </section>
+    </div>
   );
 }
 
@@ -371,6 +445,7 @@ function HomePage() {
   return (
     <div id="top">
       <Hero />
+      <OpenLabsStrip />
       <ProjectsPreview />
       <Capabilities />
       <Method />
@@ -387,8 +462,8 @@ function ProjectsIndexPage() {
         <p className="kicker">Engineering project index</p>
         <h1>Selected projects: objective, decision, result.</h1>
         <p className="sub">
-          Four independent engineering projects and one field deployment. Deployed, validated,
-          simulated, and working-practice evidence are kept visibly distinct.
+          An open troubleshooting lab, four engineering studies and one field deployment. Each is
+          labelled by what it really is: deployed, demonstrated, simulated or working practice.
         </p>
         <div className="cta-row">
           <Link className="btn btn-ghost" to="/">
@@ -485,7 +560,7 @@ function ProjectCaseStudyPage() {
             <p>{project.notice}</p>
           </aside>
         )}
-        <Scene sceneKey={project.sceneKey} />
+        {project.sceneKey && <Scene sceneKey={project.sceneKey} />}
       </div>
 
       <EvidenceGallery images={project.images} projectTitle={project.title} />
@@ -826,6 +901,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsIndexPage />} />
+          <Route path="/labs" element={<LabsPage />} />
           <Route path="/projects/:slug" element={<ProjectCaseStudyPage />} />
           <Route path="/notes" element={<NotesIndexPage />} />
           <Route path="/notes/:slug" element={<NotePage />} />
