@@ -10,11 +10,18 @@ import {
   footer,
   getProjectBySlug,
   hero,
+  labs,
   method,
   nav,
   projects,
   projectStatusLabels,
 } from "./data";
+import { getNoteBySlug, noteEvidenceLabels, notes, notesSection } from "./notes";
+
+// The Notes link appears only when at least one note is visible (published, or a draft in dev).
+const navItems = notes.length
+  ? [nav[0], { label: "Notes", href: "/notes" }, ...nav.slice(1)]
+  : nav;
 
 function Scene({ sceneKey }) {
   const html = scenes[sceneKey];
@@ -74,29 +81,48 @@ function RouteMetadata() {
   useEffect(() => {
     const slug = pathname.startsWith("/projects/") ? pathname.split("/")[2] : null;
     const project = slug ? getProjectBySlug(slug) : null;
+    const noteSlug = pathname.startsWith("/notes/") ? pathname.split("/")[2] : null;
+    const note = noteSlug ? getNoteBySlug(noteSlug) : null;
     const isProjectsIndex = pathname === "/projects";
+    const isLabs = pathname.replace(/\/$/, "") === "/labs";
+    const isNotesIndex = pathname.replace(/\/$/, "") === "/notes" && notes.length > 0;
     const isHome = pathname === "/";
 
     const title = project
       ? `${project.title} | Muhamad Solehuddin`
-      : isProjectsIndex
-        ? "Engineering Projects | Muhamad Solehuddin"
-        : isHome
-          ? "Muhamad Solehuddin | Manufacturing Automation Engineer"
-          : "Page Not Found | Salbotics Engineering Lab";
+      : note
+        ? `${note.number}: ${note.title} | Salbotics Engineering Notes`
+        : isNotesIndex
+          ? "Engineering Notes | Salbotics Engineering Lab"
+          : isProjectsIndex
+            ? "Engineering Projects | Muhamad Solehuddin"
+            : isLabs
+              ? "Open Labs | Salbotics Engineering Lab"
+              : isHome
+                ? "Muhamad Solehuddin | Robotics & Automation Systems Engineer"
+                : "Page Not Found | Salbotics Engineering Lab";
     const description = project
       ? project.summary
-      : isProjectsIndex
-        ? "Selected engineering projects by Muhamad Solehuddin: OPC UA and IIoT condition assessment, signal and routing studies, PLC and vision verification, AI-assisted engineering workflow, and a deployed factory energy system."
-        : isHome
-          ? "Muhamad Solehuddin's manufacturing automation engineering portfolio: practical work in process improvement, IIoT, MES, machine vision, robotics, and industrial software."
-          : "The requested Salbotics Engineering Lab portfolio page could not be found.";
+      : note
+        ? note.shortAnswer
+        : isNotesIndex
+          ? notesSection.sub
+          : isProjectsIndex
+            ? "Selected engineering projects by Muhamad Solehuddin: a public PLC troubleshooting lab, OPC UA and IIoT condition assessment, signal and routing studies, PLC and vision verification, AI-assisted engineering workflow, and a deployed factory energy system."
+            : isLabs
+              ? labs.intro
+              : isHome
+                ? "Muhamad Solehuddin, robotics and automation systems engineer: finding the real cause when machines stop, with projects and free open labs for troubleshooting, PLCs and industrial data."
+                : "The requested Salbotics Engineering Lab portfolio page could not be found.";
     const canonicalPath = isHome ? "/" : pathname.replace(/\/$/, "");
     const canonical = `${siteUrl}${canonicalPath}`;
-    const socialImage =
-      project?.slug === "nexus-iiot"
+    const socialImage = note
+      ? new URL(note.figure.src, siteUrl).href
+      : project?.slug === "nexus-iiot"
         ? `${siteUrl}/images/projects/nexus-decision-board.png`
         : defaultSocialImage;
+    const indexable =
+      isHome || isProjectsIndex || isLabs || project || isNotesIndex || (note && note.published);
 
     document.title = title;
     setMeta('meta[name="description"]', "content", description);
@@ -107,7 +133,7 @@ function RouteMetadata() {
     setMeta('meta[name="twitter:title"]', "content", title);
     setMeta('meta[name="twitter:description"]', "content", description);
     setMeta('meta[name="twitter:image"]', "content", socialImage);
-    setMeta('meta[name="robots"]', "content", isHome || isProjectsIndex || project ? "index, follow" : "noindex, nofollow");
+    setMeta('meta[name="robots"]', "content", indexable ? "index, follow" : "noindex, nofollow");
 
     let canonicalLink = document.head.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
@@ -136,7 +162,7 @@ function Header() {
         </Link>
         <nav aria-label="Primary navigation">
           <ul>
-            {nav.map((item) => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 {/^https?:/.test(item.href) ? (
                   // Separate static site served from the same domain (not an app route)
@@ -145,7 +171,8 @@ function Header() {
                   <Link
                     to={item.href}
                     aria-current={
-                      item.href === "/projects" && pathname.startsWith("/projects")
+                      ["/projects", "/notes", "/labs"].includes(item.href) &&
+                      pathname.startsWith(item.href)
                         ? "page"
                         : undefined
                     }
@@ -185,10 +212,21 @@ function Hero() {
   );
 }
 
+function ProjectVisual({ project }) {
+  if (project.sceneKey && scenes[project.sceneKey]) return <Scene sceneKey={project.sceneKey} />;
+  const image = project.images[0];
+  if (!image) return null;
+  return (
+    <figure className="scene project-shot">
+      <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+    </figure>
+  );
+}
+
 function ProjectPreview({ project, index = 0 }) {
   return (
     <article className={`work-row ${index % 2 ? "rev" : ""}`}>
-      <Scene sceneKey={project.sceneKey} />
+      <ProjectVisual project={project} />
       <div className="work-copy">
         <div className="svc-head">
           <h3>{project.title}</h3>
@@ -243,6 +281,63 @@ function ProjectsPreview() {
         </div>
       </div>
     </section>
+  );
+}
+
+function LabCards() {
+  return (
+    <ul className="lab-list">
+      {labs.items.map((lab) => (
+        <li className="lab-card" key={lab.slug}>
+          <span className="note-card-head">
+            <strong className="note-card-title">{lab.name}</strong>
+            {lab.tag && <span className="lab-tag">{lab.tag}</span>}
+          </span>
+          <span className="note-card-answer">{lab.what}</span>
+          <span className="lab-who">
+            <strong>For:</strong> {lab.who}
+          </span>
+          <span className="work-links">
+            <a href={lab.href} rel="noopener noreferrer">
+              {lab.cta} →
+            </a>
+            {lab.caseStudy && <Link to={lab.caseStudy}>How I built it →</Link>}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function OpenLabsStrip() {
+  return (
+    <section id="labs">
+      <div className="wrap">
+        <p className="sec-label">{labs.label}</p>
+        <h2>{labs.title}</h2>
+        <p className="sec-intro">{labs.intro}</p>
+        <LabCards />
+      </div>
+    </section>
+  );
+}
+
+function LabsPage() {
+  return (
+    <div id="top">
+      <div className="wrap hero">
+        <p className="kicker">Salbotics open labs</p>
+        <h1>{labs.title}</h1>
+        <p className="sub">{labs.intro}</p>
+      </div>
+      <section aria-labelledby="labs-list-title">
+        <div className="wrap">
+          <p className="sec-label">all labs</p>
+          <h2 id="labs-list-title">Pick one and start.</h2>
+          <LabCards />
+        </div>
+      </section>
+    </div>
   );
 }
 
@@ -350,6 +445,7 @@ function HomePage() {
   return (
     <div id="top">
       <Hero />
+      <OpenLabsStrip />
       <ProjectsPreview />
       <Capabilities />
       <Method />
@@ -366,8 +462,8 @@ function ProjectsIndexPage() {
         <p className="kicker">Engineering project index</p>
         <h1>Selected projects: objective, decision, result.</h1>
         <p className="sub">
-          Four independent engineering projects and one field deployment. Deployed, validated,
-          simulated, and working-practice evidence are kept visibly distinct.
+          An open troubleshooting lab, four engineering studies and one field deployment. Each is
+          labelled by what it really is: deployed, demonstrated, simulated or working practice.
         </p>
         <div className="cta-row">
           <Link className="btn btn-ghost" to="/">
@@ -464,7 +560,7 @@ function ProjectCaseStudyPage() {
             <p>{project.notice}</p>
           </aside>
         )}
-        <Scene sceneKey={project.sceneKey} />
+        {project.sceneKey && <Scene sceneKey={project.sceneKey} />}
       </div>
 
       <EvidenceGallery images={project.images} projectTitle={project.title} />
@@ -545,6 +641,220 @@ function ProjectCaseStudyPage() {
   );
 }
 
+function NoteMeta({ note }) {
+  return (
+    <dl className="note-meta">
+      <div>
+        <dt>Note</dt>
+        <dd>
+          {note.number} · {note.version} · {note.date}
+        </dd>
+      </div>
+      <div>
+        <dt>Project</dt>
+        <dd>{note.project}</dd>
+      </div>
+      <div>
+        <dt>Evidence</dt>
+        <dd>
+          <span className={`evidence-chip evidence-${note.evidence}`}>
+            {noteEvidenceLabels[note.evidence]}
+          </span>
+        </dd>
+      </div>
+      <div>
+        <dt>Status</dt>
+        <dd>{note.buildStatus}</dd>
+      </div>
+    </dl>
+  );
+}
+
+function DraftBanner({ note }) {
+  if (note.published) return null;
+  return (
+    <aside className="draft-banner" role="note">
+      <strong>Draft, not published.</strong> Visible only in local preview until it passes review and
+      is approved.
+    </aside>
+  );
+}
+
+function NotesIndexPage() {
+  if (notes.length === 0) return <NotFoundPage />;
+
+  return (
+    <div id="top">
+      <div className="wrap hero">
+        <p className="kicker">{notesSection.kicker}</p>
+        <h1>{notesSection.title}</h1>
+        <p className="sub">{notesSection.sub}</p>
+      </div>
+      <section aria-labelledby="notes-index-title">
+        <div className="wrap">
+          <p className="sec-label">all notes</p>
+          <h2 id="notes-index-title">Latest first</h2>
+          <ul className="note-list">
+            {notes.map((note) => (
+              <li key={note.slug}>
+                <Link className="note-card" to={`/notes/${note.slug}`}>
+                  <span className="note-card-head">
+                    <span className="note-num">{note.number}</span>
+                    <span className={`evidence-chip evidence-${note.evidence}`}>
+                      {noteEvidenceLabels[note.evidence]}
+                    </span>
+                    {!note.published && <span className="draft-chip">Draft</span>}
+                  </span>
+                  <strong className="note-card-title">{note.title}</strong>
+                  <span className="note-card-answer">{note.shortAnswer}</span>
+                  <span className="note-card-foot">
+                    {note.project} · {note.date}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="note-licence">
+            <a href={notesSection.licenceHref} rel="noopener noreferrer">
+              CC BY 4.0
+            </a>{" "}
+            · {notesSection.licence}
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function NotePage() {
+  const { slug } = useParams();
+  const note = getNoteBySlug(slug);
+
+  if (!note) return <NotFoundPage title="Note not found" />;
+
+  return (
+    <article id="top" className="note">
+      <div className="wrap hero">
+        <DraftBanner note={note} />
+        <p className="kicker">
+          {note.number} · {note.tags.join(" · ")}
+        </p>
+        <h1>{note.title}</h1>
+        <NoteMeta note={note} />
+        <aside className="case-notice" aria-label="Short answer">
+          <strong>Short answer</strong>
+          <p>{note.shortAnswer}</p>
+        </aside>
+        <div className="cta-row">
+          <Link className="btn btn-ghost" to="/notes">
+            All notes
+          </Link>
+        </div>
+      </div>
+
+      <CaseSection label="the question" title="What I set out to check">
+        {note.question.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </CaseSection>
+
+      <section aria-label="Figure">
+        <div className="wrap">
+          <figure className="evidence-figure note-figure">
+            <a href={note.figure.src} target="_blank" rel="noopener noreferrer">
+              <img src={note.figure.src} alt={note.figure.alt} loading="eager" decoding="async" />
+            </a>
+            <figcaption>{note.figure.caption}</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <CaseSection label="method" title="How I checked it">
+        <CaseList items={note.method} />
+      </CaseSection>
+
+      <CaseSection label="result" title="Result">
+        <div className="note-table-wrap">
+          <table className="note-table">
+            <thead>
+              <tr>
+                <th scope="col">Quantity</th>
+                <th scope="col">Value</th>
+                <th scope="col">Evidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              {note.results.map((row) => (
+                <tr key={row.quantity}>
+                  <th scope="row">{row.quantity}</th>
+                  <td>{row.value}</td>
+                  <td>{row.label}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {note.meaning.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </CaseSection>
+
+      <CaseSection label="decision" title="What I changed because of it">
+        <CaseList items={note.changes} />
+        {note.changesNote && <p>{note.changesNote}</p>}
+      </CaseSection>
+
+      <CaseSection label="limitations" title="What could make this wrong">
+        <CaseList items={note.limits} />
+      </CaseSection>
+
+      <CaseSection label="next test" title="Proposed next measurements">
+        {note.nextTestIntro && <p>{note.nextTestIntro}</p>}
+        <ol className="list note-steps">
+          {note.nextTest.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </CaseSection>
+
+      {note.sources?.length > 0 && (
+        <CaseSection label="sources" title="Sources">
+          <ul className="list">
+            {note.sources.map((source) => (
+              <li key={source.label}>
+                {source.href ? (
+                  <a href={source.href} rel="noopener noreferrer">
+                    {source.label}
+                  </a>
+                ) : (
+                  source.label
+                )}
+                {source.detail && `: ${source.detail}`}
+              </li>
+            ))}
+          </ul>
+        </CaseSection>
+      )}
+
+      {note.tryIt && (
+        <CaseSection label="files" title="Try it yourself">
+          <p>{note.tryIt}</p>
+        </CaseSection>
+      )}
+
+      <CaseSection label="changes" title="Changes to this note">
+        <CaseList items={note.changelog} />
+        <p className="note-licence">
+          <a href={notesSection.licenceHref} rel="noopener noreferrer">
+            CC BY 4.0
+          </a>{" "}
+          · {notesSection.licence}
+        </p>
+      </CaseSection>
+    </article>
+  );
+}
+
 function NotFoundPage({ title = "Page not found" }) {
   return (
     <div className="wrap hero" id="top">
@@ -591,7 +901,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsIndexPage />} />
+          <Route path="/labs" element={<LabsPage />} />
           <Route path="/projects/:slug" element={<ProjectCaseStudyPage />} />
+          <Route path="/notes" element={<NotesIndexPage />} />
+          <Route path="/notes/:slug" element={<NotePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
